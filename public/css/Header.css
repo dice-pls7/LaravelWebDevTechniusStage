@@ -1,0 +1,49 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 25px;
+}
+#Contact, #ToevoegenKandidaat {
+    margin-right: 10px;
+}
+#Contact {
+    background-color: #ffc400;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #ffc400;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+}
+#Contact a {
+    color: black;
+    text-decoration: none;
+}
+#Contact:hover {
+    background-color: white;
+    color: black;
+}
+#ToevoegenKandidaat {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #003b4c;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+}
+#ToevoegenKandidaat a {
+    color: black;
+    text-decoration: none;
+}
+#ToevoegenKandidaat:hover,
+#ToevoegenKandidaat:hover a {
+    background-color: #003b4c;
+    color: white;
+}

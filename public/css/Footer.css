@@ -1,0 +1,72 @@
+/* Footer styling */
+.main-footer {
+    position: relative;
+    font-size: 0.875rem;
+    color: black; /* Set text color to white */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+}
+.main-footer-left-bg {
+    background-color: #ffc603;
+    width: 50%;
+    height: 400px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.main-footer-right-bg {
+    background-image: url('Image/loodgieter-klussen-huis.jpg');
+    width: 50%;
+    height: 400px;
+    margin-bottom: 10px;
+}
+.main-footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.contact-info {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+.contact-info h2 {
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+.contact-info a{
+    color: black;
+    text-decoration: none;
+}
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.125rem;
+}
+.contact-list li {
+    margin-bottom: 10px;
+    color: black;
+}
+.main-footer-bottom {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: #77898d;
+    line-height: 1.875rem;
+    font-size: 0.75rem;
+}
+.main-footer-bottom a {
+    font-weight: 700;
+    color: #77898d;
+    text-decoration: none;
+}
+.main-footer-bottom a:hover {
+    color: #013c4c;
+}

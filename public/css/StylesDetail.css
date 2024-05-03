@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.Terugknop {
+    width : 200px;
+    height: 55px;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    border: 3px #ffc400 solid;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.Terugknop:hover {
+    background-color: #ffc400;
+    color: white;
+    cursor: pointer;
+}
+.Contactopnemenknop:hover {
+    background-color: #ffc400;
+    color: white;
+    cursor: pointer;
+}
+#WijzigButton {
+    width : 200px;
+    height: 55px;
+    background-color: #ffc400;
+    color: white;
+    border-radius: 30px;
+    border: 3px solid #ffc400;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+#WijzigButton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.Gegevenstabel {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid #ccc;
+    border-radius: 18px;
+    box-sizing: border-box;
+    width: 80%;
+    font-size: 16px;
+    font-weight: 700;
+}
+.Gegevenstabel.Loodgieter {
+    border-color: #ffc400; /* Kleur voor functie Loodgieter */
+}
+.Gegevenstabel.Elektromonteur {
+    border-color: #003b4c; /* Kleur voor functie Elektromonteur */
+}
+.DeleteKnop {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.DeleteKnop button {
+    background-color: transparent;
+    border: none;
+}
+.DeleteKnop i {
+    color: red;
+    cursor: pointer;
+    font-size: 46px;
+}

@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.Toevoegen {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 3px solid black;
+    /*border: 3px solid;*/
+    /*border-image: linear-gradient(to right, #FFC400, #003B4C);*/
+    /*border-image-slice: 1;*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.Toevoegen form {
+    display: flex;
+    flex-direction: column;
+}
+.Toevoegen label {
+    margin-bottom: 5px;
+}
+.Toevoegen textarea {
+    resize: none;
+    height: 150px;
+}
+.Toevoegen input[type="text"],
+.Toevoegen input[type="date"],
+.Toevoegen textarea,
+.Toevoegen select {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.Toevoegen input[type="text"]:focus,
+.Toevoegen input[type="date"]:focus,
+.Toevoegen textarea:focus,
+.Toevoegen select:focus {
+    outline: none;
+    border-color: #003b4c;
+}
+.Toevoegen .Buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Toevoegen .Buttons button[type="submit"] {
+    padding: 10px 20px;
+    border: 3px solid #003b4c;
+    border-radius: 18px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+.Toevoegen .Buttons button[type="submit"]:hover {
+    background-color: #003b4c;
+    color: white;
+}
+.Toevoegen .Buttons a {
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #003b4c;
+    text-decoration: none;
+    font-size: 16px;
+}
+.Toevoegen .Buttons a:hover {
+    background-color: #003b4c;
+    color: white;
+}

@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.candidates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 20px;
+}
+.candidate {
+    width: calc(33.33% - 20px); /* 33.33% breedte voor maximaal 3 divs naast elkaar */
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+.candidate.Loodgieter {
+    border-color: #ffc400; /* Kleur voor functie Loodgieter */
+}
+.candidate.Elektromonteur {
+    border-color: #003b4c; /* Kleur voor functie Elektromonteur */
+}
+.candidate h2 {
+    margin-top: 0;
+}
+.Toevoegen input, label, select {
+    display: flex;
+    margin: 5px;
+}
+.Buttons {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+.Buttons button{
+    border: 3px solid #ffc400;
+    border-radius: 18px;
+}
+.Buttons a{
+    padding: 10px 20px;
+    border: 3px solid #003b4c;
+    border-radius: 18px;
+    text-decoration: none;
+    font-size: 14px;
+}
