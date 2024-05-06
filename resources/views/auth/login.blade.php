@@ -50,8 +50,9 @@
             </x-primary-button>
 
             <x-primary-button class="ms-3">
-            <a href="{{ route('overzicht') }}">Ga verder</a>
-        </x-primary-button>
+                <a href="{{ route('overzicht') }}">Ga verder</a>
+            </x-primary-button>
+            
         </div>
     </form>
 </x-guest-layout>

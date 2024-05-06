@@ -18,8 +18,8 @@ Route::get('/kandidaattoevoegen', function () {
 
 Route::get('/overzicht', [OverzichtsController::class, 'overzicht'])->name('overzicht');
 Route::get('/details/{id}', [OverzichtsController::class, 'details'])->name('details');
-Route::post('/kandidaat/{id}/delete', [OverzichtsController::class, 'delete']);
-Route::get('/kandidaat/{id}/wijzigen', [OverzichtsController::class, 'wijzigen'])->name('wijzigen');
+Route::post('/kandidaat/{id}/delete', [OverzichtsController::class, 'delete'])->middleware(['auth', 'verified'])->name('delete');
+Route::get('/kandidaat/{id}/wijzigen', [OverzichtsController::class, 'wijzigen'])->name('wijzigen')->middleware(['auth', 'verified'])->name('wijzigen');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

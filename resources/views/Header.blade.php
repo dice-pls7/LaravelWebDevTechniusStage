@@ -18,6 +18,4 @@
             <a href="" id="Contact">Neem contact op</a>
         @endauth
     @endif
-    
 </header>
-
