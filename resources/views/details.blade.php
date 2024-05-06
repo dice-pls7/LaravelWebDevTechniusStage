@@ -11,32 +11,45 @@
     @include('Header') 
 </head>
 <body>
-    
+    <div class="OverzichtsKnop">
+    <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
+    </div>
+
 <div class="Gegevenstabel {{$kandidaat->functie}}">
-    <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
-
-    <div class="DeleteKnop">
-        <button type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
-    </div>
-
     <!-- Display candidate details here -->
-    <div>
-        <h2>{{ $kandidaat->voornaam }} {{ $kandidaat->tussenvoegsel }} {{ $kandidaat->achternaam }}</h2>
-        <p><span>Geboortedatum: </span>{{ $kandidaat->geboortedatum }}</p>
-        <p><span>Functie: </span>{{ $kandidaat->functie }}</p>
-        <p><span>Beschikbaarheid: </span>{{ $kandidaat->beschikbaarheid }}</p>
-        <p><span>Locatie: </span>{{ $kandidaat->locatie }}</p>
-        <p><span>Taal: </span>{{ $kandidaat->taal }}</p>
-        <p><span>Werkervaring: </span>{{ $kandidaat->werkervaring }}</p>
-        <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->oudeOpdrachtgevers }}</p>
-        <p><span>Diploma's: </span>{{ $kandidaat->diplomas }}</p>
-        <p><span>Certificaten: </span>{{ $kandidaat->certificaten }}</p>
-        <p><span>Flavour Text: </span>{{ $kandidaat->flavourText }}</p>
+    <div class="Gegevens">
+        @if(Route::has('login'))
+            @auth
+                <div class="DeleteKnop">
+                    <button type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
+                </div>
+            @endauth
+        @endif
+            <h2>{{ $kandidaat->voornaam }} {{ $kandidaat->tussenvoegsel }} {{ $kandidaat->achternaam }}</h2>
+            <p><span>Geboortedatum: </span>{{ $kandidaat->geboortedatum }}</p>
+            <p><span>Functie: </span>{{ $kandidaat->functie }}</p>
+            <p><span>Beschikbaarheid: </span>{{ $kandidaat->beschikbaarheid }}</p>
+            <p><span>Locatie: </span>{{ $kandidaat->locatie }}</p>
+            <p><span>Taal: </span>{{ $kandidaat->taal }}</p>
+            <p><span>Werkervaring: </span>{{ $kandidaat->werkervaring }}</p>
+            <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->oudeOpdrachtgevers }}</p>
+            <p><span>Diploma's: </span>{{ $kandidaat->diplomas }}</p>
+            <p><span>Certificaten: </span>{{ $kandidaat->certificaten }}</p>
+            <p><span>Flavour Text: </span>{{ $kandidaat->flavourText }}</p>
+
+            @if(Route::has('login'))
+            @auth
+                <div class="WijzigKnop">
+                    <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->id . '/wijzigen') }}">Wijzigen Kandidaat</a>
+                </div>
+            @endauth
+            @endif
+        </div>
     </div>
-</div>
-
 </body>
-
+<footer>
+    @include('footer')
+</footer>
 <script>
     document.getElementById('deleteButton').addEventListener('click', function() {
         var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
@@ -62,7 +75,4 @@
         }
     });
 </script>
-<footer>
-        @include('footer')
-</footer>
 </html>

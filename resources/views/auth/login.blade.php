@@ -3,6 +3,9 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
+    <div>
+        <h1 class="text-2xl font-bold">Heb je een account? Log dan hieronder in:</h1>
+    </div>
         @csrf
 
         <!-- Email Address -->
@@ -23,13 +26,16 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
+        </div>
+
+        <div>
+            <h1 class="text-2xl font-bold">Heb je geen account? Druk dan op de 'ga verder' knop</h1>
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -40,8 +46,12 @@
             @endif
 
             <x-primary-button class="ms-3">
-                {{ __('Log in') }}
+                <a href="{{ route('login') }}">Log in</a>
             </x-primary-button>
+
+            <x-primary-button class="ms-3">
+            <a href="{{ route('overzicht') }}">Ga verder</a>
+        </x-primary-button>
         </div>
     </form>
 </x-guest-layout>

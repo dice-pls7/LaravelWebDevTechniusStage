@@ -30,6 +30,10 @@ class OverzichtsController extends Controller
         $this->deleteKandidaat($id);
         return redirect()->route('overzicht');
     }
+    public function wijzigen($id) {
+        $kandidaat = $this->getKandidaatGegevens($id);
+        return view('wijzigen', ['kandidaat' => $kandidaat]);
+    }
     public function connectToDatabase()
     {
         // Database connection
@@ -98,60 +102,50 @@ class OverzichtsController extends Controller
             print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
         }
     }
-    function updateKandidaat($id, $kolomNaam, $kolomWaarde) {
-            // Update kandidaat, gebruik de Id om de juiste kandidaat te updaten
-            // en gebruik variabelen om de nieuwe waarden op te slaan en voor de kolommen in de database tabel.
-            $sql = "UPDATE kandidaat SET $kolomNaam='$kolomWaarde' WHERE Id='$id'";
+    public function getKandidaat($id) {
+        $sql = "SELECT * FROM kandidaat WHERE Id='$id'";
+        $result = mysqli_query($this->conn, $sql);
     
-            if (mysqli_query($this->conn, $sql)) {
-                header('Location: index.php');
-            } else {
-                print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
-            }
-        }
-        public function getKandidaat($id) {
-            $sql = "SELECT * FROM kandidaat WHERE Id='$id'";
-            $result = mysqli_query($this->conn, $sql);
-        
-            $kandidaat = null; 
-        
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    // Converteer de geboortedatum naar Nederlandse notatie
-                    $geboortedatum = date('d-m-Y', strtotime($row["Geboortedatum"]));
-        
-                    // Converteer de beschikbaarheidsdatum naar Nederlandse notatie
-                    $beschikbaarheid = date('d-m-Y', strtotime($row["Beschikbaarheid"]));
-        
-                    // Maak een Kandidaat object aan
-                    $kandidaat = new Kandidaat(
-                        $row["Id"],
-                        $row["Voornaam"],
-                        $row["Tussenvoegsel"],
-                        $row["Achternaam"],
-                        $geboortedatum, // Gebruik de geconverteerde geboortedatum
-                        $row["Functie"],
-                        $beschikbaarheid, // Gebruik de geconverteerde beschikbaarheidsdatum
-                        $row["Locatie"],
-                        $row["Taal"],
-                        $row["Werkervaring"],
-                        $row["OudeOpdrachtgevers"],
-                        $row["Diplomas"],
-                        $row["Certificaten"],
-                        $row["FlavourText"]
-                    );
-                }
-            } else {
-                print "No results found";
-            }
-            // Sluit de database connectie
-            mysqli_close($this->conn);
-            return $kandidaat;
-        }
-        
+        $kandidaat = null; 
     
-    function getKandidaatGegevens($conn, $Id){
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                // Converteer de geboortedatum naar Nederlandse notatie
+                $geboortedatum = date('d-m-Y', strtotime($row["Geboortedatum"]));
+    
+                // Converteer de beschikbaarheidsdatum naar Nederlandse notatie
+                $beschikbaarheid = date('d-m-Y', strtotime($row["Beschikbaarheid"]));
+    
+                // Maak een Kandidaat object aan
+                $kandidaat = new Kandidaat(
+                    $row["Id"],
+                    $row["Voornaam"],
+                    $row["Tussenvoegsel"],
+                    $row["Achternaam"],
+                    $geboortedatum, // Gebruik de geconverteerde geboortedatum
+                    $row["Functie"],
+                    $beschikbaarheid, // Gebruik de geconverteerde beschikbaarheidsdatum
+                    $row["Locatie"],
+                    $row["Taal"],
+                    $row["Werkervaring"],
+                    $row["OudeOpdrachtgevers"],
+                    $row["Diplomas"],
+                    $row["Certificaten"],
+                    $row["FlavourText"]
+                );
+            }
+        } else {
+            print "No results found";
+        }
+        // Sluit de database connectie
+        mysqli_close($this->conn);
+        return $kandidaat;
+    }
+    
+
+    function getKandidaatGegevens($Id){
         $sql = "SELECT * FROM kandidaat WHERE Id='$Id'";
+        $conn = $this->conn;
         $result = mysqli_query($conn, $sql);
     
         if (mysqli_num_rows($result) > 0) {
