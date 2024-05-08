@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kandidaat;
+use App\Models\Reviews;
 
 class OverzichtsController extends Controller
 {
@@ -23,7 +24,8 @@ class OverzichtsController extends Controller
     public function details($id)
     {
         $kandidaat = $this->getKandidaat($id);
-        return view('details', ['kandidaat' => $kandidaat]);
+        $reviews = $this->getReviews($id);
+        return view('details', ['kandidaat' => $kandidaat], ['reviews' => $reviews]);
     }
     public function delete($id) {
         $this->deleteKandidaat($id);
@@ -75,6 +77,25 @@ class OverzichtsController extends Controller
                 array_push($kandidaten, $kandidaat);
             }
             return $kandidaten;
+        } else {
+            return [];
+        }
+    }
+    public function getReviews($kandidaatId) {
+        $sql = "SELECT * FROM reviews WHERE kandidaatId='$kandidaatId'";
+        $result = mysqli_query($this->conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $reviews = [];
+            while($row = mysqli_fetch_assoc($result)) {
+                $review = new Reviews(
+                    $row["Id"],
+                    $row["KandidaatId"],
+                    $row["Review"]
+                );
+                array_push($reviews, $review);
+            }
+            return $reviews;
         } else {
             return [];
         }
@@ -136,8 +157,8 @@ class OverzichtsController extends Controller
         } else {
             print "No results found";
         }
-        // Sluit de database connectie
-        mysqli_close($this->conn);
+        // // Sluit de database connectie
+        // mysqli_close($this->conn);
         return $kandidaat;
     }
 

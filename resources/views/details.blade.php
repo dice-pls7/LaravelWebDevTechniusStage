@@ -37,6 +37,11 @@
             <p><span>Certificaten: </span>{{ $kandidaat->certificaten }}</p>
             <p><span>Flavour Text: </span>{{ $kandidaat->flavourText }}</p>
 
+            <h3>Reviews</h3>
+            @foreach ($reviews as $review)
+                <p><span>Review: </span>{{ $review->review }}</p>
+            @endforeach
+
             @if(Route::has('login'))
             @auth
                 <div class="WijzigKnop">
