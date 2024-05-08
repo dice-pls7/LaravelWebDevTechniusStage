@@ -20,7 +20,6 @@ class OverzichtsController extends Controller
         $kandidaten = $this->getAllKandidaten();
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
-
     public function details($id)
     {
         $kandidaat = $this->getKandidaat($id);
@@ -81,10 +80,10 @@ class OverzichtsController extends Controller
         }
     }
     function insertKandidaat($kandidaat) {
-        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText) 
+        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText)
     VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
     , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText')";
-    
+
         if (mysqli_query($this->conn, $sql)) {
             header('Location: index.php');
         } else {
@@ -95,7 +94,7 @@ class OverzichtsController extends Controller
     }
     function deleteKandidaat($id) {
         $sql = "DELETE FROM kandidaat WHERE Id=$id";
-    
+
         if (mysqli_query($this->conn, $sql)) {
             print "Record deleted successfully";
         } else {
@@ -105,17 +104,17 @@ class OverzichtsController extends Controller
     public function getKandidaat($id) {
         $sql = "SELECT * FROM kandidaat WHERE Id='$id'";
         $result = mysqli_query($this->conn, $sql);
-    
-        $kandidaat = null; 
-    
+
+        $kandidaat = null;
+
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 // Converteer de geboortedatum naar Nederlandse notatie
                 $geboortedatum = date('d-m-Y', strtotime($row["Geboortedatum"]));
-    
+
                 // Converteer de beschikbaarheidsdatum naar Nederlandse notatie
                 $beschikbaarheid = date('d-m-Y', strtotime($row["Beschikbaarheid"]));
-    
+
                 // Maak een Kandidaat object aan
                 $kandidaat = new Kandidaat(
                     $row["Id"],
@@ -141,13 +140,13 @@ class OverzichtsController extends Controller
         mysqli_close($this->conn);
         return $kandidaat;
     }
-    
+
 
     function getKandidaatGegevens($Id){
         $sql = "SELECT * FROM kandidaat WHERE Id='$Id'";
         $conn = $this->conn;
         $result = mysqli_query($conn, $sql);
-    
+
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $kandidaat = new Kandidaat(
