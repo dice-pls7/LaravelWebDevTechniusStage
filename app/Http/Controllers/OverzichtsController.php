@@ -141,8 +141,6 @@ class OverzichtsController extends Controller
         mysqli_close($this->conn);
         return $kandidaat;
     }
-    
-
     function getKandidaatGegevens($Id){
         $sql = "SELECT * FROM kandidaat WHERE Id='$Id'";
         $conn = $this->conn;

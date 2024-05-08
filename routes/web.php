@@ -4,13 +4,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverzichtsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
 Route::post('/handle-form', [FormController::class, 'handleFormSubmission']);
 Route::post('/handle_WijzigKandidaatForm', [FormController::class, 'handleWijzigKandidaatForm']);
-
 
 Route::get('/kandidaattoevoegen', function () {
     return view('KandidaatToevoegen');
