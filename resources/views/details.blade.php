@@ -35,7 +35,7 @@
             <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->oudeOpdrachtgevers }}</p>
             <p><span>Diploma's: </span>{{ $kandidaat->diplomas }}</p>
             <p><span>Certificaten: </span>{{ $kandidaat->certificaten }}</p>
-            <p><span>Flavour Text: </span>{{ $kandidaat->flavourText }}</p>
+            <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->flavourText }}</p>
 
             <h3>Reviews</h3>
             @foreach ($reviews as $review)
