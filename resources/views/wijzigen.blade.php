@@ -34,7 +34,7 @@
             <option value="Elektromonteur">Elektromonteur</option>
         </select>
 
-        <label for="Beschikbaarheid">Beschikbaarheid *</label>
+        <label for="Beschikbaarheid">Beschikbaar vanaf: *</label>
         <input type="date" id="Beschikbaarheid" name="Beschikbaarheid" value="<?php print($kandidaat->beschikbaarheid)?>" required>
 
         <label for="Locatie">Locatie *</label>
@@ -55,7 +55,7 @@
         <label for="Certificaten">Certificaten</label>
         <input type="text" id="Certificaten" name="Certificaten" value="<?php print($kandidaat->certificaten)?>">
 
-        <label for="FlavourText">Flavour Text</label>
+        <label for="FlavourText">Beschrijving kandidaat/Flavour Text</label>
         <textarea id="FlavourText" name="FlavourText" ><?php print($kandidaat->flavourText)?></textarea>
 
         <div class="Buttons">

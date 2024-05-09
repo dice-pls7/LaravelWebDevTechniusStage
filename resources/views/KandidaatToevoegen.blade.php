@@ -36,7 +36,7 @@
             <option value="<?php echo $optie2; ?>">Elektromonteur</option>
         </select>
 
-        <label for="Beschikbaarheid">Beschikbaarheid *</label>
+        <label for="Beschikbaarheid">Beschikbaar vanaf: *</label>
         <input type="date" id="Beschikbaarheid" name="Beschikbaarheid"  required>
 
         <label for="Locatie">Locatie *</label>
