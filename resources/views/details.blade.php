@@ -28,7 +28,7 @@
             <h2>{{ $kandidaat->voornaam }} {{ $kandidaat->tussenvoegsel }} {{ $kandidaat->achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->functie }}</p>
-            <p><span>Beschikbaarheid: </span>{{ $kandidaat->beschikbaarheid }}</p>
+            <p><span>Beschikbaar vanaf: </span>{{ $kandidaat->beschikbaarheid }}</p>
             <p><span>Locatie: </span>{{ $kandidaat->locatie }}</p>
             <p><span>Taal: </span>{{ $kandidaat->taal }}</p>
             <p><span>Werkervaring: </span>{{ $kandidaat->werkervaring }}</p>
