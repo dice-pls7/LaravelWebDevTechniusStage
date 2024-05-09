@@ -66,6 +66,7 @@ class OverzichtsController extends Controller
                     $row["Geboortedatum"],
                     $row["Functie"],
                     $row["Beschikbaarheid"],
+                    $row["Beschikbaar"],
                     $row["Locatie"],
                     $row["Taal"],
                     $row["Werkervaring"],
@@ -101,8 +102,8 @@ class OverzichtsController extends Controller
         }
     }
     function insertKandidaat($kandidaat) {
-        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText)
-    VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
+        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Beschikbaar, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText)
+    VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->beschikbaar', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
     , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText')";
 
         if (mysqli_query($this->conn, $sql)) {
@@ -145,6 +146,7 @@ class OverzichtsController extends Controller
                     $geboortedatum, // Gebruik de geconverteerde geboortedatum
                     $row["Functie"],
                     $beschikbaarheid, // Gebruik de geconverteerde beschikbaarheidsdatum
+                    $row["Beschikbaar"],
                     $row["Locatie"],
                     $row["Taal"],
                     $row["Werkervaring"],
@@ -178,6 +180,7 @@ class OverzichtsController extends Controller
                     $row["Geboortedatum"],
                     $row["Functie"],
                     $row["Beschikbaarheid"],
+                    $row["Beschikbaar"],
                     $row["Locatie"],
                     $row["Taal"],
                     $row["Werkervaring"],

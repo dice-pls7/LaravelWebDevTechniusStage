@@ -27,15 +27,20 @@
         <label for="Geboortedatum">Geboortedatum *</label>
         <input type="date" id="Geboortedatum" name="Geboortedatum" value="<?php print($kandidaat->geboortedatum)?>" required>
 
-        <label for="Functie">Functie (huidig: "<?php print($kandidaat->functie)?>") *</label>
+        <label for="Functie">Functie *</label>
         <select id="Functie" name="Functie"  required>
-            <option value="">Kies een functie</option>
-            <option value="Loodgieter">Loodgieter </option>
-            <option value="Elektromonteur">Elektromonteur</option>
+            <option value="Loodgieter" <?php if($kandidaat->functie == "Loodgieter") print("selected")?>>Loodgieter</option>
+            <option value="Elektromonteur" <?php if($kandidaat->functie == "Elektromonteur") print("selected")?>>Elektromonteur</option>
         </select>
 
         <label for="Beschikbaarheid">Beschikbaar vanaf: *</label>
         <input type="date" id="Beschikbaarheid" name="Beschikbaarheid" value="<?php print($kandidaat->beschikbaarheid)?>" required>
+
+        <label for="Beschikbaar">Beschikbaar *</label>
+        <select id="Beschikbaar" name="Beschikbaar" required>
+            <option value="1" <?php if($kandidaat->beschikbaar == 1) print("selected")?>>Ja</option>
+            <option value="0" <?php if($kandidaat->beschikbaar == 0) print("selected")?>>Nee</option>
+        </select>
 
         <label for="Locatie">Locatie *</label>
         <input type="text" id="Locatie" name="Locatie" value="<?php print($kandidaat->locatie)?>"required>
