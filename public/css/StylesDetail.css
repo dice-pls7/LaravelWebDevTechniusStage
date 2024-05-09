@@ -66,11 +66,18 @@ body {
     border-radius: 18px;
     box-sizing: border-box;
     width: 80%;
+    max-width: 1000px; /* Maximale breedte van de tabel */
     font-size: 16px;
     font-weight: 700;
 }
 .Gegevens {
     position: relative;
+}
+.Gegevens h3 {
+    margin: 0;
+    padding: 10px; /* Ruimte tussen de titel en de tabel */
+    font-size: 16px;
+    font-weight: 700;
 }
 .DeleteKnop {
     position: absolute;
