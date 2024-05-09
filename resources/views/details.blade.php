@@ -15,8 +15,8 @@
     <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
     </div>
 
-<div class="Gegevenstabel {{$kandidaat->functie}}">
-    <!-- Display candidate details here -->
+<div class="Gegevenstabel {{$kandidaat->functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
+
     <div class="Gegevens">
         @if(Route::has('login'))
             @auth
@@ -40,7 +40,7 @@
             <h3>Reviews</h3>
             @foreach ($reviews as $review)
                 <p><span>Review: </span>{{ $review->review }}</p>
-            @endforeach
+            @endforeach 
 
             @if(Route::has('login'))
             @auth
