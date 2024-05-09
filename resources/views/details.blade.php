@@ -91,6 +91,44 @@
                 <div class="WijzigKnop">
                     <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->id . '/wijzigen') }}">Wijzigen Kandidaat</a>
                 </div>
+            <?php
+                // Define variables for email content
+                $to = "";
+                $subject = "aanrading: ". $kandidaat->voornaam;
+                $body = "Naam: $kandidaat->voornaam";
+                if (!empty($kandidaat->tussenvoegsel)) {
+                    $body .= " $kandidaat->tussenvoegsel";
+                }
+                $body .= " $kandidaat->achternaam\n";
+                $body .= "Geboortedatum: $kandidaat->geboortedatum\n";
+                $body .= "Functie: $kandidaat->functie\n";
+                $body .= "Beschikbaar vanaf: $kandidaat->beschikbaarheid\n";
+                $body .= "Locatie: $kandidaat->locatie\n";
+                $body .= "Taal: $kandidaat->taal\n";
+                
+                if (!empty($kandidaat->werkervaring)) {
+                    $body .= "Werkervaring: $kandidaat->werkervaring\n";
+                }
+                if (!empty($kandidaat->oudeOpdrachtgevers)) {
+                    $body .= "Oude Opdrachtgevers: $kandidaat->oudeOpdrachtgevers\n";
+                }
+                if (!empty($kandidaat->diplomas)) {
+                    $body .= "Diploma's: $kandidaat->diplomas\n";
+                }
+                if (!empty($kandidaat->certificaten)) {
+                    $body .= "Certificaten: $kandidaat->certificaten\n";
+                }
+                if (!empty($kandidaat->flavourText)) {
+                    $body .= "Beschrijving kandidaat: $kandidaat->flavourText\n";
+                }
+                // Encode the email body for URL
+                $body_encoded = rawurlencode($body);
+                ?>
+
+            <!-- Button to trigger email -->
+            <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
+                <button id="MailButton">Stuur Email</button>
+            </a>
             @endauth
             @endif
         </div>
