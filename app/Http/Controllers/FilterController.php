@@ -19,12 +19,11 @@ class FilterController extends Controller
     {
         return view('overzicht');
     }
-
     public function filterResults(Request $request)
     {
     $kandidaten = $this->getFilteredKandidaten($request);
     return view('overzicht', ['kandidaten' => $kandidaten]);
-    }   
+    }
     public function getFilteredKandidaten(Request $request)
     {
     $kandidaten = $this->controller->getAllKandidaten();
@@ -48,14 +47,14 @@ class FilterController extends Controller
                 $werkervaringRange = explode('-', $werkervaring);
                 $minWerkervaring = intval($werkervaringRange[0]);
                 $maxWerkervaring = intval($werkervaringRange[1]);
-                
+
                 if ($kandidaat->werkervaring < $minWerkervaring || $kandidaat->werkervaring > $maxWerkervaring) {
                     continue;
                 }
             }
         }
         $filteredKandidaten[] = $kandidaat;
-    }   
+    }
     return $filteredKandidaten;
     }
 }
