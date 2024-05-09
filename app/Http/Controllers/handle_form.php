@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["Geboortedatum"],
         $_POST["Functie"],
         $_POST["Beschikbaarheid"],
+        $_POST["Beschikbaar"],
         $_POST["Locatie"],
         $_POST["Taal"],
         $_POST["Werkervaring"],

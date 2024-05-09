@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\OverzichtsController;
 use Illuminate\Http\Request;
-use App\Models\Kandidaat;
-
 
 class FilterController extends Controller
 {
@@ -32,14 +29,13 @@ class FilterController extends Controller
     {
     $kandidaten = $this->controller->getAllKandidaten();
 
-    // Filter the kandidaten based on the request
     $filteredKandidaten = [];
-    //the filters are Functie, beschikbaarheid en werkervaring
+
     foreach ($kandidaten as $kandidaat) {
-        if ($request->input('functie') && $kandidaat->functie != $request->input('functie')) {
+        if ($request->filled('functie') && $kandidaat->functie != $request->input('functie')) {
             continue;
         }
-        if ($request->input('beschikbaarheid') && $kandidaat->beschikbaarheid != $request->input('beschikbaarheid')) {
+        if ($request->filled('beschikbaarheid') && $kandidaat->beschikbaar != $request->input('beschikbaarheid')) {
             continue;
         }
         if ($request->input('werkervaring')) {

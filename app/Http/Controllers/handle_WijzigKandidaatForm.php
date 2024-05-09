@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Geboortedatum = $_POST["Geboortedatum"],
         $Functie = $_POST["Functie"],
         $Beschikbaarheid = $_POST["Beschikbaarheid"],
+        $Beschikbaar = $_POST["Beschikbaar"],
         $Locatie = $_POST["Locatie"],
         $Taal = $_POST["Taal"],
         $Werkervaring = $_POST["Werkervaring"],
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Certificaten = $_POST["Certificaten"],
         $FlavourText = $_POST["FlavourText"]
     );
-        $sql = "UPDATE kandidaat SET Voornaam='$Voornaam', Tussenvoegsel='$Tussenvoegsel', Achternaam='$Achternaam', Geboortedatum='$Geboortedatum', Functie='$Functie', Beschikbaarheid='$Beschikbaarheid', Locatie='$Locatie', Taal='$Taal', Werkervaring='$Werkervaring', OudeOpdrachtgevers='$OudeOpdrachtgevers', Diplomas='$Diplomas', Certificaten='$Certificaten', FlavourText='$FlavourText' WHERE Id='$Id'";
+        $sql = "UPDATE kandidaat SET Voornaam='$Voornaam', Tussenvoegsel='$Tussenvoegsel', Achternaam='$Achternaam', Geboortedatum='$Geboortedatum', Functie='$Functie', Beschikbaarheid='$Beschikbaarheid', Beschikbaar='$Beschikbaar', Locatie='$Locatie', Taal='$Taal', Werkervaring='$Werkervaring', OudeOpdrachtgevers='$OudeOpdrachtgevers', Diplomas='$Diplomas', Certificaten='$Certificaten', FlavourText='$FlavourText' WHERE Id='$Id'";
         if (mysqli_query($conn, $sql)) {
             echo "Record updated successfully";
         } else {

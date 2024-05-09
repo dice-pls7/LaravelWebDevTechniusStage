@@ -10,6 +10,7 @@
 <body>
     <div class="Filter">
         <button id="FilterButton" onclick="toggleFilters()">Filteren op</button>
+        <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
         <!-- Filter options -->
         <div class="filters" id="Filters">
             <form action="{{ route('overzicht') }}" method="POST">
@@ -36,14 +37,14 @@
 
                 </select>
 
-                <label for="Beschikbaarheid">Beschikbaar</label>
-                <select name="beschikbaarheid" id="beschikbaarheid" placeholder="Kies een optie">
+                <label for="beschikbaar">Beschikbaar</label>
+                <select name="beschikbaarheid" id="beschikbaarheid">
                     <option value="">Kies een optie</option>
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
                 </select>
                 
-                <button type="reset">Reset</button>
+                <button type="reset">Reset filter opties</button>
                 <button type="submit">Filteren</button>
             </form>
         </div>

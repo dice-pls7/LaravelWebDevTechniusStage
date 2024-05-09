@@ -69,11 +69,23 @@ body {
     text-decoration: none;
     font-weight: 700;
 }
-#FilterButton button {
-    color: black;
-    text-decoration: none;
-}
+
 #FilterButton:hover {
+    background-color: white;
+    color: black;
+}
+#WisFilter {
+    background-color: #003b4c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #003b4c;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+}
+#WisFilter:hover {
     background-color: white;
     color: black;
 }

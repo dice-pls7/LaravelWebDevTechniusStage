@@ -39,6 +39,13 @@
         <label for="Beschikbaarheid">Beschikbaarheid *</label>
         <input type="date" id="Beschikbaarheid" name="Beschikbaarheid"  required>
 
+        <label for="Beschikbaar">Beschikbaar *</label>
+        <select id="Beschikbaar" name="Beschikbaar" required>
+            <option value="">Kies een optie</option>
+            <option value="1">Ja</option>
+            <option value="0">Nee</option>
+        </select>
+
         <label for="Locatie">Locatie *</label>
         <input type="text" id="Locatie" name="Locatie"required>
 
