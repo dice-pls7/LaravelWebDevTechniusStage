@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kandidaat;
+use App\Models\Reviews;
 
 class OverzichtsController extends Controller
 {
@@ -20,11 +21,11 @@ class OverzichtsController extends Controller
         $kandidaten = $this->getAllKandidaten();
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
-
     public function details($id)
     {
         $kandidaat = $this->getKandidaat($id);
-        return view('details', ['kandidaat' => $kandidaat]);
+        $reviews = $this->getReviews($id);
+        return view('details', ['kandidaat' => $kandidaat], ['reviews' => $reviews]);
     }
     public function delete($id) {
         $this->deleteKandidaat($id);
@@ -80,11 +81,30 @@ class OverzichtsController extends Controller
             return [];
         }
     }
+    public function getReviews($kandidaatId) {
+        $sql = "SELECT * FROM reviews WHERE kandidaatId='$kandidaatId'";
+        $result = mysqli_query($this->conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $reviews = [];
+            while($row = mysqli_fetch_assoc($result)) {
+                $review = new Reviews(
+                    $row["Id"],
+                    $row["KandidaatId"],
+                    $row["Review"]
+                );
+                array_push($reviews, $review);
+            }
+            return $reviews;
+        } else {
+            return [];
+        }
+    }
     function insertKandidaat($kandidaat) {
-        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText) 
+        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText)
     VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
     , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText')";
-    
+
         if (mysqli_query($this->conn, $sql)) {
             header('Location: index.php');
         } else {
@@ -95,7 +115,7 @@ class OverzichtsController extends Controller
     }
     function deleteKandidaat($id) {
         $sql = "DELETE FROM kandidaat WHERE Id=$id";
-    
+
         if (mysqli_query($this->conn, $sql)) {
             print "Record deleted successfully";
         } else {
@@ -105,17 +125,17 @@ class OverzichtsController extends Controller
     public function getKandidaat($id) {
         $sql = "SELECT * FROM kandidaat WHERE Id='$id'";
         $result = mysqli_query($this->conn, $sql);
-    
-        $kandidaat = null; 
-    
+
+        $kandidaat = null;
+
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 // Converteer de geboortedatum naar Nederlandse notatie
                 $geboortedatum = date('d-m-Y', strtotime($row["Geboortedatum"]));
-    
+
                 // Converteer de beschikbaarheidsdatum naar Nederlandse notatie
                 $beschikbaarheid = date('d-m-Y', strtotime($row["Beschikbaarheid"]));
-    
+
                 // Maak een Kandidaat object aan
                 $kandidaat = new Kandidaat(
                     $row["Id"],
@@ -137,15 +157,17 @@ class OverzichtsController extends Controller
         } else {
             print "No results found";
         }
-        // Sluit de database connectie
-        mysqli_close($this->conn);
+        // // Sluit de database connectie
+        // mysqli_close($this->conn);
         return $kandidaat;
     }
+
+
     function getKandidaatGegevens($Id){
         $sql = "SELECT * FROM kandidaat WHERE Id='$Id'";
         $conn = $this->conn;
         $result = mysqli_query($conn, $sql);
-    
+
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $kandidaat = new Kandidaat(
