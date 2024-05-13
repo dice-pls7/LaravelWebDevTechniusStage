@@ -19,7 +19,9 @@ class OverzichtsController extends Controller
     public function overzicht()
     {
         $kandidaten = $this->getAllKandidaten();
-        return view('overzicht', ['kandidaten' => $kandidaten]);
+        $pinnedKandidaten = $this->getAllPinnedKandidaten();
+        return view('overzicht', ['kandidaten' => $kandidaten , 'pinnedKandidaten' => $pinnedKandidaten]);
+
     }
     public function details($id)
     {
@@ -51,9 +53,46 @@ class OverzichtsController extends Controller
 
         return $conn;
     }
+    public function getAllPinnedKandidaten() {
+
+        $sqlPinned = "SELECT * FROM kandidaat WHERE pinned = 1";
+        $resultPinned = mysqli_query($this->conn, $sqlPinned);
+    
+        
+        if (mysqli_num_rows($resultPinned) > 0) {
+            $pinnedKandidaten = [];
+            while($row = mysqli_fetch_assoc($resultPinned)) {
+                $kandidaat = new Kandidaat(
+                    $row["Id"],
+                    $row["Voornaam"],
+                    $row["Tussenvoegsel"],
+                    $row["Achternaam"],
+                    $row["Geboortedatum"],
+                    $row["Functie"],
+                    $row["Beschikbaarheid"],
+                    $row["Beschikbaar"],
+                    $row["Locatie"],
+                    $row["Taal"],
+                    $row["Werkervaring"],
+                    $row["OudeOpdrachtgevers"],
+                    $row["Diplomas"],
+                    $row["Certificaten"],
+                    $row["FlavourText"],
+                    $row["pinned"]
+                    
+                );
+                array_push($pinnedKandidaten, $kandidaat);
+            }
+        }
+        return $pinnedKandidaten;
+
+    }
+
     public function getAllKandidaten() {
-        $sql = "SELECT * FROM kandidaat";
+
+        $sql = "SELECT * FROM kandidaat WHERE pinned = 0";
         $result = mysqli_query($this->conn, $sql);
+
 
         if (mysqli_num_rows($result) > 0) {
             $kandidaten = [];
@@ -73,15 +112,16 @@ class OverzichtsController extends Controller
                     $row["OudeOpdrachtgevers"],
                     $row["Diplomas"],
                     $row["Certificaten"],
-                    $row["FlavourText"]
+                    $row["FlavourText"],
+                    $row["pinned"]
                 );
                 array_push($kandidaten, $kandidaat);
             }
-            return $kandidaten;
-        } else {
-            return [];
+            
         }
+        return $kandidaten;
     }
+
     public function getReviews($kandidaatId) {
         $sql = "SELECT * FROM reviews WHERE kandidaatId='$kandidaatId'";
         $result = mysqli_query($this->conn, $sql);
@@ -102,9 +142,9 @@ class OverzichtsController extends Controller
         }
     }
     function insertKandidaat($kandidaat) {
-        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Beschikbaar, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText)
+        $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Beschikbaar, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText, pinned)
     VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->beschikbaar', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
-    , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText')";
+    , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText', '$kandidaat->pinned')";
 
         if (mysqli_query($this->conn, $sql)) {
             header('Location: index.php');
@@ -153,7 +193,8 @@ class OverzichtsController extends Controller
                     $row["OudeOpdrachtgevers"],
                     $row["Diplomas"],
                     $row["Certificaten"],
-                    $row["FlavourText"]
+                    $row["FlavourText"],
+                    $row["pinned"]
                 );
             }
         } else {
@@ -187,7 +228,8 @@ class OverzichtsController extends Controller
                     $row["OudeOpdrachtgevers"],
                     $row["Diplomas"],
                     $row["Certificaten"],
-                    $row["FlavourText"]
+                    $row["FlavourText"],
+                    $row["pinned"]
                 );
             }
         } else {
