@@ -24,7 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["OudeOpdrachtgevers"],
         $_POST["Diplomas"],
         $_POST["Certificaten"],
-        $_POST["FlavourText"]
+        $_POST["FlavourText"],
+        $_POST["pinned"] = 0, // Pinned is standaard 0
+        
     );
 
     // Voeg de kandidaat toe aan de database
