@@ -1,14 +1,25 @@
 body {
     font-family: Arial, sans-serif;
 }
-.candidates {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+.candidates, .pinned-candidates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*  3 kolommen met gelijke breedte */
+    --gap-size: 20px;
+    grid-column-gap: var(--gap-size);
+    grid-row-gap: var(--gap-size);
     margin: 20px;
 }
+
+
+
+@media screen and (max-width: 991px){
+    .candidates, .pinned-candidates {
+      grid-template-columns: 1fr;
+    }
+  }
+  
 .candidate {
-    width: calc(33.33% - 20px); /* 33.33% breedte voor maximaal 3 divs naast elkaar */
+    width: 100%;
     margin-bottom: 15px;
     padding: 10px;
     border: 3px solid #ccc;
@@ -89,3 +100,4 @@ body {
     background-color: white;
     color: black;
 }
+
