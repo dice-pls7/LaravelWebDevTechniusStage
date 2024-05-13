@@ -21,13 +21,14 @@ class OverzichtsController extends Controller
     public function overzicht()
     {
         if (auth()->check()) {
-            $kandidaten = DB::table('Kandidaat')->paginate(6);
+            $kandidaten = DB::table('Kandidaat')->paginate(7);
             $pinnedKandidaten = $this->getAllPinnedKandidaten();
         } else {
-            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(6);
+            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(7);
             $pinnedKandidaten = $this->getAllPinnedKandidaten();
         }
-        return view('overzicht', ['kandidaten' => $kandidaten , 'pinnedKandidaten' => $pinnedKandidaten]);
+
+        return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]);
     }
     public function details($id)
     {
@@ -60,12 +61,10 @@ class OverzichtsController extends Controller
         return $conn;
     }
     public function getAllPinnedKandidaten() {
-
         $sqlPinned = "SELECT * FROM kandidaat WHERE pinned = 1";
         $resultPinned = mysqli_query($this->conn, $sqlPinned);
-
-
-        if (mysqli_num_rows($resultPinned) > 0) {
+    
+        if ($resultPinned && mysqli_num_rows($resultPinned) > 0) {
             $pinnedKandidaten = [];
             while($row = mysqli_fetch_assoc($resultPinned)) {
                 $kandidaat = new Kandidaat(
@@ -85,13 +84,12 @@ class OverzichtsController extends Controller
                     $row["Certificaten"],
                     $row["FlavourText"],
                     $row["pinned"]
-
                 );
                 array_push($pinnedKandidaten, $kandidaat);
             }
+            return $pinnedKandidaten;
         }
-        return $pinnedKandidaten;
-
+        return []; // Return an empty array if no pinned kandidaten are found
     }
 
     public function getAllKandidaten() {

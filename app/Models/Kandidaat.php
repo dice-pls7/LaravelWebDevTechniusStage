@@ -3,45 +3,45 @@ namespace App\Models;
 include 'Functie.php';
 
 class Kandidaat {
-    public $id;
-    public $voornaam;
-    public $tussenvoegsel;
-    public $achternaam;
-    public $geboortedatum;
-    public $functie;
-    public $beschikbaarheid;
-    public $beschikbaar;
-    public $locatie;
-    public $taal;
-    public $werkervaring;
-    public $oudeOpdrachtgevers;
-    public $diplomas;
-    public $certificaten;
-    public $flavourText;
+    public $Id;
+    public $Voornaam;
+    public $Tussenvoegsel;
+    public $Achternaam;
+    public $Geboortedatum;
+    public $Functie;
+    public $Beschikbaarheid;
+    public $Beschikbaar;
+    public $Locatie;
+    public $Taal;
+    public $Werkervaring;
+    public $OudeOpdrachtgevers;
+    public $Diplomas;
+    public $Certificaten;
+    public $FlavourText;
 
     public $pinned;
 
     public function __construct($id, $voornaam, $tussenvoegsel, $achternaam, $geboortedatum, $functie, $beschikbaarheid, $beschikbaar, $locatie, $taal, $werkervaring, $oudeOpdrachtgevers,
                 $diplomas, $certificaten, $flavourText, $pinned) {
-        $this->id = $id;
-        $this->voornaam = $voornaam;
-        $this->tussenvoegsel = $tussenvoegsel;
-        $this->achternaam = $achternaam;
-        $this->geboortedatum = $geboortedatum;
+        $this->Id = $id;
+        $this->Voornaam = $voornaam;
+        $this->Tussenvoegsel = $tussenvoegsel;
+        $this->Achternaam = $achternaam;
+        $this->Geboortedatum = $geboortedatum;
         // Valideer de functie tegen de Functie-enum
         if ($functie !== Functie::Loodgieter && $functie !== Functie::Elektromonteur) {
             
         }
-        $this->functie = $functie;
-        $this->beschikbaarheid = $beschikbaarheid;
-        $this->beschikbaar = $beschikbaar;
-        $this->locatie = $locatie;
-        $this->taal = $taal;
-        $this->werkervaring = $werkervaring;
-        $this->oudeOpdrachtgevers = $oudeOpdrachtgevers;
-        $this->diplomas = $diplomas;
-        $this->certificaten = $certificaten;
-        $this->flavourText = $flavourText;
+        $this->Functie = $functie;
+        $this->Beschikbaarheid = $beschikbaarheid;
+        $this->Beschikbaar = $beschikbaar;
+        $this->Locatie = $locatie;
+        $this->Taal = $taal;
+        $this->Werkervaring = $werkervaring;
+        $this->OudeOpdrachtgevers = $oudeOpdrachtgevers;
+        $this->Diplomas = $diplomas;
+        $this->Certificaten = $certificaten;
+        $this->FlavourText = $flavourText;
         $this->pinned = $pinned;
     }
 }
