@@ -25,9 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $OudeOpdrachtgevers = $_POST["OudeOpdrachtgevers"],
         $Diplomas = $_POST["Diplomas"],
         $Certificaten = $_POST["Certificaten"],
-        $FlavourText = $_POST["FlavourText"]
+        $FlavourText = $_POST["FlavourText"],
+        $pinned = 0, // Pinned is standaard 0
+        
     );
-        $sql = "UPDATE kandidaat SET Voornaam='$Voornaam', Tussenvoegsel='$Tussenvoegsel', Achternaam='$Achternaam', Geboortedatum='$Geboortedatum', Functie='$Functie', Beschikbaarheid='$Beschikbaarheid', Beschikbaar='$Beschikbaar', Locatie='$Locatie', Taal='$Taal', Werkervaring='$Werkervaring', OudeOpdrachtgevers='$OudeOpdrachtgevers', Diplomas='$Diplomas', Certificaten='$Certificaten', FlavourText='$FlavourText' WHERE Id='$Id'";
+        $sql = "UPDATE kandidaat SET Voornaam='$Voornaam', Tussenvoegsel='$Tussenvoegsel', Achternaam='$Achternaam', Geboortedatum='$Geboortedatum', Functie='$Functie', Beschikbaarheid='$Beschikbaarheid', Beschikbaar='$Beschikbaar', Locatie='$Locatie', Taal='$Taal', Werkervaring='$Werkervaring', OudeOpdrachtgevers='$OudeOpdrachtgevers', Diplomas='$Diplomas', Certificaten='$Certificaten', FlavourText='$FlavourText', pinned='$pinned' WHERE Id='$Id'";
         if (mysqli_query($conn, $sql)) {
             echo "Record updated successfully";
         } else {
