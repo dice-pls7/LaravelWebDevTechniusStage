@@ -9,7 +9,6 @@ use App\Models\Reviews;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-
 class OverzichtsController extends Controller
 {
     private $conn;

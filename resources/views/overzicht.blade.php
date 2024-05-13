@@ -101,11 +101,11 @@
         </div>
     @endforeach
 </div>
-@if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
-    <div class="mt-3">
-        {{ $kandidaten->links() }}
-    </div>
-@endif
+    @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
+        <div class="mt-3">
+            {{ $kandidaten->links() }}
+        </div>
+    @endif
 </body>
 <script>
     function toggleFilters() {
