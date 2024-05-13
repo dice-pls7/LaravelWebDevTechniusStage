@@ -67,7 +67,6 @@
             <a href="{{ url('/overzicht') }}">Annuleren</a>
             <button type="submit">Wijzingen opslaan</button>
         </div>
-
     </form>
 </div>
 </body>
