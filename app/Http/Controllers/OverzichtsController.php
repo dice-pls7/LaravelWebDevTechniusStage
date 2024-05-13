@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kandidaat;
 use App\Models\Reviews;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class OverzichtsController extends Controller
 {
@@ -17,10 +20,14 @@ class OverzichtsController extends Controller
     }
     public function overzicht()
     {
-        $kandidaten = $this->getAllKandidaten();
-        $pinnedKandidaten = $this->getAllPinnedKandidaten();
+        if (auth()->check()) {
+            $kandidaten = DB::table('Kandidaat')->paginate(6);
+            $pinnedKandidaten = $this->getAllPinnedKandidaten();
+        } else {
+            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(6);
+            $pinnedKandidaten = $this->getAllPinnedKandidaten();
+        }
         return view('overzicht', ['kandidaten' => $kandidaten , 'pinnedKandidaten' => $pinnedKandidaten]);
-
     }
     public function details($id)
     {
@@ -56,8 +63,8 @@ class OverzichtsController extends Controller
 
         $sqlPinned = "SELECT * FROM kandidaat WHERE pinned = 1";
         $resultPinned = mysqli_query($this->conn, $sqlPinned);
-    
-        
+
+
         if (mysqli_num_rows($resultPinned) > 0) {
             $pinnedKandidaten = [];
             while($row = mysqli_fetch_assoc($resultPinned)) {
@@ -78,7 +85,7 @@ class OverzichtsController extends Controller
                     $row["Certificaten"],
                     $row["FlavourText"],
                     $row["pinned"]
-                    
+
                 );
                 array_push($pinnedKandidaten, $kandidaat);
             }
@@ -116,7 +123,7 @@ class OverzichtsController extends Controller
                 );
                 array_push($kandidaten, $kandidaat);
             }
-            
+
         }
         return $kandidaten;
     }

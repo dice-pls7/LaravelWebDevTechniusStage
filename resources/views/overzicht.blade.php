@@ -51,12 +51,21 @@
     </div>
 
 
-<div class="pinned-candidates">
-    @foreach ($pinnedKandidaten as $pinnedKandidaat) 
     
-   
 
-    <div class="candidate">
+<div class="pinned-candidates">
+@foreach ($pinnedKandidaten as $pinnedKandidaat) 
+            @php
+                $class = '';
+                if ($pinnedKandidaat->functie == 'Loodgieter') {
+                    $class = 'Loodgieter';
+                } elseif ($pinnedKandidaat->functie == 'Elektromonteur') {
+                    $class = 'Elektromonteur';
+                }
+            @endphp
+    
+
+    <div class="candidate {{ $class }}">
             <h2>{{ $pinnedKandidaat->voornaam }} {{ substr($pinnedKandidaat->achternaam, 0, 1) }}</h2>
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->geboortedatum)) }}</p>
             <p>Functie: {{ $pinnedKandidaat->functie }}</p>
@@ -69,30 +78,34 @@
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
 
+            @php
+                $class = '';
+                if ($kandidaat->Functie == 'Loodgieter') {
+                    $class = 'Loodgieter';
+                } elseif ($kandidaat->Functie == 'Elektromonteur') {
+                    $class = 'Elektromonteur';
+                }
+            @endphp
+
     @if ($kandidaat->pinned)
             <!-- Skip already displayed pinned candidates -->
             @continue
         @endif
 
-        @php
-            $class = '';
-            if ($kandidaat->functie == 'Loodgieter') {
-                $class = 'Loodgieter';
-            } elseif ($kandidaat->functie == 'Elektromonteur') {
-                $class = 'Elektromonteur';
-            }
-        @endphp
         <div class="candidate {{ $class }}">
-            <h2>{{ $kandidaat->voornaam }} {{ substr($kandidaat->achternaam, 0, 1) }}</h2>
+            <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
 
             <!-- Omzetten van datum naar Nederlandse notatie -->
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->geboortedatum)) }}</p>
-            <p>Functie: {{ $kandidaat->functie }}</p>
-            <p>Werkervaring: {{ $kandidaat->werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $kandidaat->id) }}" class="details">Meer informatie</a>
+            <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
+            <p>Functie: {{ $kandidaat->Functie }}</p>
+            <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
+            <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">Meer informatie</a>
         </div>
     @endforeach
 </div>
+        <div class="mt-3">
+            {{ $kandidaten->links() }}
+        </div>
 </body>
 <script>
     function toggleFilters() {
