@@ -1,6 +1,5 @@
 <?php
 namespace App\Models;
-
 include 'Functie.php';
 
 class Kandidaat {
@@ -29,7 +28,7 @@ class Kandidaat {
         $this->geboortedatum = $geboortedatum;
         // Valideer de functie tegen de Functie-enum
         if ($functie !== Functie::Loodgieter && $functie !== Functie::Elektromonteur) {
-            print "Functie is niet geldig";
+            
         }
         $this->functie = $functie;
         $this->beschikbaarheid = $beschikbaarheid;

@@ -15,10 +15,13 @@ class OverzichtsController extends Controller
     {
         $this->conn = $this->connectToDatabase();
     }
-
     public function overzicht()
     {
-        $kandidaten = $this->getAllKandidaten();
+        if (auth()->check()) {
+            $kandidaten = $this->getAllKandidaten();
+        } else {
+            $kandidaten = $this->getAllKandidatenForUser();
+        }
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
     public function details($id)
@@ -53,6 +56,37 @@ class OverzichtsController extends Controller
     }
     public function getAllKandidaten() {
         $sql = "SELECT * FROM kandidaat";
+        $result = mysqli_query($this->conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $kandidaten = [];
+            while($row = mysqli_fetch_assoc($result)) {
+                $kandidaat = new Kandidaat(
+                    $row["Id"],
+                    $row["Voornaam"],
+                    $row["Tussenvoegsel"],
+                    $row["Achternaam"],
+                    $row["Geboortedatum"],
+                    $row["Functie"],
+                    $row["Beschikbaarheid"],
+                    $row["Beschikbaar"],
+                    $row["Locatie"],
+                    $row["Taal"],
+                    $row["Werkervaring"],
+                    $row["OudeOpdrachtgevers"],
+                    $row["Diplomas"],
+                    $row["Certificaten"],
+                    $row["FlavourText"]
+                );
+                array_push($kandidaten, $kandidaat);
+            }
+            return $kandidaten;
+        } else {
+            return [];
+        }
+    }
+    public function getAllKandidatenForUser() {
+        $sql = "SELECT * FROM kandidaat WHERE Beschikbaar = 1";
         $result = mysqli_query($this->conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {

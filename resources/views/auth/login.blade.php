@@ -3,9 +3,9 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
-    <div>
-        <h1 class="text-2xl font-bold">Heb je een account? Log dan hieronder in:</h1>
-    </div>
+        <div>
+            <h1 class="text-2xl font-bold">Heb je een account? Log dan hieronder in:</h1>
+        </div>
         @csrf
 
         <!-- Email Address -->
@@ -49,11 +49,13 @@
             <x-primary-button class="ms-3">
                 {{__('Log in')}}
             </x-primary-button>
-
-            <x-primary-button class="ms-3">
-                <a href="{{ route('overzicht') }}">Ga verder</a>
-            </x-primary-button>
-            
         </div>
     </form>
+    
+    <!-- Plaats de knop "Ga verder" hier buiten het formulierelement -->
+    <div class="flex items-center justify-end mt-4">
+        <x-primary-button class="ms-3">
+            <a href="{{ route('overzicht') }}">Ga verder</a>
+        </x-primary-button>
+    </div>
 </x-guest-layout>

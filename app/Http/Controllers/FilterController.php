@@ -26,15 +26,18 @@ class FilterController extends Controller
     }
     public function getFilteredKandidaten(Request $request)
     {
-    $kandidaten = $this->controller->getAllKandidaten();
-
+    if (auth()->check()) {
+        $kandidaten = $this->controller->getAllKandidaten();
+    } else {
+        $kandidaten = $this->controller->getAllKandidaten();
+    }
     $filteredKandidaten = [];
 
     foreach ($kandidaten as $kandidaat) {
         if ($request->filled('functie') && $kandidaat->functie != $request->input('functie')) {
             continue;
         }
-        if ($request->filled('beschikbaarheid') && $kandidaat->beschikbaar != $request->input('beschikbaarheid')) {
+        if ($request->input('beschikbaarheid') !== null && $kandidaat->beschikbaar != $request->input('beschikbaarheid')) {
             continue;
         }
         if ($request->input('werkervaring')) {
