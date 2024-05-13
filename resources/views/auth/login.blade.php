@@ -36,7 +36,7 @@
         </div>
 
         <div>
-            <h1 class="text-2xl font-bold">Heb je geen account? Druk dan op de 'ga verder' knop</h1>
+            <h1 class="text-2xl font-bold">Heb je geen account? Druk dan op de 'ga verder'</h1>
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -49,13 +49,10 @@
             <x-primary-button class="ms-3">
                 {{__('Log in')}}
             </x-primary-button>
+
+            <a href="{{ route('overzicht') }}">Ga verder</a>
+
         </div>
     </form>
     
-    <!-- Plaats de knop "Ga verder" hier buiten het formulierelement -->
-    <div class="flex items-center justify-end mt-4">
-        <x-primary-button class="ms-3">
-            <a href="{{ route('overzicht') }}">Ga verder</a>
-        </x-primary-button>
-    </div>
 </x-guest-layout>
