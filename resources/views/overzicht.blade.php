@@ -49,8 +49,31 @@
             </form>
         </div>
     </div>
+
+
+<div class="pinned-candidates">
+    @foreach ($pinnedKandidaten as $pinnedKandidaat) 
+    
+   
+
+    <div class="candidate">
+            <h2>{{ $pinnedKandidaat->voornaam }} {{ substr($pinnedKandidaat->achternaam, 0, 1) }}</h2>
+            <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->geboortedatum)) }}</p>
+            <p>Functie: {{ $pinnedKandidaat->functie }}</p>
+            <p>Werkervaring: {{ $pinnedKandidaat->werkervaring }} jaar</p>
+            <a href="{{ url('details/' . $pinnedKandidaat->id) }}" class="details">Meer informatie</a>
+        </div>
+    @endforeach
+</div>
+
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
+
+    @if ($kandidaat->pinned)
+            <!-- Skip already displayed pinned candidates -->
+            @continue
+        @endif
+
         @php
             $class = '';
             if ($kandidaat->functie == 'Loodgieter') {
