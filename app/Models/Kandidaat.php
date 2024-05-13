@@ -19,8 +19,10 @@ class Kandidaat {
     public $certificaten;
     public $flavourText;
 
+    public $pinned;
+
     public function __construct($id, $voornaam, $tussenvoegsel, $achternaam, $geboortedatum, $functie, $beschikbaarheid, $beschikbaar, $locatie, $taal, $werkervaring, $oudeOpdrachtgevers,
-                $diplomas, $certificaten, $flavourText) {
+                $diplomas, $certificaten, $flavourText, $pinned) {
         $this->id = $id;
         $this->voornaam = $voornaam;
         $this->tussenvoegsel = $tussenvoegsel;
@@ -40,5 +42,6 @@ class Kandidaat {
         $this->diplomas = $diplomas;
         $this->certificaten = $certificaten;
         $this->flavourText = $flavourText;
+        $this->pinned = $pinned;
     }
 }
