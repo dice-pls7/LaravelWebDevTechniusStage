@@ -51,12 +51,21 @@
     </div>
 
 
-<div class="pinned-candidates">
-    @foreach ($pinnedKandidaten as $pinnedKandidaat) 
     
-   
 
-    <div class="candidate">
+<div class="pinned-candidates">
+@foreach ($pinnedKandidaten as $pinnedKandidaat) 
+            @php
+                $class = '';
+                if ($pinnedKandidaat->functie == 'Loodgieter') {
+                    $class = 'Loodgieter';
+                } elseif ($pinnedKandidaat->functie == 'Elektromonteur') {
+                    $class = 'Elektromonteur';
+                }
+            @endphp
+    
+
+    <div class="candidate {{ $class }}">
             <h2>{{ $pinnedKandidaat->voornaam }} {{ substr($pinnedKandidaat->achternaam, 0, 1) }}</h2>
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->geboortedatum)) }}</p>
             <p>Functie: {{ $pinnedKandidaat->functie }}</p>
@@ -69,19 +78,20 @@
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
 
+            @php
+                $class = '';
+                if ($kandidaat->Functie == 'Loodgieter') {
+                    $class = 'Loodgieter';
+                } elseif ($kandidaat->Functie == 'Elektromonteur') {
+                    $class = 'Elektromonteur';
+                }
+            @endphp
+
     @if ($kandidaat->pinned)
             <!-- Skip already displayed pinned candidates -->
             @continue
         @endif
 
-        @php
-            $class = '';
-            if ($kandidaat->Functie == 'Loodgieter') {
-                $class = 'Loodgieter';
-            } elseif ($kandidaat->Functie == 'Elektromonteur') {
-                $class = 'Elektromonteur';
-            }
-        @endphp
         <div class="candidate {{ $class }}">
             <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
 
