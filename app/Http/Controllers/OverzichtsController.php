@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kandidaat;
 use App\Models\Reviews;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class OverzichtsController extends Controller
 {
@@ -17,10 +20,10 @@ class OverzichtsController extends Controller
     }
     public function overzicht()
     {
-        if (auth()->check()) {
-            $kandidaten = $this->getAllKandidaten();
+        if(auth()->check()){
+            $kandidaten = DB::table('Kandidaat')->paginate(6);
         } else {
-            $kandidaten = $this->getAllKandidatenForUser();
+            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(6);
         }
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
