@@ -15,7 +15,6 @@ class OverzichtsController extends Controller
     {
         $this->conn = $this->connectToDatabase();
     }
-
     public function overzicht()
     {
         $kandidaten = $this->getAllKandidaten();

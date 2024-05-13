@@ -64,7 +64,7 @@
         <label for="Certificaten">Certificaten</label>
         <input type="text" id="Certificaten" name="Certificaten">
 
-        <label for="FlavourText">Beschrijving kandidaat/Flavour Text</label>
+        <label for="FlavourText">Beschrijving kandidaat</label>
         <textarea id="FlavourText" name="FlavourText"></textarea>
 
         <div class="Buttons">

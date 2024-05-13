@@ -14,7 +14,7 @@
     <form action="{{ url('/handle_WijzigKandidaatForm') }}" method="post">
         @csrf
          <input type="hidden" name="id" value= "<?php print($kandidaat->id)?>">
-        
+
         <label for="Voornaam">Voornaam *</label>
         <input type="text" id="Voornaam" name="Voornaam" value="<?php print($kandidaat->voornaam)?>" required>
 
@@ -60,7 +60,7 @@
         <label for="Certificaten">Certificaten</label>
         <input type="text" id="Certificaten" name="Certificaten" value="<?php print($kandidaat->certificaten)?>">
 
-        <label for="FlavourText">Beschrijving kandidaat/Flavour Text</label>
+        <label for="FlavourText">Beschrijving kandidaat</label>
         <textarea id="FlavourText" name="FlavourText" ><?php print($kandidaat->flavourText)?></textarea>
 
         <div class="Buttons">
