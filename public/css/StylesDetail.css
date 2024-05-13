@@ -82,6 +82,7 @@ body {
 .DeleteKnop {
     position: absolute;
     right: 15px;
+    top: 70px;
 }
 .Gegevenstabel.Loodgieter {
     border-color: #ffc400; /* Kleur voor functie Loodgieter */
@@ -121,6 +122,32 @@ body {
 }
 
 #MailButton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+#copyButton {
+    width: 200px;
+    height: 55px;
+    background-color: #ffc400;
+    color: white;
+    border-radius: 30px;
+    border: 3px solid #ffc400;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    position: absolute;
+    top: 0px;
+    right: 15px;
+}
+
+#copyButton:hover {
     background-color: white;
     color: black;
     cursor: pointer;

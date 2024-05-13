@@ -131,6 +131,7 @@
             </a>
             @endauth
             @endif
+            <button id="copyButton">deel link</button>
         </div>
     </div>
 </body>
@@ -161,5 +162,10 @@
             });
         }
     });
+</script>
+<script>
+document.getElementById('copyButton').onclick = function() {    
+    navigator.clipboard.writeText('{{ Request::url() }}') // Copy URL to clipboard
+};
 </script>
 </html>
