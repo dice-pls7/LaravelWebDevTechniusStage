@@ -5,6 +5,7 @@
     color: black; /* Set text color to white */
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap */
+    margin-top: 25px;
 }
 .main-footer-left-bg {
     background-color: #ffc603;
@@ -12,7 +13,6 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    
     height: 300px;
 }
 .main-footer-right-bg {

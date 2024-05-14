@@ -135,6 +135,7 @@ class OverzichtsController extends Controller
                 $review = new Reviews(
                     $row["Id"],
                     $row["KandidaatId"],
+                    $row["Bedrijfsnaam"],
                     $row["Review"]
                 );
                 array_push($reviews, $review);
@@ -146,11 +147,11 @@ class OverzichtsController extends Controller
     }
     function insertKandidaat($kandidaat) {
         $sql = "INSERT INTO kandidaat (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Functie, Beschikbaarheid, Beschikbaar, Locatie, Taal, Werkervaring, OudeOpdrachtgevers, Diplomas, Certificaten, FlavourText, pinned)
-    VALUES ('$kandidaat->voornaam', '$kandidaat->tussenvoegsel', '$kandidaat->achternaam', '$kandidaat->geboortedatum', '$kandidaat->functie', '$kandidaat->beschikbaarheid', '$kandidaat->beschikbaar', '$kandidaat->locatie', '$kandidaat->taal', '$kandidaat->werkervaring', '$kandidaat->oudeOpdrachtgevers'
-    , '$kandidaat->diplomas', '$kandidaat->certificaten', '$kandidaat->flavourText', '$kandidaat->pinned')";
+    VALUES ('$kandidaat->Voornaam', '$kandidaat->Tussenvoegsel', '$kandidaat->Achternaam', '$kandidaat->Geboortedatum', '$kandidaat->Functie', '$kandidaat->Beschikbaarheid', '$kandidaat->Beschikbaar', '$kandidaat->Locatie', '$kandidaat->Taal', '$kandidaat->Werkervaring', '$kandidaat->OudeOpdrachtgevers'
+    , '$kandidaat->Diplomas', '$kandidaat->Certificaten', '$kandidaat->FlavourText', '$kandidaat->pinned')";
 
         if (mysqli_query($this->conn, $sql)) {
-            header('Location: index.php');
+            
         } else {
             print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
         }
@@ -241,5 +242,14 @@ class OverzichtsController extends Controller
         // Sluit de database connectie
         mysqli_close($this->conn);
         return $kandidaat;
+    }
+    public function insertReview($review) {
+        $sql = "INSERT INTO reviews (KandidaatId, Bedrijfsnaam, Review) VALUES ('$review->kandidaatId', '$review->bedrijfsnaam', '$review->review')";
+        
+        if (mysqli_query($this->conn, $sql)) {
+            
+        } else {
+            print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+        }
     }
 }
