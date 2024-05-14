@@ -64,6 +64,8 @@
         <label for="FlavourText">Beschrijving kandidaat</label>
         <textarea id="FlavourText" name="FlavourText" ><?php print($kandidaat->flavourText)?></textarea>
 
+        
+
         <div class="Buttons">
             <a href="{{ url('/overzicht') }}">Annuleren</a>
             <button type="submit">Wijzingen opslaan</button>
