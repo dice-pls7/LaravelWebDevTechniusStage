@@ -80,9 +80,9 @@
 
             @php
                 $class = '';
-                if ($kandidaat->Functie == 'Loodgieter') {
+                if ($kandidaat->functie == 'Loodgieter') {
                     $class = 'Loodgieter';
-                } elseif ($kandidaat->Functie == 'Elektromonteur') {
+                } elseif ($kandidaat->functie == 'Elektromonteur') {
                     $class = 'Elektromonteur';
                 }
             @endphp
@@ -93,19 +93,17 @@
         @endif
 
         <div class="candidate {{ $class }}">
-            <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
+            <h2>{{ $kandidaat->voornaam }} {{ substr($kandidaat->achternaam, 0, 1) }}</h2>
 
             <!-- Omzetten van datum naar Nederlandse notatie -->
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $kandidaat->Functie }}</p>
-            <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">Meer informatie</a>
+            <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->geboortedatum)) }}</p>
+            <p>Functie: {{ $kandidaat->functie }}</p>
+            <p>Werkervaring: {{ $kandidaat->werkervaring }} jaar</p>
+            <a href="{{ url('details/' . $kandidaat->id) }}" class="details">Meer informatie</a>
         </div>
     @endforeach
 </div>
-        <div class="mt-3">
-            {{ $kandidaten->links() }}
-        </div>
+        
 </body>
 <script>
     function toggleFilters() {

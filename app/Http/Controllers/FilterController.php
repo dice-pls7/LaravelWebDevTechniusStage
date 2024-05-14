@@ -22,7 +22,8 @@ class FilterController extends Controller
     public function filterResults(Request $request)
     {
     $kandidaten = $this->getFilteredKandidaten($request);
-    return view('overzicht', ['kandidaten' => $kandidaten]);
+    $pinnedKandidaten = $this->controller->getAllPinnedKandidaten();
+    return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]);
     }
     public function getFilteredKandidaten(Request $request)
     {
