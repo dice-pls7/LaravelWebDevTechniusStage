@@ -12,6 +12,7 @@ Route::get('/', function () {
 
 Route::post('/handle-form', [FormController::class, 'handleFormSubmission']);
 Route::post('/handle_WijzigKandidaatForm', [FormController::class, 'handleWijzigKandidaatForm']);
+Route::post('/handle-review', [FormController::class, 'handleReviewSubmission']);
 
 Route::get('/kandidaattoevoegen', function () {
     return view('KandidaatToevoegen');

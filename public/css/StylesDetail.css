@@ -29,27 +29,25 @@ body {
     cursor: pointer;
 }
 .WijzigKnop {
-    position: absolute;
-    bottom: 1px;
-    right: 20px;
+    display: flex; 
+    justify-content: flex-end; 
+    margin-top: 20px; 
+    margin-right: 20px;
 }
 #WijzigButton {
-    width : 200px;
+    width: 200px;
     height: 55px;
     background-color: #ffc400;
     color: white;
     border-radius: 30px;
     border: 3px solid #ffc400;
     text-align: center;
-    margin: auto;
-    display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 20px;
-    right: 20px;
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
+    margin-right: 10px; /* Voeg wat ruimte toe tussen de knoppen */
 }
 #WijzigButton:hover {
     background-color: white;
@@ -81,8 +79,8 @@ body {
 }
 .DeleteKnop {
     position: absolute;
-    right: 15px;
-    top: 70px;
+    right: 10px;
+    top: 10px;
 }
 .Gegevenstabel.Loodgieter {
     border-color: #ffc400; /* Kleur voor functie Loodgieter */
@@ -109,13 +107,11 @@ body {
     text-align: center;
     margin: auto;
     margin-bottom: 15px;
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    position: absolute;
     bottom: 70px; /* Adjust this value as needed */
     right: 20px;
     z-index: 1; /* Ensure the MailButton appears above the Wijzigbutton */
@@ -163,20 +159,81 @@ body {
     border: 3px solid #ffc400;
     text-align: center;
     margin: auto;
+    margin-left: calc(62% - 100px);
     margin-bottom: 15px;
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    position: absolute;
-    top: 0px;
-    right: 15px;
+    position: relative; 
+    top: -70px; 
+    z-index: 1; 
 }
-
 #copyButton:hover {
     background-color: white;
     color: black;
     cursor: pointer;
+}
+#WijzigButton,
+#copyButton,
+#MailButton {
+    width: 200px; /* Geef alle knoppen dezelfde breedte */
+    height: 55px;
+    margin-right: 10px; /* Voeg wat ruimte tussen de knoppen toe */
+}
+.referentie {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 3px solid #ccc;
+    border-radius: 18px;
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1000px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.referentie button {
+    width: 125px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    border: 3px solid #003b4c;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.referentie button:hover {
+    background-color: #003b4c;
+    color: white;
+    cursor: pointer;
+}
+.referentie p {
+    border: 2px solid #ccc; 
+    padding: 10px;
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+}
+.referentie form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.referentie h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.referentie input[type="text"],
+.referentie textarea {
+    width: 300px; 
+    margin-bottom: 15px; 
+    padding: 10px;
 }

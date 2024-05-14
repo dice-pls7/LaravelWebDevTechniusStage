@@ -14,7 +14,8 @@
 </head>
 <body>
     <div class="OverzichtsKnop">
-    <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
+        <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
+        <button id="copyButton">Deel Kandidaat</button>
     </div>
 
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
@@ -40,10 +41,26 @@
             <p><span>Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
             <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
 
-            <h3>Reviews</h3>
+            <div class="referentie">
+            <h2>Referenties</h2>
+            @if(Route::has('login'))
+            @auth
+            <form action="{{ url('/handle-review') }}" method="post">
+                @csrf
+                <input type="hidden" name="KandidaatId" value="{{ $kandidaat->Id }}">
+
+                <input type="text" name="bedrijfsnaam" id="Bedrijfsnaam" placeholder="Bedrijfsnaam">
+                <textarea type="text" name="review" id="Review" placeholder="Review"></textarea>
+
+                <button type="submit">Voeg referentie toe</button>
+            </form>
+            @endauth
+            @endif
             @foreach ($reviews as $review)
-                <p><span>Review: </span>{{ $review->review }}</p>
+                    <p>Bedrijfsnaam: {{$review->bedrijfsnaam}}<br>
+                    Review: {{$review->review}}</p>
             @endforeach 
+            </div>
 
             @if(Route::has('login'))
             @auth
@@ -107,14 +124,17 @@
                 // Encode the email body for URL
                 $body_encoded = rawurlencode($body);
                 ?>
-
-            <!-- Button to trigger email -->
-            <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
-                <button id="MailButton">Stuur Email</button>
-            </a>
-            @endauth
+                
+                <div class="WijzigKnop">
+                    <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
+                    <!-- Button to trigger email -->
+                    <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
+                        <button id="MailButton">Stuur Email</button>
+                    </a>
+                </div>
+                @endauth
             @endif
-            <button id="copyButton">deel link</button>
+            
         </div>
     </div>
 </body>
