@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css/stylesheet.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Technius Applicatie</title>
     @include('Header') 
 </head>
@@ -50,27 +51,24 @@
         </div>
     </div>
 
-
-    
-
 <div class="pinned-candidates">
 @foreach ($pinnedKandidaten as $pinnedKandidaat) 
             @php
                 $class = '';
-                if ($pinnedKandidaat->functie == 'Loodgieter') {
+                if ($pinnedKandidaat->Functie == 'Loodgieter') {
                     $class = 'Loodgieter';
-                } elseif ($pinnedKandidaat->functie == 'Elektromonteur') {
+                } elseif ($pinnedKandidaat->Functie == 'Elektromonteur') {
                     $class = 'Elektromonteur';
                 }
             @endphp
     
 
     <div class="candidate {{ $class }}">
-            <h2>{{ $pinnedKandidaat->voornaam }} {{ substr($pinnedKandidaat->achternaam, 0, 1) }}</h2>
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->geboortedatum)) }}</p>
-            <p>Functie: {{ $pinnedKandidaat->functie }}</p>
-            <p>Werkervaring: {{ $pinnedKandidaat->werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $pinnedKandidaat->id) }}" class="details">Meer informatie</a>
+            <h2>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h2>
+            <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->Geboortedatum)) }}</p>
+            <p>Functie: {{ $pinnedKandidaat->Functie }}</p>
+            <p>Werkervaring: {{ $pinnedKandidaat->Werkervaring }} jaar</p>
+            <a href="{{ url('details/' . $pinnedKandidaat->Id) }}" class="details">Meer informatie</a>
         </div>
     @endforeach
 </div>
@@ -103,7 +101,11 @@
         </div>
     @endforeach
 </div>
-        
+    @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
+        <div class="mt-3">
+            {{ $kandidaten->links() }}
+        </div>
+    @endif
 </body>
 <script>
     function toggleFilters() {

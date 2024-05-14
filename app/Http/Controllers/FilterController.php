@@ -22,9 +22,11 @@ class FilterController extends Controller
     public function filterResults(Request $request)
     {
     $kandidaten = $this->getFilteredKandidaten($request);
-    $pinnedKandidaten = $this->controller->getAllPinnedKandidaten();
-    return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]);
+    $pinnedKandidaten = $this->controller->getAllPinnedKandidaten(); // Voeg deze regel toe om de gepinde kandidaten op te halen
+
+    return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]); // Voeg $pinnedKandidaten toe aan de weergave
     }
+
     public function getFilteredKandidaten(Request $request)
     {
     $kandidaten = $this->controller->getAllKandidaten();
@@ -32,10 +34,10 @@ class FilterController extends Controller
     $filteredKandidaten = []; // Create an empty array to store the filtered kandidaten
 
     foreach ($kandidaten as $kandidaat) { // Loop through all kandidaten
-        if ($request->filled('functie') && $kandidaat->functie != $request->input('functie')) { // Check if the functie is set and if it matches the kandidaat's functie
+        if ($request->filled('functie') && $kandidaat->Functie != $request->input('functie')) { // Check if the functie is set and if it matches the kandidaat's functie
             continue; // Skip the current iteration
         }
-        if ($request->filled('beschikbaarheid') && $kandidaat->beschikbaar != $request->input('beschikbaarheid')) { // Check if the beschikbaarheid is set and if it matches the kandidaat's beschikbaarheid
+        if ($request->filled('beschikbaarheid') && $kandidaat->Beschikbaar != $request->input('beschikbaarheid')) { // Check if the beschikbaarheid is set and if it matches the kandidaat's beschikbaarheid
             continue;
         }
         if ($request->input('werkervaring')) { // Check if the werkervaring is set
@@ -49,7 +51,7 @@ class FilterController extends Controller
                 $minWerkervaring = intval($werkervaringRange[0]); // Get the minimum werkervaring
                 $maxWerkervaring = intval($werkervaringRange[1]); // Get the maximum werkervaring
 
-                if ($kandidaat->werkervaring < $minWerkervaring || $kandidaat->werkervaring > $maxWerkervaring) {  // Check if the kandidaat's werkervaring is less than the minimum werkervaring or greater than the maximum werkervaring
+                if ($kandidaat->Werkervaring < $minWerkervaring || $kandidaat->Werkervaring > $maxWerkervaring) {  // Check if the kandidaat's werkervaring is less than the minimum werkervaring or greater than the maximum werkervaring
                     continue;
                 }
             }
