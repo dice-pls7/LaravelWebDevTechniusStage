@@ -17,7 +17,7 @@
     <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
     </div>
 
-<div class="Gegevenstabel {{$kandidaat->functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
+<div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
 
     <div id="capture" class="Gegevens">
         @if(Route::has('login'))
@@ -28,59 +28,17 @@
             @endauth
         @endif
 
-
-
-         <!-- Voeg een knop toe om het screenshot te maken -->
-    <button id="screenshotBtn">Maak Screenshot</button>
-    <!-- Voeg een knop toe om de screenshot naar Outlook te verzenden -->
-    <button id="sendEmailBtn">Verstuur Screenshot via Outlook</button>
-
-    <script>
-        document.getElementById("screenshotBtn").addEventListener("click", function() {
-            // Selecteer het element dat je wilt vastleggen
-            var element = document.getElementById("capture");
-
-            // Gebruik HTML2Canvas om het element te renderen naar een canvas
-            html2canvas(element, {
-                onrendered: function(canvas) {
-                    document.body.appendChild(canvas);
-                    // Converteer het canvas naar een Blob-object
-                    canvas.toBlob(function(blob) {
-                        // Sla de Blob op als een globale variabele zodat we er later toegang toe hebben
-                        window.screenshotBlob = blob;
-                    });
-                }
-            });
-        });
-
-        document.getElementById("sendEmailBtn").addEventListener("click", function() {
-            // Controleer of er een screenshot is gemaakt
-            if (window.screenshotBlob) {
-                // Maak een URL van de Blob
-                var blobUrl = URL.createObjectURL(window.screenshotBlob);
-                // Genereer de mailto-link met de Blob als bijlage
-                var mailtoLink = "mailto:?subject=Screenshot&body=Hier komt nog de template van de mail &attachment=" + encodeURIComponent(URL.createObjectURL(window.screenshotBlob));
-                // Open de mailto-link
-                window.location.href = mailtoLink;
-            } else {
-                alert("Maak eerst een screenshot voordat je de e-mail verzendt.");
-            }
-        });
-    </script>
-
-
-
-            <h2>{{ $kandidaat->voornaam }} {{ $kandidaat->tussenvoegsel }} {{ $kandidaat->achternaam }}</h2>
-            <p><span>Geboortedatum: </span>{{ $kandidaat->geboortedatum }}</p>
-            <p><span>Functie: </span>{{ $kandidaat->functie }}</p>
-            <p><span>Beschikbaar vanaf: </span>{{ $kandidaat->beschikbaarheid }}</p>
-            <p><span>Locatie: </span>{{ $kandidaat->locatie }}</p>
-            <p><span>Taal: </span>{{ $kandidaat->taal }}</p>
-            <p><span>Werkervaring: </span>{{ $kandidaat->werkervaring }}</p>
-            <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->oudeOpdrachtgevers }}</p>
-            <p><span>Diploma's: </span>{{ $kandidaat->diplomas }}</p>
-            <p><span>Certificaten: </span>{{ $kandidaat->certificaten }}</p>
-            <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->flavourText }}</p>
+            <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
+            <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
+            <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
+            <p><span>Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
+            <p><span>Locatie: </span>{{ $kandidaat->Locatie }}</p>
+            <p><span>Taal: </span>{{ $kandidaat->Taal }}</p>
+            <p><span>Werkervaring: </span>{{ $kandidaat->Werkervaring }}</p>
+            <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->OudeOpdrachtgevers }}</p>
+            <p><span>Diploma's: </span>{{ $kandidaat->Diplomas }}</p>
+            <p><span>Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
+            <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
 
             <h3>Reviews</h3>
             @foreach ($reviews as $review)
@@ -90,37 +48,37 @@
             @if(Route::has('login'))
             @auth
                 <div class="WijzigKnop">
-                    <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->id . '/wijzigen') }}">Wijzigen Kandidaat</a>
+                    <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
                 </div>
             <?php
                 // Define variables for email content
                 $to = "";
-                $subject = "aanrading: ". $kandidaat->voornaam;
-                $body = "Naam: $kandidaat->voornaam";
-                if (!empty($kandidaat->tussenvoegsel)) {
-                    $body .= " $kandidaat->tussenvoegsel";
+                $subject = "aanrading: ". $kandidaat->Voornaam;
+                $body = "Naam: $kandidaat->Voornaam";
+                if (!empty($kandidaat->Tussenvoegsel)) {
+                    $body .= " $kandidaat->Tussenvoegsel";
                 }
-                $body .= " $kandidaat->achternaam\n";
-                $body .= "Geboortedatum: $kandidaat->geboortedatum\n";
-                $body .= "Functie: $kandidaat->functie\n";
-                $body .= "Beschikbaar vanaf: $kandidaat->beschikbaarheid\n";
-                $body .= "Locatie: $kandidaat->locatie\n";
-                $body .= "Taal: $kandidaat->taal\n";
+                $body .= " $kandidaat->Achternaam\n";
+                $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
+                $body .= "Functie: $kandidaat->Functie\n";
+                $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
+                $body .= "Locatie: $kandidaat->Locatie\n";
+                $body .= "Taal: $kandidaat->Taal\n";
                 
-                if (!empty($kandidaat->werkervaring)) {
-                    $body .= "Werkervaring: $kandidaat->werkervaring\n";
+                if (!empty($kandidaat->Werkervaring)) {
+                    $body .= "Werkervaring: $kandidaat->Werkervaring\n";
                 }
-                if (!empty($kandidaat->oudeOpdrachtgevers)) {
-                    $body .= "Oude Opdrachtgevers: $kandidaat->oudeOpdrachtgevers\n";
+                if (!empty($kandidaat->OudeOpdrachtgevers)) {
+                    $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";
                 }
-                if (!empty($kandidaat->diplomas)) {
-                    $body .= "Diploma's: $kandidaat->diplomas\n";
+                if (!empty($kandidaat->Diplomas)) {
+                    $body .= "Diploma's: $kandidaat->Diplomas\n";
                 }
-                if (!empty($kandidaat->certificaten)) {
-                    $body .= "Certificaten: $kandidaat->certificaten\n";
+                if (!empty($kandidaat->Certificaten)) {
+                    $body .= "Certificaten: $kandidaat->Certificaten\n";
                 }
-                if (!empty($kandidaat->flavourText)) {
-                    $body .= "Beschrijving kandidaat: $kandidaat->flavourText\n";
+                if (!empty($kandidaat->FlavourText)) {
+                    $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
                 }
                 // Encode the email body for URL
                 $body_encoded = rawurlencode($body);
@@ -166,7 +124,13 @@
 </script>
 <script>
 document.getElementById('copyButton').onclick = function() {    
-    navigator.clipboard.writeText('{{ Request::url() }}') // Copy URL to clipboard
+    navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
+    .then(() => {
+        alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
+    })
+    .catch(err => {
+        console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+    });
 };
 </script>
 </html>
