@@ -20,6 +20,13 @@ class FormController extends Controller
         header("Location: /overzicht");
         exit;
     }
+    public function handleReviewSubmission(Request $request)
+    {
+        // Include the handle_review.php file
+        require_once __DIR__ . '/handle-review.php';
+        header("Location: /details/" . $_POST["KandidaatId"]);
+        exit;
+    }
     
 }
 ?>
