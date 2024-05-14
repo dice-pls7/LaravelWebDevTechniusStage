@@ -43,6 +43,33 @@ class OverzichtsController extends Controller
         $kandidaat = $this->getKandidaatGegevens($id);
         return view('wijzigen', ['kandidaat' => $kandidaat]);
     }
+
+    public function pin($id) {
+        $this->pinKandidaat($id);
+        return redirect()->route('overzicht');
+    }
+
+    public function pinKandidaat($id) { // 
+
+        $pinnedkoekeloeren = "SELECT pinned FROM kandidaat WHERE Id=$id"; // wat doet dit stukje code? antwoord: het haalt de waarde van pinned op
+        $resultPin = mysqli_query($this->conn, $pinnedkoekeloeren); 
+          
+        if (mysqli_num_rows($resultPin) > 0) {
+            while($row = mysqli_fetch_assoc($resultPin)) { // wat doet dit stukje code? antwoord: het haalt de waarde van pinned op
+                if ($row["pinned"] == 0) {
+                    $sql = "UPDATE kandidaat SET pinned=1 WHERE Id=$id";
+                } else {
+                    $sql = "UPDATE kandidaat SET pinned=0 WHERE Id=$id";
+                }
+            }
+        }
+        if (mysqli_query($this->conn, $sql)) {
+            print "Record updated successfully";
+        } else {
+            print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+        }
+    }
+
     public function connectToDatabase()
     {
         // Database connection
