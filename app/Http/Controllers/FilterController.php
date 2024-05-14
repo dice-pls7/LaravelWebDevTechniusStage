@@ -19,15 +19,14 @@ class FilterController extends Controller
     {
         return view('overzicht');
     }
-    public function filterResults(Request $request) 
+    public function filterResults(Request $request)
     {
     $kandidaten = $this->getFilteredKandidaten($request);
     return view('overzicht', ['kandidaten' => $kandidaten]);
     }
-    public function getFilteredKandidaten(Request $request) 
+    public function getFilteredKandidaten(Request $request)
     {
-    $kandidaten = $this->controller->getAllKandidaten(); 
-
+    $kandidaten = $this->controller->getAllKandidaten();
     $filteredKandidaten = []; // Create an empty array to store the filtered kandidaten
 
     foreach ($kandidaten as $kandidaat) { // Loop through all kandidaten
