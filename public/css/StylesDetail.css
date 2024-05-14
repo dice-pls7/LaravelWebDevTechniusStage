@@ -126,6 +126,34 @@ body {
     color: black;
     cursor: pointer;
 }
+
+.PinKnop {
+    position: absolute;
+    right: 20px;
+    
+    background-color: #003b4c;
+    color: white;
+    border-radius: 30px;
+    border: 3px solid #003b4c;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    width: 200px;
+    height: 55px;
+    bottom : 175px;
+    
+}
+
+.PinKnop:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
 #copyButton {
     width: 200px;
     height: 55px;
