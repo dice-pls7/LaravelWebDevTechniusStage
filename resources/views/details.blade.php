@@ -50,6 +50,30 @@
                 <div class="WijzigKnop">
                     <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
                 </div>
+                <button class="PinKnop" id="PinKnop" onclick >Pin kandidaat </button>
+               <script>
+                   document.getElementById('PinKnop').addEventListener('click', function() {
+                       var id = window.location.href.split('/').pop();
+                       fetch('/kandidaat/' + id + '/pin', {
+                           method: 'POST',
+                           headers: {
+                               'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                               'Content-Type': 'application/json'
+                           }
+                       }).then(response => {
+                           if (response.ok) {
+                               //navigate to the overview page
+                               window.location.href = '/overzicht'; 
+                           } else {
+                               // Er is iets misgegaan
+                               console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
+                           }
+                       }).catch(error => {
+                           console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
+                       });
+                   });
+                  </script>
+                           
             <?php
                 // Define variables for email content
                 $to = "";
@@ -102,7 +126,7 @@
         var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
         if (confirmation) {
             var id = window.location.href.split('/').pop();
-            fetch('/kandidaat/' + id + '/delete', {
+            fetch('/kandidaat/' + id + '/delete', { // hoe werkt dit precies? 
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
