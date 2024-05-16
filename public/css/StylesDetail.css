@@ -150,25 +150,8 @@ body {
     color: black;
     cursor: pointer;
 }
-#copyButton {
-    width: 200px;
-    height: 55px;
-    background-color: #ffc400;
-    color: white;
-    border-radius: 30px;
-    border: 3px solid #ffc400;
-    text-align: center;
-    margin: auto;
-    margin-left: calc(62% - 100px);
-    margin-bottom: 15px;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    position: relative; 
-    top: -70px; 
-    z-index: 1; 
+#deelKandidaatKnop {
+    
 }
 #copyButton:hover {
     background-color: white;
