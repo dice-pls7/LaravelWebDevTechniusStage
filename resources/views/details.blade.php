@@ -66,7 +66,6 @@
 
             @if(Route::has('login'))
             @auth
-
                <script>
                    document.getElementById('PinKnop').addEventListener('click', function() {
                        var id = window.location.href.split('/').pop();
