@@ -15,7 +15,7 @@
 <body>
     <div class="OverzichtsKnop">
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a> 
-        <button id="copyButton">Deel Kandidaat</button>
+        
     </div>
 
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
@@ -25,9 +25,13 @@
             @auth
                 <div class="DeleteKnop">
                     <button type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
+                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
+                    <button type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
                 </div>
             @endauth
         @endif
+
+        
 
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
@@ -67,7 +71,7 @@
                 <div class="WijzigKnop">
                     <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
                 </div>
-                <button class="PinKnop" id="PinKnop" onclick >Pin kandidaat </button>
+                
                <script>
                    document.getElementById('PinKnop').addEventListener('click', function() {
                        var id = window.location.href.split('/').pop();
@@ -166,7 +170,7 @@
     });
 </script>
 <script>
-document.getElementById('copyButton').onclick = function() {    
+document.getElementById('deelKandidaatKnop').onclick = function() {    
     navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
     .then(() => {
         alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht

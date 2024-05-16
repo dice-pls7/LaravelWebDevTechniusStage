@@ -51,7 +51,10 @@
         </div>
     </div>
 
+    <h2>Vastgezette kandidaten</h2>  <!-- aangeven welke kandidaat gepinned is -->
+
 <div class="pinned-candidates">
+   
 @foreach ($pinnedKandidaten as $pinnedKandidaat) 
             @php
                 $class = '';
@@ -72,8 +75,9 @@
         </div>
     @endforeach
 </div>
-
+<h2>Kandidaten</h2>
 <div class="candidates">
+    
     @foreach ($kandidaten as $kandidaat)
 
             @php
