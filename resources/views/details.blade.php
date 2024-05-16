@@ -133,8 +133,7 @@
                     </a>
                 </div>
                 @endauth
-            @endif
-            
+            @endif  
         </div>
     </div>
 </body>
