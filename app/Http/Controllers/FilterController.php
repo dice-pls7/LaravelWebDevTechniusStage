@@ -42,7 +42,7 @@ class FilterController extends Controller
         if ($request->input('werkervaring')) { // Check if the werkervaring is set
             $werkervaring = $request->input('werkervaring'); // Get the werkervaring value
             if ($werkervaring === '20+') { // Check if the werkervaring is 20+
-                if ($kandidaat->werkervaring <= 20) { // Check if the kandidaat's werkervaring is less than or equal to 20
+                if ($kandidaat->Werkervaring <= 20) { // Check if the kandidaat's werkervaring is less than or equal to 20
                     continue;
                 }
             } else { // If the werkervaring is not 20+

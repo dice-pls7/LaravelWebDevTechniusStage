@@ -28,14 +28,11 @@
                 <label for="werkervaring">Werkervaring</label>
                 <select name="werkervaring" id="werkervaring">
                     <option value="">Kies een optie</option>
-                    <option value="0-1">0-1 jaar</option>
-                    <option value="2-4">2-4 jaar</option>
-                    <option value="5-7">5-7 jaar</option>
-                    <option value="8-10">8-10 jaar</option>
-                    <option value="11-13">11-13 jaar</option>
-                    <option value="14-16">17-19 jaar</option>
+                    <option value="0-5">0-5 jaar</option>
+                    <option value="6-10">6-10 jaar</option>
+                    <option value="11-15">11-15jaar</option>
+                    <option value="16-20">16-20 jaar</option>
                     <option value="20+">20+ jaar</option>
-
                 </select>
 
                 <label for="beschikbaar">Beschikbaar</label>
