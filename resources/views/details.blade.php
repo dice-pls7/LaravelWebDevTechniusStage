@@ -28,7 +28,6 @@
                 </div>
             @endauth
         @endif
-
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
