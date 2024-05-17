@@ -15,7 +15,6 @@
 <body>
     <div class="OverzichtsKnop">
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
-
     </div>
 
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
