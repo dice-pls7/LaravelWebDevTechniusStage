@@ -51,8 +51,7 @@
         </div>
     </div>
 
-    <h2>Vastgezette kandidaten</h2>  <!-- aangeven welke kandidaat gepinned is -->
-
+    <h2 class ="Tekstbovenkandidaat">Vastgezette kandidaten</h2>  <!-- aangeven welke kandidaat gepinned is -->
 <div class="pinned-candidates">
    
 @foreach ($pinnedKandidaten as $pinnedKandidaat) 
@@ -75,7 +74,7 @@
         </div>
     @endforeach
 </div>
-<h2>Kandidaten</h2>
+<h2 class ="Tekstbovenkandidaat">Kandidaten</h2> <!-- aangeven welke kandidaat niet gepinned is -->
 <div class="candidates">
     
     @foreach ($kandidaten as $kandidaat)
