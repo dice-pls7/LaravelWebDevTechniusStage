@@ -48,7 +48,6 @@ class OverzichtsController extends Controller
         $this->pinKandidaat($id);
         return redirect()->route('overzicht');
     }
-
     public function pinKandidaat($id) { // 
 
         $pinnedkoekeloeren = "SELECT pinned FROM kandidaat WHERE Id=$id"; // wat doet dit stukje code? antwoord: het haalt de waarde van pinned op
@@ -69,7 +68,6 @@ class OverzichtsController extends Controller
             print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
         }
     }
-
     public function connectToDatabase()
     {
         // Database connection
@@ -117,7 +115,6 @@ class OverzichtsController extends Controller
         }
         return []; // Return an empty array if no pinned kandidaten are found
     }
-
     public function getAllKandidaten() {
 
         $sql = "SELECT * FROM kandidaat WHERE pinned = 0";
@@ -151,7 +148,6 @@ class OverzichtsController extends Controller
         }
         return $kandidaten;
     }
-
     public function getReviews($kandidaatId) {
         $sql = "SELECT * FROM reviews WHERE kandidaatId='$kandidaatId'";
         $result = mysqli_query($this->conn, $sql);
@@ -235,8 +231,6 @@ class OverzichtsController extends Controller
         // mysqli_close($this->conn);
         return $kandidaat;
     }
-
-
     function getKandidaatGegevens($Id){
         $sql = "SELECT * FROM kandidaat WHERE Id='$Id'";
         $conn = $this->conn;
