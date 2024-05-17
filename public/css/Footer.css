@@ -62,7 +62,7 @@
     color: black;
 }
 .main-footer-bottom {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,6 +70,7 @@
     color: #77898d;
     line-height: 1.875rem;
     font-size: 0.75rem;
+    text-align: center;
 }
 .main-footer-bottom a {
     font-weight: 700;
