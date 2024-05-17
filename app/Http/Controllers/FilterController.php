@@ -8,7 +8,6 @@ class FilterController extends Controller
 {
     public $controller;
     public $conn;
-
     public function __construct()
     {
         $this->controller = new OverzichtsController();
@@ -22,9 +21,9 @@ class FilterController extends Controller
     public function filterResults(Request $request)
     {
     $kandidaten = $this->getFilteredKandidaten($request);
-    $pinnedKandidaten = $this->controller->getAllPinnedKandidaten(); // Voeg deze regel toe om de gepinde kandidaten op te halen
+    $pinnedKandidaten = $this->controller->getAllPinnedKandidaten(); 
 
-    return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]); // Voeg $pinnedKandidaten toe aan de weergave
+    return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]); // Return the view with the filtered kandidaten and pinned kandidaten
     }
 
     public function getFilteredKandidaten(Request $request)

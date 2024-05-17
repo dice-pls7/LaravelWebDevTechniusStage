@@ -4,7 +4,7 @@
     @if (Route::has('login'))
         @auth
             <a href="{{ url('/kandidaattoevoegen') }}" id="ToevoegenKandidaat">Kandidaat Toevoegen</a>
-            <a href="" id="Contact">Neem contact op</a>
+            <a href="#footer" id="Contact">Neem contact op</a>
             <div class="dropdown">
                 <button class="dropbtn">{{ Auth::user()->name }}</button>
                 <div class="dropdown-content">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         @else
-            <a href="" id="Contact">Neem contact op</a>
+            <a href="#footer" id="Contact">Neem contact op</a>
         @endauth
     @endif
 </header>
