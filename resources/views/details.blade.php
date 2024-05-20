@@ -61,7 +61,7 @@
                 Review: {{$review->review}} 
                 @if(Route::has('login'))
                     @auth
-                        <i class="fas fa-trash-can deleteReferentie" data-review-id="{{ $review->id }}"></i>
+                        <i class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->id }}"></i>
                     @endauth
                 @endif
                 </p>

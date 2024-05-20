@@ -216,7 +216,7 @@ body {
     margin-bottom: 15px; 
     padding: 10px;
 }
-.fas.fa-trash-can{
+.fas.fa-trash-alt{
     color: red;
     cursor: pointer;
     float: right;
