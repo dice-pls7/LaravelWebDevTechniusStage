@@ -144,7 +144,6 @@ body {
     bottom : 175px;
     
 }
-
 .PinKnop:hover {
     background-color: white;
     color: black;
@@ -219,4 +218,9 @@ body {
     width: 300px; 
     margin-bottom: 15px; 
     padding: 10px;
+}
+.fas.fa-trash-can{
+    color: red;
+    cursor: pointer;
+    float: right;
 }

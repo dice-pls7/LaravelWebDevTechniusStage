@@ -39,6 +39,10 @@ class OverzichtsController extends Controller
         $this->deleteKandidaat($id);
         return redirect()->route('overzicht');
     }
+    public function deleteReview($id) {
+        $this->delete_Review($id);
+        return redirect()->route('overzicht');
+    }
     public function wijzigen($id) {
         $kandidaat = $this->getKandidaatGegevens($id);
         return view('wijzigen', ['kandidaat' => $kandidaat]);
@@ -166,6 +170,15 @@ class OverzichtsController extends Controller
             return $reviews;
         } else {
             return [];
+        }
+    }
+    public function delete_Review($id) {
+        $sql = "DELETE FROM reviews WHERE Id=$id";
+
+        if (mysqli_query($this->conn, $sql)) {
+            
+        } else {
+            print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
         }
     }
     function insertKandidaat($kandidaat) {
