@@ -4,7 +4,7 @@ body {
 .Terugknop {
     width : 200px;
     height: 55px;
-    background-color: white;
+    background-color: #ffc400;
     color: black;
     border-radius: 30px;
     border: 3px #ffc400 solid;
@@ -19,8 +19,8 @@ body {
     text-decoration: none;
 }
 .Terugknop:hover {
-    background-color: #ffc400;
-    color: white;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
 .Contactopnemenknop:hover {
@@ -33,12 +33,13 @@ body {
     justify-content: flex-end; 
     margin-top: 20px; 
     margin-right: 20px;
+    text-align: center;
 }
 #WijzigButton {
     width: 200px;
     height: 55px;
     background-color: #ffc400;
-    color: white;
+    color: black;
     border-radius: 30px;
     border: 3px solid #ffc400;
     text-align: center;
@@ -48,6 +49,8 @@ body {
     font-weight: 700;
     text-decoration: none;
     margin-right: 10px; /* Voeg wat ruimte toe tussen de knoppen */
+    display: flex;
+    
 }
 #WijzigButton:hover {
     background-color: white;
@@ -161,6 +164,8 @@ body {
 #WijzigButton,
 #copyButton,
 #MailButton {
+    
+    
     width: 200px; /* Geef alle knoppen dezelfde breedte */
     height: 55px;
     margin-right: 10px; /* Voeg wat ruimte tussen de knoppen toe */
