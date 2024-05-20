@@ -9,7 +9,7 @@
 }
 #Contact {
     background-color: #ffc400;
-    color: white;
+    color: black;
     padding: 10px 20px;
     border-radius: 18px;
     border: 3px solid #ffc400;
@@ -28,8 +28,8 @@
     color: black;
 }
 #ToevoegenKandidaat {
-    background-color: white;
-    color: black;
+    background-color: #003b4c;
+    color: white;
     padding: 10px 20px;
     border-radius: 18px;
     border: 3px solid #003b4c;
@@ -44,8 +44,8 @@
 }
 #ToevoegenKandidaat:hover,
 #ToevoegenKandidaat:hover a {
-    background-color: #003b4c;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .dropbtn {
