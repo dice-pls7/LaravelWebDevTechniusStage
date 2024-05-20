@@ -15,9 +15,7 @@
 <body>
     <div class="OverzichtsKnop">
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
-
     </div>
-
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
 
     <div id="capture" class="Gegevens">
@@ -30,7 +28,6 @@
                 </div>
             @endauth
         @endif
-
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
