@@ -18,6 +18,7 @@
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
     <div id="capture" class="Gegevens">
+
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
