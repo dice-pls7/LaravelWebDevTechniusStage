@@ -21,10 +21,10 @@ class OverzichtsController extends Controller
     {
         if (auth()->check()) {
             $kandidaten = DB::table('Kandidaat')->paginate(12);
-            $pinnedKandidaten = $this->getAllPinnedKandidaten();
+            $pinnedKandidaten = DB::table('Kandidaat')->where('pinned', 1)->get();
         } else {
             $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(12);
-            $pinnedKandidaten = $this->getAllPinnedKandidaten();
+            $pinnedKandidaten = DB::table('Kandidaat')->where('pinned', 1)->get();
         }
 
         return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]);

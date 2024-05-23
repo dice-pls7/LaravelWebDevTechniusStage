@@ -16,9 +16,8 @@
     <div class="OverzichtsKnop">
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
     </div>
-<div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
-    <div id="capture" class="Gegevens">
-        
+<div class="Gegevenstabel {{$kandidaat->Functie}}"> 
+    <div id="capture" class="Gegevens">     
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
@@ -123,6 +122,13 @@
                 if (!empty($kandidaat->FlavourText)) {
                     $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
                 }
+                
+                $body .= "\nReferenties:\n";
+
+                foreach ($reviews as $review) {
+                    $body .= "$review->bedrijfsnaam zegt het volgende over $kandidaat->Voornaam: $review->review\n";
+                }
+                
                 // Encode the email body for URL
                 $body_encoded = rawurlencode($body);
                 ?>
@@ -143,6 +149,16 @@
     @include('footer')
 </footer>
 <script>
+    document.getElementById('deelKandidaatKnop').onclick = function() {
+        navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
+        .then(() => {
+            alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
+        })
+        .catch(err => {
+            console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+        });
+    };
+
     document.getElementById('deleteButton').addEventListener('click', function() {
         var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
         if (confirmation) {
@@ -166,16 +182,6 @@
             });
         }
     });
-
-    document.getElementById('deelKandidaatKnop').onclick = function() {
-        navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
-        .then(() => {
-            alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
-        })
-        .catch(err => {
-            console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
-        });
-    };
 
     document.querySelectorAll('.deleteReferentie').forEach(button => {
         button.addEventListener('click', function() {
