@@ -21,11 +21,11 @@
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
-                    <button type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
-                    <button type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
+                    <button title="Delete kandidaat" type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
+                    <button title="Pin kandidaat" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
                     @endauth
                 @endif
-                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
+                    <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                 </div>
 
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
