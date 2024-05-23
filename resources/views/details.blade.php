@@ -17,7 +17,6 @@
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
-
     <div id="capture" class="Gegevens">
         @if(Route::has('login'))
             @auth
@@ -57,7 +56,7 @@
             @endif
             @foreach ($reviews as $review)
                 <p>Bedrijfsnaam: {{$review->bedrijfsnaam}}<br>
-                Review: {{$review->review}} 
+                Review: {{$review->review}}
                 @if(Route::has('login'))
                     @auth
                         <i class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->id }}"></i>
