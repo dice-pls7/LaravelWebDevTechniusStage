@@ -147,14 +147,10 @@ body {
     bottom : 175px;
     
 }
-
 .PinKnop:hover {
     background-color: white;
     color: black;
     cursor: pointer;
-}
-#deelKandidaatKnop {
-    
 }
 #copyButton:hover {
     background-color: white;
@@ -224,4 +220,9 @@ body {
     width: 300px; 
     margin-bottom: 15px; 
     padding: 10px;
+}
+.fas.fa-trash-alt{
+    color: red;
+    cursor: pointer;
+    float: right;
 }
