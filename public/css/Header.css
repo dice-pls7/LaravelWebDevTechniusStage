@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -6,22 +6,30 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
 }
-nav{
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 5px;
     background-color: white;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
 }
-nav ul{
-    width: 100%;
+nav ul {
     list-style: none;
+    display: flex;
+    align-items: center;
+}
+nav .menu-items {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-grow: 1;
 }
-nav li{
+nav li {
     height: 50px;
 }
-nav a{
+nav a {
     height: 100%;
     padding: 0 30px;
     text-decoration: none;
@@ -29,13 +37,25 @@ nav a{
     align-items: center;
     color: black;
 }
-nav a:hover{
+nav a:hover {
     background-color: #006c8a;
 }
-#Logout, #Profile, #Contact, #toevoegenKandidaat{
+.logo {
+    height: 55px;
+    width: 200px;
+    background-image: url('Image/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+.logo a:hover {
+    background-color: transparent;
+}
+#Logout, #Profile, #Contact, #toevoegenKandidaat {
     margin-right: 15px;
 }
-#Logout{
+
+#Logout {
     background-color: #003b4c;
     color: white;
     padding: 10px 20px;
@@ -46,11 +66,13 @@ nav a:hover{
     text-decoration: none;
     font-weight: 700;
 }
-#Logout:hover{
+
+#Logout:hover {
     background-color: white;
     color: black;
 }
-#Profile{
+
+#Profile {
     background-color: #ffc400;
     color: white;
     padding: 10px 20px;
@@ -61,11 +83,13 @@ nav a:hover{
     text-decoration: none;
     font-weight: 700;
 }
-#Profile:hover{
+
+#Profile:hover {
     background-color: white;
     color: black;
 }
-#Contact{
+
+#Contact {
     background-color: #ffc400;
     color: white;
     padding: 10px 20px;
@@ -76,11 +100,13 @@ nav a:hover{
     text-decoration: none;
     font-weight: 700;
 }
-#Contact:hover{
+
+#Contact:hover {
     background-color: white;
     color: black;
 }
-#toevoegenKandidaat{
+
+#toevoegenKandidaat {
     background-color: #003b4c;
     color: white;
     padding: 10px 20px;
@@ -91,10 +117,12 @@ nav a:hover{
     text-decoration: none;
     font-weight: 700;
 }
-#toevoegenKandidaat:hover{
+
+#toevoegenKandidaat:hover {
     background-color: white;
     color: black;
 }
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -103,33 +131,38 @@ nav a:hover{
     width: 250px;
     z-index: 999;
     background-color: rgb(194, 193, 193);
-    /* backdrop-filter: blur(10px);  */
-    box-shadow: -10px 0 10px  rgba(0, 0, 0, 0.1);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
     display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.sidebar li{
+
+.sidebar li {
     width: 100%;
 }
+
 .sidebar a {
     width: 100%;
 }
-.menu-button{
+
+.menu-button {
     display: none;
     background-color: #006c8a;
 }
-@media screen and (max-width: 991px){
-    .hideOnMobile{
+
+@media screen and (max-width: 991px) {
+    .hideOnMobile {
         display: none;
     }
-    .menu-button{
+
+    .menu-button {
         display: block;
     }
 }
-@media screen and (max-width: 400px){
-    .sidebar{
+
+@media screen and (max-width: 400px) {
+    .sidebar {
         width: 100%;
     }
 }
