@@ -27,7 +27,6 @@
                 @endif
                     <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                 </div>
-
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
