@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('/css/stylesheet.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Technius Applicatie</title>
-    @include('Header') 
+    @include('Header')
 </head>
 <body>
     <div class="Filter">
@@ -41,7 +41,7 @@
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
                 </select>
-                
+
                 <button type="reset">Reset filter opties</button>
                 <button type="submit">Filteren</button>
             </form>
@@ -50,8 +50,7 @@
 
     <h2 class ="Tekstbovenkandidaat">Vastgezette kandidaten</h2>  <!-- aangeven welke kandidaat gepinned is -->
 <div class="pinned-candidates">
-   
-@foreach ($pinnedKandidaten as $pinnedKandidaat) 
+@foreach ($pinnedKandidaten as $pinnedKandidaat)
             @php
                 $class = '';
                 if ($pinnedKandidaat->Functie == 'Loodgieter') {
@@ -60,7 +59,7 @@
                     $class = 'Elektromonteur';
                 }
             @endphp
-    
+
 
     <div class="candidate {{ $class }}">
             <h2>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h2>
@@ -73,7 +72,7 @@
 </div>
 <h2 class ="Tekstbovenkandidaat">Kandidaten</h2> <!-- aangeven welke kandidaat niet gepinned is -->
 <div class="candidates">
-    
+
     @foreach ($kandidaten as $kandidaat)
 
             @php
