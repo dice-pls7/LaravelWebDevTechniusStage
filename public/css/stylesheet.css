@@ -38,10 +38,10 @@ body a{
     box-sizing: border-box;
 }
 .candidate.Loodgieter {
-    border-color: #ffc400; /* Kleur voor functie Loodgieter */
+    border-color: #003b4c; /* Kleur voor functie Loodgieter */
 }
 .candidate.Elektromonteur {
-    border-color: #003b4c; /* Kleur voor functie Elektromonteur */
+    border-color: #ffc400; /* Kleur voor functie Elektromonteur */
 }
 .candidate h2 {
     margin-top: 0;

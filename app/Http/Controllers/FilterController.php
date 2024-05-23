@@ -39,22 +39,6 @@ class FilterController extends Controller
         if ($request->filled('beschikbaarheid') && $kandidaat->Beschikbaar != $request->input('beschikbaarheid')) { // Check if the beschikbaarheid is set and if it matches the kandidaat's beschikbaarheid
             continue;
         }
-        if ($request->input('werkervaring')) { // Check if the werkervaring is set
-            $werkervaring = $request->input('werkervaring'); // Get the werkervaring value
-            if ($werkervaring === '20+') { // Check if the werkervaring is 20+
-                if ($kandidaat->Werkervaring <= 20) { // Check if the kandidaat's werkervaring is less than or equal to 20
-                    continue;
-                }
-            } else { // If the werkervaring is not 20+
-                $werkervaringRange = explode('-', $werkervaring); // Split the werkervaring value into an array
-                $minWerkervaring = intval($werkervaringRange[0]); // Get the minimum werkervaring
-                $maxWerkervaring = intval($werkervaringRange[1]); // Get the maximum werkervaring
-
-                if ($kandidaat->Werkervaring < $minWerkervaring || $kandidaat->Werkervaring > $maxWerkervaring) {  // Check if the kandidaat's werkervaring is less than the minimum werkervaring or greater than the maximum werkervaring
-                    continue;
-                }
-            }
-        }
         $filteredKandidaten[] = $kandidaat; // Add the kandidaat to the filteredKandidaten array
     }
     return $filteredKandidaten;

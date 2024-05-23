@@ -17,17 +17,17 @@
         <a href="{{ url('overzicht') }}" class="Terugknop">Terug naar overzicht</a>
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
-
     <div id="capture" class="Gegevens">
-        @if(Route::has('login'))
-            @auth
                 <div class="DeleteKnop">
+                @if(Route::has('login'))
+                    @auth
                     <button type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
-                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                     <button type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
+                    @endauth
+                @endif
+                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                 </div>
-            @endauth
-        @endif
+
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
@@ -56,8 +56,14 @@
             @endauth
             @endif
             @foreach ($reviews as $review)
-                    <p>Bedrijfsnaam: {{$review->bedrijfsnaam}}<br>
-                    Review: {{$review->review}}</p>
+                <p>Bedrijfsnaam: {{$review->bedrijfsnaam}}<br>
+                Review: {{$review->review}}
+                @if(Route::has('login'))
+                    @auth
+                        <i class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->id }}"></i>
+                    @endauth
+                @endif
+                </p>
             @endforeach
             </div>
 
@@ -159,16 +165,41 @@
             });
         }
     });
-</script>
-<script>
-document.getElementById('deelKandidaatKnop').onclick = function() {
-    navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
-    .then(() => {
-        alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
-    })
-    .catch(err => {
-        console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+
+    document.getElementById('deelKandidaatKnop').onclick = function() {
+        navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
+        .then(() => {
+            alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
+        })
+        .catch(err => {
+            console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+        });
+    };
+
+    document.querySelectorAll('.deleteReferentie').forEach(button => {
+        button.addEventListener('click', function() {
+            var confirmation = confirm('Weet u zeker dat u deze referentie wilt verwijderen?');
+            if (confirmation) {
+                var reviewId = this.dataset.reviewId;
+                fetch('/review/' + reviewId + '/deleteReview', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Refresh the page or remove the review element from the DOM
+                        window.location.reload();
+                    } else {
+                        // Er is iets misgegaan
+                        console.error('Er is een fout opgetreden bij het verwijderen van de referentie');
+                    }
+                }).catch(error => {
+                    console.error('Er is een fout opgetreden bij het verwijderen van de referentie:', error);
+                });
+            }
+        });
     });
-};
 </script>
 </html>

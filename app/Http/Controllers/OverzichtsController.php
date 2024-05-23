@@ -20,10 +20,10 @@ class OverzichtsController extends Controller
     public function overzicht()
     {
         if (auth()->check()) {
-            $kandidaten = DB::table('Kandidaat')->paginate(7);
+            $kandidaten = DB::table('Kandidaat')->paginate(12);
             $pinnedKandidaten = $this->getAllPinnedKandidaten();
         } else {
-            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(7);
+            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(12);
             $pinnedKandidaten = $this->getAllPinnedKandidaten();
         }
 
@@ -37,6 +37,10 @@ class OverzichtsController extends Controller
     }
     public function delete($id) {
         $this->deleteKandidaat($id);
+        return redirect()->route('overzicht');
+    }
+    public function deleteReview($id) {
+        $this->delete_Review($id);
         return redirect()->route('overzicht');
     }
     public function wijzigen($id) {
@@ -166,6 +170,15 @@ class OverzichtsController extends Controller
             return $reviews;
         } else {
             return [];
+        }
+    }
+    public function delete_Review($id) {
+        $sql = "DELETE FROM reviews WHERE Id=$id";
+
+        if (mysqli_query($this->conn, $sql)) {
+            
+        } else {
+            print "Error: " . $sql . "<br>" . mysqli_error($this->conn);
         }
     }
     function insertKandidaat($kandidaat) {

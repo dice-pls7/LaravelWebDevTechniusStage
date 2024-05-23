@@ -20,6 +20,7 @@ Route::get('/kandidaattoevoegen', function () {
 
 Route::get('/details/{id}', [OverzichtsController::class, 'details'])->name('details');
 Route::post('/kandidaat/{id}/delete', [OverzichtsController::class, 'delete'])->middleware(['auth', 'verified'])->name('delete');
+Route::post('/review/{id}/deleteReview', [OverzichtsController::class, 'deleteReview'])->middleware(['auth', 'verified'])->name('deleteReview');
 Route::post('/kandidaat/{id}/pin', [OverzichtsController::class, 'pin'])->middleware(['auth', 'verified'])->name('pin');
 Route::get('/kandidaat/{id}/wijzigen', [OverzichtsController::class, 'wijzigen'])->name('wijzigen')->middleware(['auth', 'verified'])->name('wijzigen');
 Route::get('/overzicht', [OverzichtsController::class, 'overzicht'])->name('overzicht');
