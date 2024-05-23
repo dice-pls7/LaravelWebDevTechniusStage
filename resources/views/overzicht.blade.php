@@ -24,17 +24,7 @@
                     <option value="Loodgieter">Loodgieter</option>
                     <option value="Elektromonteur">Elektromonteur</option>
                 </select>
-
-                <label for="werkervaring">Werkervaring</label>
-                <select name="werkervaring" id="werkervaring">
-                    <option value="">Kies een optie</option>
-                    <option value="0-5">0-5 jaar</option>
-                    <option value="6-10">6-10 jaar</option>
-                    <option value="11-15">11-15jaar</option>
-                    <option value="16-20">16-20 jaar</option>
-                    <option value="20+">20+ jaar</option>
-                </select>
-
+                
                 <label for="beschikbaar">Beschikbaar</label>
                 <select name="beschikbaarheid" id="beschikbaarheid">
                     <option value="">Kies een optie</option>
@@ -48,7 +38,6 @@
         </div>
     </div>
 
-    <h2 class ="Tekstbovenkandidaat">Vastgezette kandidaten</h2>  <!-- aangeven welke kandidaat gepinned is -->
 <div class="pinned-candidates">
 @foreach ($pinnedKandidaten as $pinnedKandidaat)
             @php
@@ -70,9 +59,8 @@
         </div>
     @endforeach
 </div>
-<h2 class ="Tekstbovenkandidaat">Kandidaten</h2> <!-- aangeven welke kandidaat niet gepinned is -->
-<div class="candidates">
 
+<div class="candidates">
     @foreach ($kandidaten as $kandidaat)
 
             @php
