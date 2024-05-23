@@ -51,9 +51,11 @@
 
 
     <div class="candidate {{ $class }}">
-            <h2>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h2>
+    <div class="header-container">
+            <h3>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h3>
+            <h3 class="functie">{{ $pinnedKandidaat->Functie }}</h3>
+    </div>
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $pinnedKandidaat->Functie }}</p>
             <p>Werkervaring: {{ $pinnedKandidaat->Werkervaring }} jaar</p>
             <a href="{{ url('details/' . $pinnedKandidaat->Id) }}" class="details">Meer informatie</a>
         </div>
@@ -78,11 +80,12 @@
         @endif
 
         <div class="candidate {{ $class }}">
-            <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
-
+        <div class="header-container">
+            <h3>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h3>
+            <h3 class="functie">{{ $kandidaat->Functie }}</h3>
+        </div>
             <!-- Omzetten van datum naar Nederlandse notatie -->
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $kandidaat->Functie }}</p>
             <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
             <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">Meer informatie</a>
         </div>

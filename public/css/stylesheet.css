@@ -130,3 +130,12 @@ body a{
     background-color: white;
     color: black;
 }
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.functie {
+    text-align: right;
+}
