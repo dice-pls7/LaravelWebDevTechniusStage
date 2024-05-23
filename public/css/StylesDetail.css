@@ -95,11 +95,7 @@ body {
     background-color: transparent;
     border: none;
 }
-.DeleteKnop i {
-    color: red;
-    cursor: pointer;
-    font-size: 46px;
-}
+
 #MailButton {
     width: 200px;
     height: 55px;
@@ -221,8 +217,32 @@ body {
     margin-bottom: 15px; 
     padding: 10px;
 }
+
 .fas.fa-trash-alt{
-    color: red;
+    color:  #003b4c;
     cursor: pointer;
     float: right;
+    padding-left: 10px;
+}
+
+.DeleteKnop i {
+    color: #003b4c;
+    cursor: pointer;
+    font-size: 46px;
+    float: right;
+}
+
+.fas.fa-thumbtack {
+    color: #003b4c;
+    cursor: pointer;
+    float: right;
+    padding-left: 20px;
+    
+    
+}
+.fas.fa-share {
+    color: #003b4c;
+    cursor: pointer;
+    float: right;
+    padding-left: 10px;
 }
