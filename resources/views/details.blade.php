@@ -18,7 +18,6 @@
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
     <div id="capture" class="Gegevens">
-        
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
@@ -26,9 +25,9 @@
                     <button type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
                     @endauth
                 @endif
-                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>             
+                    <button type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                 </div>
-            
+
             <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
