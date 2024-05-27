@@ -141,6 +141,16 @@
     @include('footer')
 </footer>
 <script>
+    document.getElementById('deelKandidaatKnop').onclick = function() {
+        navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
+        .then(() => {
+            alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
+        })
+        .catch(err => {
+            console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+        });
+    };
+    
     document.getElementById('deleteButton').addEventListener('click', function() {
         var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
         if (confirmation) {
@@ -164,16 +174,6 @@
             });
         }
     });
-
-    document.getElementById('deelKandidaatKnop').onclick = function() {
-        navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
-        .then(() => {
-            alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
-        })
-        .catch(err => {
-            console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
-        });
-    };
 
     document.querySelectorAll('.deleteReferentie').forEach(button => {
         button.addEventListener('click', function() {
