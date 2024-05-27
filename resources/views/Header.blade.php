@@ -16,9 +16,10 @@
             @if(Route::has('login'))
                 @auth
                     <li class="hideOnMobile"><a href="{{ url('/kandidaattoevoegen') }}" id="toevoegenKandidaat">Kandidaat Toevoegen</a></li>
+                    @else
+                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
                 @endauth
             @endif
-            <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
             @if(Route::has('login'))
                 @auth
                     <li class="hideOnMobile"><a href="{{ route('profile.edit') }}" id="Profile">Profiel</a></li>
@@ -49,9 +50,11 @@
             @if(Route::has('login'))
                 @auth 
                     <li><a href="{{ url('/kandidaattoevoegen') }}">Kandidaat Toevoegen</a></li>
+                    @else
+                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
                 @endauth
             @endif
-            <li><a href="#footer">Neem contact op</a></li>
+            
             @if(Route::has('login'))
                 @auth
                     <li><a href="{{ route('profile.edit') }}">Profiel</a></li>

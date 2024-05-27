@@ -24,7 +24,7 @@
                     <option value="Loodgieter">Loodgieter</option>
                     <option value="Elektromonteur">Elektromonteur</option>
                 </select>
-                
+
                 <label for="beschikbaar">Beschikbaar</label>
                 <select name="beschikbaarheid" id="beschikbaarheid">
                     <option value="">Kies een optie</option>
@@ -38,8 +38,6 @@
         </div>
     </div>
 
-
-
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
 
@@ -52,20 +50,21 @@
                 }
             @endphp
 
-    @if ($kandidaat->pinned)
-            <!-- Skip already displayed pinned candidates -->
-            @continue
-        @endif
-
         <a class="candidate {{ $class }}" href="{{ url('details/' . $kandidaat->Id) }}" class="details">
+        @if(Route::has('login'))
+                    @auth
+            @if($kandidaat->pinned == 1)
+            <button title="Kandidaat is gepind" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
+            @endif
+            @endauth
+        @endif
             <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
 
             <!-- Omzetten van datum naar Nederlandse notatie -->
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
             <p>Functie: {{ $kandidaat->Functie }}</p>
             <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
-           
-            </a>
+        </a>
     @endforeach
 </div>
     @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
