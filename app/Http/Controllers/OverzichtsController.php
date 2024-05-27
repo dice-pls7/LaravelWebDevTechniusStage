@@ -20,14 +20,12 @@ class OverzichtsController extends Controller
     public function overzicht()
     {
         if (auth()->check()) {
-            $kandidaten = DB::table('Kandidaat')->paginate(12);
-            $pinnedKandidaten = DB::table('Kandidaat')->where('pinned', 1)->get();
+            $kandidaten = DB::table('Kandidaat')->orderByDesc('Pinned')->paginate(12);
         } else {
-            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->paginate(12);
-            $pinnedKandidaten = DB::table('Kandidaat')->where('pinned', 1)->get();
+            $kandidaten = DB::table('Kandidaat')->where('Beschikbaar', 1)->orderByDesc('Pinned')->paginate(12);
         }
 
-        return view('overzicht', ['kandidaten' => $kandidaten, 'pinnedKandidaten' => $pinnedKandidaten]);
+        return view('overzicht', ['kandidaten' => $kandidaten]);
     }
     public function details($id)
     {

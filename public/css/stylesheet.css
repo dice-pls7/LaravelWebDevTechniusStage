@@ -36,6 +36,11 @@ body a{
     border-radius: 18px;
     box-sizing: border-box;
 }
+.candidate button {
+    background-color: transparent;
+    border: none;
+    float:right;
+}
 .candidate.Loodgieter {
     border-color: #003b4c; /* Kleur voor functie Loodgieter */
 }
@@ -128,4 +133,8 @@ body a{
 .filters button[type="reset"]:hover, .filters button[type="submit"]:hover {
     background-color: white;
     color: black;
+}
+.fas.fa-thumbtack {
+    color: #003b4c;
+    cursor: pointer;
 }

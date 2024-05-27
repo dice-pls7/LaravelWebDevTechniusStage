@@ -38,28 +38,6 @@
         </div>
     </div>
 
-<div class="pinned-candidates">
-@foreach ($pinnedKandidaten as $pinnedKandidaat)
-            @php
-                $class = '';
-                if ($pinnedKandidaat->Functie == 'Loodgieter') {
-                    $class = 'Loodgieter';
-                } elseif ($pinnedKandidaat->Functie == 'Elektromonteur') {
-                    $class = 'Elektromonteur';
-                }
-            @endphp
-
-
-    <div class="candidate {{ $class }}">
-            <h2>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h2>
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $pinnedKandidaat->Functie }}</p>
-            <p>Werkervaring: {{ $pinnedKandidaat->Werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $pinnedKandidaat->Id) }}" class="details">Meer informatie</a>
-        </div>
-    @endforeach
-</div>
-
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
 
@@ -72,12 +50,14 @@
                 }
             @endphp
 
-    @if ($kandidaat->pinned)
-            <!-- Skip already displayed pinned candidates -->
-            @continue
-        @endif
-
         <div class="candidate {{ $class }}">
+        @if(Route::has('login'))
+                    @auth
+            @if($kandidaat->pinned == 1)
+            <button title="Kandidaat is gepind" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
+            @endif
+            @endauth
+        @endif
             <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
 
             <!-- Omzetten van datum naar Nederlandse notatie -->
