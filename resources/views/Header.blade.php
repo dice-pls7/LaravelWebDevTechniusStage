@@ -16,12 +16,6 @@
             @if(Route::has('login'))
                 @auth
                     <li class="hideOnMobile"><a href="{{ url('/kandidaattoevoegen') }}" id="toevoegenKandidaat">Kandidaat Toevoegen</a></li>
-                    @else
-                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
-                @endauth
-            @endif
-            @if(Route::has('login'))
-                @auth
                     <li class="hideOnMobile"><a href="{{ route('profile.edit') }}" id="Profile">Profiel</a></li>
                     <li class="hideOnMobile">
                         <form method="POST" action="{{ route('logout') }}">
@@ -29,6 +23,8 @@
                             <button type="submit" id="Logout">Log uit</button>
                         </form>
                     </li>
+                    @else
+                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
                 @endauth
             @endif
             <li class="menu-button" onclick="toggleMobileMenu()">
@@ -50,13 +46,6 @@
             @if(Route::has('login'))
                 @auth 
                     <li><a href="{{ url('/kandidaattoevoegen') }}">Kandidaat Toevoegen</a></li>
-                    @else
-                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
-                @endauth
-            @endif
-            
-            @if(Route::has('login'))
-                @auth
                     <li><a href="{{ route('profile.edit') }}">Profiel</a></li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
@@ -64,6 +53,8 @@
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Log uit</a>
                         </form>
                     </li>
+                    @else
+                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
                 @endauth
             @endif
         </ul>
