@@ -18,7 +18,6 @@
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
     <div id="capture" class="Gegevens">
-
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
@@ -151,7 +150,7 @@
             console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
         });
     };
-    
+
     document.getElementById('deleteButton').addEventListener('click', function() {
         var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
         if (confirmation) {
