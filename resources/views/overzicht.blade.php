@@ -38,27 +38,7 @@
         </div>
     </div>
 
-<div class="pinned-candidates">
-@foreach ($pinnedKandidaten as $pinnedKandidaat)
-            @php
-                $class = '';
-                if ($pinnedKandidaat->Functie == 'Loodgieter') {
-                    $class = 'Loodgieter';
-                } elseif ($pinnedKandidaat->Functie == 'Elektromonteur') {
-                    $class = 'Elektromonteur';
-                }
-            @endphp
 
-
-    <div class="candidate {{ $class }}">
-            <h2>{{ $pinnedKandidaat->Voornaam }} {{ substr($pinnedKandidaat->Achternaam, 0, 1) }}</h2>
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($pinnedKandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $pinnedKandidaat->Functie }}</p>
-            <p>Werkervaring: {{ $pinnedKandidaat->Werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $pinnedKandidaat->Id) }}" class="details">Meer informatie</a>
-        </div>
-    @endforeach
-</div>
 
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)
@@ -77,15 +57,15 @@
             @continue
         @endif
 
-        <div class="candidate {{ $class }}">
+        <a class="candidate {{ $class }}" href="{{ url('details/' . $kandidaat->Id) }}" class="details">
             <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
 
             <!-- Omzetten van datum naar Nederlandse notatie -->
             <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
             <p>Functie: {{ $kandidaat->Functie }}</p>
             <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
-            <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">Meer informatie</a>
-        </div>
+           
+            </a>
     @endforeach
 </div>
     @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
