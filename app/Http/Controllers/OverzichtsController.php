@@ -86,40 +86,9 @@ class OverzichtsController extends Controller
 
         return $conn;
     }
-    public function getAllPinnedKandidaten() {
-        $sqlPinned = "SELECT * FROM kandidaat WHERE pinned = 1";
-        $resultPinned = mysqli_query($this->conn, $sqlPinned);
-    
-        if ($resultPinned && mysqli_num_rows($resultPinned) > 0) {
-            $pinnedKandidaten = [];
-            while($row = mysqli_fetch_assoc($resultPinned)) {
-                $kandidaat = new Kandidaat(
-                    $row["Id"],
-                    $row["Voornaam"],
-                    $row["Tussenvoegsel"],
-                    $row["Achternaam"],
-                    $row["Geboortedatum"],
-                    $row["Functie"],
-                    $row["Beschikbaarheid"],
-                    $row["Beschikbaar"],
-                    $row["Locatie"],
-                    $row["Taal"],
-                    $row["Werkervaring"],
-                    $row["OudeOpdrachtgevers"],
-                    $row["Diplomas"],
-                    $row["Certificaten"],
-                    $row["FlavourText"],
-                    $row["pinned"]
-                );
-                array_push($pinnedKandidaten, $kandidaat);
-            }
-            return $pinnedKandidaten;
-        }
-        return []; // Return an empty array if no pinned kandidaten are found
-    }
     public function getAllKandidaten() {
 
-        $sql = "SELECT * FROM kandidaat WHERE pinned = 0";
+        $sql = "SELECT * FROM kandidaat order by pinned DESC";
         $result = mysqli_query($this->conn, $sql);
 
 
