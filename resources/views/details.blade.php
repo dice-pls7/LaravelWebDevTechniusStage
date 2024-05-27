@@ -39,7 +39,6 @@
             <p><span>Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
             <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
 
-
             <div class="referentie">
             <h2>Referenties</h2>
             @if(Route::has('login'))
