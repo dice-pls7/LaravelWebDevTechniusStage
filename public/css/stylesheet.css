@@ -1,5 +1,16 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url("Image/Logo.Achtergrond.Website.png") no-repeat center center fixed;
+    background-size: 55%;
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
 }
 .candidates, .pinned-candidates {
     display: grid;
@@ -27,6 +38,14 @@ body a{
     .candidates, .pinned-candidates {
       grid-template-columns: 1fr;
     }
+    body{
+        background-size: 85%;
+    }
+  }
+  @media screen and (max-width: 850px){
+    body{
+        background-size: 100%;
+    }  
   }
 .candidate {
     width: 100%;
