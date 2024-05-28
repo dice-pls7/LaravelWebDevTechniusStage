@@ -7,10 +7,8 @@ body {
     position: relative;
     min-height: 100vh;
 }
-
 .content-container {
     position: relative;
-    z-index: 1;
 }
 .candidates, .pinned-candidates {
     display: grid;
@@ -54,6 +52,7 @@ body a{
     border: 3px solid #ccc;
     border-radius: 18px;
     box-sizing: border-box;
+    z-index: 1;
 }
 .candidate button {
     background-color: transparent;
@@ -138,7 +137,7 @@ body a{
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
-    z-index: 1;
+    z-index: 2;
     margin-top: 25px;
 }
 .filters label, .filters select {
@@ -163,4 +162,5 @@ body a{
 .fas.fa-thumbtack {
     color: black;
     cursor: pointer;
+    z-index: 1;
 }
