@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" href="css/Footer.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 <footer class="main-footer" id="footer">
     <div class="main-footer-content">
@@ -8,19 +9,25 @@
             <div class="contact-info">
                 <h2>Neem contact op</h2>
                 <ul class="contact-list">
-                    <li>
-                        <span class="icon-cellular9"></span>
-                        <span class="hide-for-small-only contact-list-text small">038-4202224</span>
+                    <li class="contact-item desktop-only">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span class="contact-list-text big">038-4202224</span>
                     </li>
-                    <li>
-                        <span class="icon-email64"></span>
+                    <li class="contact-item mobile-only">
+                        <i class="fas fa-mobile-alt"></i>
+                        <a href="tel:0384202224" class="contact-list-text big">038-4202224</a>
+                    </li>
+                    <li class="contact-item">
                         <a href="mailto:hello@technius.nl">
-                            <span class="contact-list-text small">hello@technius.nl</span>
+                            <i class="far fa-envelope"></i>
+                            <span class="contact-list-text big">hello@technius.nl</span>
                         </a>
                     </li>
-                    <li>
-                        <span class="icon-big104"></span>
-                        <span class="contact-list-text big">Achthoevenweg 18 <br/> 7951 SK  Staphorst </span>
+                    <li class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Technius+Zwolle+BV%2C+Achthoevenweg+18%2C+7951+SK+Staphorst" target="_blank" class="contact-list-text big">
+                            Achthoevenweg 18 <br/> 7951 SK Staphorst
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -11,8 +11,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0);
-    /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); 
     padding: 0 20px;
 }
 nav ul {
@@ -39,6 +39,7 @@ nav a {
 }
 nav a:hover {
     background-color: #006c8a;
+    border-radius: 18px;
 }
 .logo {
     height: 55px;
@@ -149,6 +150,7 @@ nav a:hover {
 .menu-button {
     display: none;
     background-color: #006c8a;
+    border-radius: 18px;
 }
 
 @media screen and (max-width: 991px) {
