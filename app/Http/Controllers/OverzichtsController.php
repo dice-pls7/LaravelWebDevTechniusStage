@@ -45,7 +45,6 @@ class OverzichtsController extends Controller
         $kandidaat = $this->getKandidaatGegevens($id);
         return view('wijzigen', ['kandidaat' => $kandidaat]);
     }
-
     public function pin($id) {
         $this->pinKandidaat($id);
         return redirect()->route('overzicht');

@@ -1,45 +1,31 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\OverzichtsController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FilterController extends Controller
 {
-    public $controller;
-    public $conn;
-    public function __construct()
-    {
-        $this->controller = new OverzichtsController();
-        $this->conn = $this->controller->connectToDatabase();
-    }
-
-    public function filter()
-    {
-        return view('overzicht');
-    }
     public function filterResults(Request $request)
     {
-    $kandidaten = $this->getFilteredKandidaten($request); 
+        $query = DB::table('Kandidaat')->orderByDesc('Pinned');
 
-    return view('overzicht', ['kandidaten' => $kandidaten]); // Return the view with the filtered kandidaten and pinned kandidaten
-    }
-
-    public function getFilteredKandidaten(Request $request)
-    {
-    $kandidaten = $this->controller->getAllKandidaten();
-
-    $filteredKandidaten = []; // Create an empty array to store the filtered kandidaten
-
-    foreach ($kandidaten as $kandidaat) { // Loop through all kandidaten
-        if ($request->filled('functie') && $kandidaat->Functie != $request->input('functie')) { // Check if the functie is set and if it matches the kandidaat's functie
-            continue; // Skip the current iteration
+        if ($request->filled('functie')) {
+            $query->where('Functie', $request->input('functie'));
         }
-        if ($request->filled('beschikbaarheid') && $kandidaat->Beschikbaar != $request->input('beschikbaarheid')) { // Check if the beschikbaarheid is set and if it matches the kandidaat's beschikbaarheid
-            continue;
+
+        if ($request->filled('beschikbaarheid')) {
+            $query->where('Beschikbaar', $request->input('beschikbaarheid'));
         }
-        $filteredKandidaten[] = $kandidaat; // Add the kandidaat to the filteredKandidaten array
-    }
-    return $filteredKandidaten;
+
+        if (!auth()->check()) {
+            $query->where('Beschikbaar', 1);
+        }
+
+        // Paginate the results
+        $kandidaten = $query->paginate(12)->appends($request->except('page'));
+
+        return view('overzicht', ['kandidaten' => $kandidaten]);
     }
 }

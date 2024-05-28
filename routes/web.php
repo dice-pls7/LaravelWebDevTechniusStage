@@ -23,8 +23,9 @@ Route::post('/kandidaat/{id}/delete', [OverzichtsController::class, 'delete'])->
 Route::post('/review/{id}/deleteReview', [OverzichtsController::class, 'deleteReview'])->middleware(['auth', 'verified'])->name('deleteReview');
 Route::post('/kandidaat/{id}/pin', [OverzichtsController::class, 'pin'])->middleware(['auth', 'verified'])->name('pin');
 Route::get('/kandidaat/{id}/wijzigen', [OverzichtsController::class, 'wijzigen'])->name('wijzigen')->middleware(['auth', 'verified'])->name('wijzigen');
-Route::get('/overzicht', [OverzichtsController::class, 'overzicht'])->name('overzicht');
-Route::post('/overzicht', [FilterController::class, 'filterResults']);
+
+// Wijzig deze regel zodat zowel GET als POST aanvragen naar dezelfde filterfunctie verwijzen
+Route::match(['get', 'post'], '/overzicht', [FilterController::class, 'filterResults'])->name('overzicht');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

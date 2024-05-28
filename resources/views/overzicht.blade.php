@@ -15,9 +15,9 @@
             <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
             <!-- Filter options -->
             <div class="filters" id="Filters">
-                <form action="{{ route('overzicht') }}" method="POST">
+                <form action="{{ route('overzicht') }}" method="GET">
                     @csrf
-                    <button type="reset" onclick="toggleFilters()">X</button>
+                    <button type="button" onclick="toggleFilters()">X</button>
 
                     <label for="functie">Functie</label>
                     <select name="functie" id="functie">
