@@ -144,7 +144,7 @@ body a{
     display: flex;
     margin: 5px;
 }
-.filters button[type="reset"], .filters button[type="submit"] {
+.filters button[type="reset"], .filters button[type="submit"], .filters button[type="button"] {
     background-color: #003b4c;
     color: white;
     padding: 10px 20px;
@@ -155,7 +155,7 @@ body a{
     text-decoration: none;
     margin-top: 10px;
 }
-.filters button[type="reset"]:hover, .filters button[type="submit"]:hover {
+.filters button[type="reset"]:hover, .filters button[type="submit"]:hover, .filters button[type="button"]:hover{
     background-color: white;
     color: black;
 }

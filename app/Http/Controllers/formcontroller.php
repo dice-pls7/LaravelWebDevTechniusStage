@@ -8,22 +8,19 @@ class FormController extends Controller
 {
     public function handleFormSubmission(Request $request)
     {
-        // Include the handle_form.php file
-        require_once __DIR__ . '/handle_form.php';
+        require_once __DIR__ . '/KandidaatToevoegenController.php';
         header("Location: /overzicht");
         exit;
     }
     public function handleWijzigKandidaatForm(Request $request)
     {
-        // Include the handle_WijzigKandidaatForm.php file
-        require_once __DIR__ . '/handle_WijzigKandidaatForm.php';
+        require_once __DIR__ . '/KandidaatWijzigenController.php';
         header("Location: /overzicht");
         exit;
     }
     public function handleReviewSubmission(Request $request)
     {
-        // Include the handle_review.php file
-        require_once __DIR__ . '/handle-review.php';
+        require_once __DIR__ . '/ReviewToevoegenController.php';
         header("Location: /details/" . $_POST["KandidaatId"]);
         exit;
     }

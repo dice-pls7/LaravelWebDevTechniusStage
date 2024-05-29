@@ -17,7 +17,7 @@
             <div class="filters" id="Filters">
                 <form action="{{ route('overzicht') }}" method="GET">
                     @csrf
-                    <button type="button" onclick="toggleFilters()">X</button>
+                    <button type="button" id="FilterButton" onclick="toggleFilters()">X</button>
 
                     <label for="functie">Functie</label>
                     <select name="functie" id="functie">
