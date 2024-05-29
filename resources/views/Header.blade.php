@@ -24,6 +24,7 @@
                     </li>
                     @else
                     <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
+                    <li class="hideOnMobile"><a href="{{ route('login') }}" id="Login">Inloggen</a></li>
                 @endauth
             @endif
             <li class="menu-button" onclick="toggleMobileMenu()">
@@ -54,6 +55,7 @@
                     </li>
                     @else
                     <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
+                    <li class="hideOnMobile"><a href="{{ route('login') }}" id="Login">Inloggen</a></li>
                 @endauth
             @endif
         </ul>

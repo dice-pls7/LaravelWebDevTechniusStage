@@ -7,7 +7,12 @@ class KandidaatRepository
 {
     public function getAllOrderedByPinned()
     {
-        return DB::table('kandidaat')->orderByDesc('pinned')->paginate(12);
+        if (auth()->check()) {
+            return DB::table('kandidaat')->orderByDesc('pinned')->paginate(12);
+        }
+        else{
+            return DB::table('kandidaat')->where('beschikbaar', 1)->paginate(12);
+        }
     }
     public function getKandidaat($id)
     {

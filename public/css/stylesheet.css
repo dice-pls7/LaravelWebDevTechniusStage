@@ -64,6 +64,11 @@ body a{
 }
 .candidate.Loodgieter:hover {
     background-color: #003b4c;
+}
+.candidate.Loodgieter:hover p{
+    color: white;
+}
+.candidate.Loodgieter:hover h2{
     color: white;
 }
 .candidate.Elektromonteur {

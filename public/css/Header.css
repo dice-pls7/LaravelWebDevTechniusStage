@@ -72,7 +72,21 @@ nav a:hover {
     background-color: white;
     color: black;
 }
-
+#Login {
+    background-color: #003b4c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #003b4c;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+}
+#Login:hover {
+    background-color: white;
+    color: black;
+}
 #Profile {
     background-color: #ffc400;
     color: white;
@@ -157,7 +171,6 @@ nav a:hover {
     .hideOnMobile {
         display: none;
     }
-
     .menu-button {
         display: block;
     }

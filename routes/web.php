@@ -8,9 +8,8 @@ use App\Http\Controllers\KandidaatWijzigenController;
 use App\Http\Controllers\ReviewToevoegenController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
+Route::get('/', [OverzichtsController::class, 'overzicht'])->name('overzicht');
 
 Route::get('/kandidaattoevoegen', function () {
     return view('KandidaatToevoegen');
