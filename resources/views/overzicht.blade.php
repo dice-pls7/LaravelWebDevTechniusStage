@@ -10,13 +10,14 @@
 </head>
 <body>
     <div class="Filter">
-        <button id="FilterButton" onclick="toggleFilters()">Filteren op</button>
+        <button id="FilterButton">Filteren op</button>
         <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
         <!-- Filter options -->
         <div class="filters" id="Filters">
+        <button id="FilterButton2">X</button>
             <form action="{{ route('overzicht') }}" method="POST">
                 @csrf
-                <button type="reset" onclick="toggleFilters()">X</button>
+                
 
                 <label for="functie">Functie</label>
                 <select name="functie" id="functie">
@@ -72,13 +73,8 @@
             {{ $kandidaten->links() }}
         </div>
     @endif
+    @vite('resources/js/overzicht.js')
 </body>
-<script>
-    function toggleFilters() {
-        var filters = document.getElementById("Filters");
-        filters.style.display = (filters.style.display === "block") ? "none" : "block";
-    }
-</script>
 <footer>
     @include('footer')
 </footer>

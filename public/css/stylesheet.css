@@ -126,7 +126,7 @@ body a{
     display: flex;
     margin: 5px;
 }
-.filters button[type="reset"], .filters button[type="submit"] {
+.filters button[type="reset"], .filters button[type="submit"], .filters button[id="FilterButton2"] {
     background-color: #003b4c;
     color: white;
     padding: 10px 20px;
@@ -137,7 +137,7 @@ body a{
     text-decoration: none;
     margin-top: 10px;
 }
-.filters button[type="reset"]:hover, .filters button[type="submit"]:hover {
+.filters button[type="reset"]:hover, .filters button[type="submit"]:hover, .filters button[id="FilterButton2"]:hover {
     background-color: white;
     color: black;
 }
@@ -145,3 +145,4 @@ body a{
     color: black;
     cursor: pointer;
 }
+
