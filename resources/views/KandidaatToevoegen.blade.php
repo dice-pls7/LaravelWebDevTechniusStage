@@ -8,6 +8,7 @@
     @include('Header')
 </head>
 <body>
+
 <div class="Toevoegen">
     <form action="{{ url('/kandidaat/toevoegen') }}" method="post">
     @csrf

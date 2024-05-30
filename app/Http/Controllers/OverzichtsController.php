@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Kandidaat;
 use App\Models\Reviews;
 use App\Repositories\KandidaatRepository;
-
 class OverzichtsController extends Controller
 {
     private $kandidaatRepository;
