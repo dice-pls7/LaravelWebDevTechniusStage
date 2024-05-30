@@ -12,7 +12,7 @@ nav {
     justify-content: space-between;
     margin-top: 5px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); 
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     padding: 0 20px;
 }
 nav ul {
@@ -159,6 +159,7 @@ nav a:hover {
 
 .sidebar a {
     width: 100%;
+    padding: 10px 20px;
 }
 
 .menu-button {

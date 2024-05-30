@@ -22,7 +22,7 @@
                             <button type="submit" id="Logout">Log uit</button>
                         </form>
                     </li>
-                    @else
+                @else
                     <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
                     <li class="hideOnMobile"><a href="{{ route('login') }}" id="Login">Inloggen</a></li>
                 @endauth
@@ -44,7 +44,7 @@
                 </a>
             </li>
             @if(Route::has('login'))
-                @auth 
+                @auth
                     <li><a href="{{ url('/kandidaattoevoegen') }}">Kandidaat Toevoegen</a></li>
                     <li><a href="{{ route('profile.edit') }}">Profiel</a></li>
                     <li>
@@ -53,9 +53,9 @@
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Log uit</a>
                         </form>
                     </li>
-                    @else
-                    <li class="hideOnMobile"><a href="#footer" id="Contact">Neem contact op</a></li>
-                    <li class="hideOnMobile"><a href="{{ route('login') }}" id="Login">Inloggen</a></li>
+                @else
+                    <li><a href="#footer">Neem contact op</a></li>
+                    <li><a href="{{ route('login') }}">Inloggen</a></li>
                 @endauth
             @endif
         </ul>
@@ -73,4 +73,3 @@
     </script>
 </body>
 </html>
-
