@@ -13,7 +13,7 @@
         <div class="Filter">
             <button id="FilterButton" onclick="toggleFilters()">Filteren op</button>
             <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
-            <!-- Filter options -->
+            
             <div class="filters" id="Filters">
                 <form action="{{ route('overzicht') }}" method="GET">
                     @csrf
