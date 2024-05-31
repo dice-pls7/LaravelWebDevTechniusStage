@@ -43,7 +43,7 @@ body a{
   @media screen and (max-width: 850px){
     body{
         background-size: 100%;
-    }  
+    }
   }
 .candidate {
     width: 100%;

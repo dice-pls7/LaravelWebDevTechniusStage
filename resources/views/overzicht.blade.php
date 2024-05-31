@@ -9,15 +9,15 @@
     @include('Header')
 </head>
 <body>
-    <div class="content-container">
-        <div class="Filter">
-            <button id="FilterButton" onclick="toggleFilters()">Filteren op</button>
-            <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
-            
-            <div class="filters" id="Filters">
-                <form action="{{ route('overzicht') }}" method="GET">
-                    @csrf
-                    <button type="button" id="FilterButton" onclick="toggleFilters()">X</button>
+    <div class="Filter">
+        <button id="FilterButton">Filteren op</button>
+        <button id="WisFilter" onclick="window.location.href='{{ route('overzicht') }}'">Wis filters</button>
+        <!-- Filter options -->
+        <div class="filters" id="Filters">
+        <button id="FilterButton2">X</button>
+            <form action="{{ route('overzicht') }}" method="POST">
+                @csrf
+
 
                     <label for="functie">Functie</label>
                     <select name="functie" id="functie">
@@ -27,7 +27,7 @@
                     </select>
 
                     <label for="beschikbaar">Beschikbaar</label>
-                    <select name="beschikbaarheid" id="beschikbaarheid">
+                    <select name="beschikbaar" id="beschikbaar">
                         <option value="">Kies een optie</option>
                         <option value="1">Ja</option>
                         <option value="0">Nee</option>
@@ -78,27 +78,22 @@
         @include('Footer')
     </footer>
     <script>
-        function toggleFilters() {
-            var filters = document.getElementById("Filters");
-            filters.style.display = (filters.style.display === "block") ? "none" : "block";
-        }
+        document.getElementById('PinKnop').addEventListener('click', function() {
+            var id = document.getElementById('kandidaatId').value;
+            fetch('/kandidaat/' + id + '/pin', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) { window.location.href = '/overzicht';}
+                else { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
+                }
+            }).catch(error => { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
+            });
+        });
     </script>
-    <script>
-                   document.getElementById('PinKnop').addEventListener('click', function() {
-                       var id = document.getElementById('kandidaatId').value;
-                       fetch('/kandidaat/' + id + '/pin', {
-                           method: 'POST',
-                           headers: {
-                               'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                               'Content-Type': 'application/json'
-                            }
-                       }).then(response => {
-                           if (response.ok) { window.location.href = '/overzicht';}
-                           else { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
-                           }
-                       }).catch(error => { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
-                       });
-                   });
-                  </script>
+    @vite('resources/js/overzicht.js')
 </body>
 </html>
