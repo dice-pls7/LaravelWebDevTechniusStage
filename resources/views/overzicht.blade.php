@@ -78,22 +78,22 @@
         @include('Footer')
     </footer>
     <script>
-                   document.getElementById('PinKnop').addEventListener('click', function() {
-                       var id = document.getElementById('kandidaatId').value;
-                       fetch('/kandidaat/' + id + '/pin', {
-                           method: 'POST',
-                           headers: {
-                               'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                               'Content-Type': 'application/json'
-                            }
-                       }).then(response => {
-                           if (response.ok) { window.location.href = '/overzicht';}
-                           else { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
-                           }
-                       }).catch(error => { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
-                       });
-                   });
-                  </script>
+        document.getElementById('PinKnop').addEventListener('click', function() {
+            var id = document.getElementById('kandidaatId').value;
+            fetch('/kandidaat/' + id + '/pin', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) { window.location.href = '/overzicht';}
+                else { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
+                }
+            }).catch(error => { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
+            });
+        });
+    </script>
     @vite('resources/js/overzicht.js')
 </body>
 </html>
