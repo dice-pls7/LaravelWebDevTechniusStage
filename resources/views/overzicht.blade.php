@@ -17,27 +17,27 @@
         <button id="FilterButton2">X</button>
             <form action="{{ route('overzicht') }}" method="POST">
                 @csrf
-                
 
-                <label for="functie">Functie</label>
-                <select name="functie" id="functie">
-                    <option value="">Kies een optie</option>
-                    <option value="Loodgieter">Loodgieter</option>
-                    <option value="Elektromonteur">Elektromonteur</option>
-                </select>
 
-                <label for="beschikbaar">Beschikbaar</label>
-                <select name="beschikbaarheid" id="beschikbaarheid">
-                    <option value="">Kies een optie</option>
-                    <option value="1">Ja</option>
-                    <option value="0">Nee</option>
-                </select>
+                    <label for="functie">Functie</label>
+                    <select name="functie" id="functie">
+                        <option value="">Kies een optie</option>
+                        <option value="Loodgieter">Loodgieter</option>
+                        <option value="Elektromonteur">Elektromonteur</option>
+                    </select>
 
-                <button type="reset">Reset filter opties</button>
-                <button type="submit">Filteren</button>
-            </form>
+                    <label for="beschikbaar">Beschikbaar</label>
+                    <select name="beschikbaar" id="beschikbaar">
+                        <option value="">Kies een optie</option>
+                        <option value="1">Ja</option>
+                        <option value="0">Nee</option>
+                    </select>
+
+                    <button type="reset">Reset filter opties</button>
+                    <button type="submit">Filteren</button>
+                </form>
+            </div>
         </div>
-    </div>
 
 <div class="candidates">
     @foreach ($kandidaten as $kandidaat)

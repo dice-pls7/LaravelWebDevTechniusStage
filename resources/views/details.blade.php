@@ -39,27 +39,28 @@
             <p><span>Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
             <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
 
+
             <div class="referentie">
             <h2>Referenties</h2>
             @if(Route::has('login'))
             @auth
-            <form action="{{ url('/handle-review') }}" method="post">
+            <form action="{{ url('/review/toevoegen') }}" method="post">
                 @csrf
                 <input type="hidden" name="KandidaatId" value="{{ $kandidaat->Id }}">
 
                 <input type="text" name="bedrijfsnaam" id="Bedrijfsnaam" placeholder="Bedrijfsnaam">
-                <textarea type="text" name="review" id="Review" placeholder="Review"></textarea>
+                <textarea type="text" name="review" id="Review" placeholder="Review" maxlength="100"></textarea>
 
                 <button type="submit">Voeg referentie toe</button>
             </form>
             @endauth
             @endif
             @foreach ($reviews as $review)
-                <p>Bedrijfsnaam: {{$review->bedrijfsnaam}}<br>
-                Review: {{$review->review}}
+                <p>Bedrijfsnaam: {{$review->Bedrijfsnaam}}<br>
+                Review: {{$review->Review}}
                 @if(Route::has('login'))
                     @auth
-                        <i title="Delete referentie"class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->id }}"></i>
+                        <i title="Delete referentie"class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->Id }}"></i>
                     @endauth
                 @endif
                 </p>

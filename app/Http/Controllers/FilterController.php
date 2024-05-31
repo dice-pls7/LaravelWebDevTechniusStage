@@ -1,45 +1,33 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\OverzichtsController;
 use Illuminate\Http\Request;
+use App\Repositories\KandidaatRepository;
 
 class FilterController extends Controller
 {
-    public $controller;
-    public $conn;
-    public function __construct()
+    private $kandidaatRepository;
+
+    public function __construct(KandidaatRepository $kandidaatRepository)
     {
-        $this->controller = new OverzichtsController();
-        $this->conn = $this->controller->connectToDatabase();
+        $this->kandidaatRepository = $kandidaatRepository;
     }
 
-    public function filter()
-    {
-        return view('overzicht');
-    }
     public function filterResults(Request $request)
     {
-    $kandidaten = $this->getFilteredKandidaten($request); 
+        $functie = $request->input('functie');
+        $beschikbaar = $request->input('beschikbaar');
 
-    return view('overzicht', ['kandidaten' => $kandidaten]); // Return the view with the filtered kandidaten and pinned kandidaten
-    }
-
-    public function getFilteredKandidaten(Request $request)
-    {
-    $kandidaten = $this->controller->getAllKandidaten();
-
-    $filteredKandidaten = []; // Create an empty array to store the filtered kandidaten
-
-    foreach ($kandidaten as $kandidaat) { // Loop through all kandidaten
-        if ($request->filled('functie') && $kandidaat->Functie != $request->input('functie')) { // Check if the functie is set and if it matches the kandidaat's functie
-            continue; // Skip the current iteration
+        // Converteer beschikbaar naar een integer als deze waarde '0' of '1' is
+        if ($beschikbaar === '0' || $beschikbaar === '1') {
+            $beschikbaar = (int) $beschikbaar;
+        } else {
+            $beschikbaar = null;
         }
-        if ($request->filled('beschikbaarheid') && $kandidaat->Beschikbaar != $request->input('beschikbaarheid')) { // Check if the beschikbaarheid is set and if it matches the kandidaat's beschikbaarheid
-            continue;
-        }
-        $filteredKandidaten[] = $kandidaat; // Add the kandidaat to the filteredKandidaten array
-    }
-    return $filteredKandidaten;
+
+        $kandidaten = $this->kandidaatRepository->filterKandidaten($functie, $beschikbaar);
+
+        return view('overzicht', ['kandidaten' => $kandidaten]);
     }
 }
