@@ -37,7 +37,7 @@ class OverzichtsControllerTest extends TestCase
         $this->assertEquals('overzicht', $response->name());
         $this->assertEquals($paginatedKandidaten, $response->getData()['kandidaten']);
     }
-    //maak een test voor de details methode
+
     public function testDetails()
     {
         // Mock de KandidaatRepository
@@ -70,7 +70,7 @@ class OverzichtsControllerTest extends TestCase
         $this->assertEquals($kandidaat, $response->getData()['kandidaat']);
         $this->assertEquals($reviews, $response->getData()['reviews']);
     }
-    //maak een test voor de wijzigen methode
+
     public function testWijzigen()
     {
         // Mock de KandidaatRepository

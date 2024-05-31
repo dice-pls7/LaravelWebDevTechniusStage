@@ -87,17 +87,18 @@ class KandidaatRepository
         'review' => $review->review,
     ]);
     }
-    public function filterKandidaten($functie, $beschikbaarheid)
+    public function filterKandidaten($functie, $beschikbaar)
     {
-    $query = DB::table('kandidaat')->orderByDesc('pinned');
+        $query = DB::table('kandidaat')->orderByDesc('pinned');
 
-    if ($functie) {
-        $query->where('Functie', $functie);
-    }
+        if ($functie) {
+            $query->where('Functie', $functie);
+        }
 
-    if ($beschikbaarheid) {
-        $query->where('Beschikbaar', $beschikbaarheid);
-    }
-    return $query->paginate(12);
+        if ($beschikbaar !== null) {
+            $query->where('Beschikbaar', $beschikbaar);
+        }
+        
+        return $query->paginate(12);
     }
 }

@@ -27,7 +27,7 @@
                     </select>
 
                     <label for="beschikbaar">Beschikbaar</label>
-                    <select name="beschikbaarheid" id="beschikbaarheid">
+                    <select name="beschikbaar" id="beschikbaar">
                         <option value="">Kies een optie</option>
                         <option value="1">Ja</option>
                         <option value="0">Nee</option>

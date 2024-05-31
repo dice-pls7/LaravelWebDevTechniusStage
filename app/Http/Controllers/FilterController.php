@@ -17,9 +17,16 @@ class FilterController extends Controller
     public function filterResults(Request $request)
     {
         $functie = $request->input('functie');
-        $beschikbaarheid = $request->input('beschikbaarheid');
+        $beschikbaar = $request->input('beschikbaar');
 
-        $kandidaten = $this->kandidaatRepository->filterKandidaten($functie, $beschikbaarheid);
+        // Converteer beschikbaar naar een integer als deze waarde '0' of '1' is
+        if ($beschikbaar === '0' || $beschikbaar === '1') {
+            $beschikbaar = (int) $beschikbaar;
+        } else {
+            $beschikbaar = null;
+        }
+
+        $kandidaten = $this->kandidaatRepository->filterKandidaten($functie, $beschikbaar);
 
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
