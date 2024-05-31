@@ -9,7 +9,6 @@ use App\Repositories\KandidaatRepository;
 class OverzichtsController extends Controller
 {
     private $kandidaatRepository;
-
     public function __construct(KandidaatRepository $kandidaatRepository)
     {
         $this->kandidaatRepository = $kandidaatRepository;
