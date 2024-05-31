@@ -83,7 +83,7 @@
             filters.style.display = (filters.style.display === "block") ? "none" : "block";
         }
     </script>
-    <script>
+                <script>
                    document.getElementById('PinKnop').addEventListener('click', function() {
                        var id = document.getElementById('kandidaatId').value;
                        fetch('/kandidaat/' + id + '/pin', {
