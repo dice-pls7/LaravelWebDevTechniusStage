@@ -39,43 +39,61 @@
             </div>
         </div>
 
-<div class="candidates">
-    @foreach ($kandidaten as $kandidaat)
-
-            @php
-                $class = '';
-                if ($kandidaat->Functie == 'Loodgieter') {
-                    $class = 'Loodgieter';
-                } elseif ($kandidaat->Functie == 'Elektromonteur') {
-                    $class = 'Elektromonteur';
-                }
-            @endphp
-
-        <a class="candidate {{ $class }}" href="{{ url('details/' . $kandidaat->Id) }}" class="details">
-        @if(Route::has('login'))
-                    @auth
-            @if($kandidaat->pinned == 1)
-            <button title="Kandidaat is gepind" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
-            @endif
-            @endauth
-        @endif
-            <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
-
-            <!-- Omzetten van datum naar Nederlandse notatie -->
-            <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
-            <p>Functie: {{ $kandidaat->Functie }}</p>
-            <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
-        </a>
-    @endforeach
-</div>
-    @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
-        <div class="mt-3">
-            {{ $kandidaten->links() }}
+        <div class="candidates">
+            @foreach ($kandidaten as $kandidaat)
+                @php
+                    $class = '';
+                    if ($kandidaat->Functie == 'Loodgieter') {
+                        $class = 'Loodgieter';
+                    } elseif ($kandidaat->Functie == 'Elektromonteur') {
+                        $class = 'Elektromonteur';
+                    }
+                @endphp
+                <div class="candidate {{ $class }}">
+                <input type="hidden" id="kandidaatId" value="{{ $kandidaat->Id }}">
+                    @if(Route::has('login'))
+                        @auth
+                            @if($kandidaat->pinned == 1)
+                                <button title="Kandidaat is gepind" type="button" id="PinKnop" onclick=""><i class="fas fa-thumbtack"></i></button>
+                            @endif
+                        @endauth
+                    @endif
+                    <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">
+                        <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
+                        <!-- Omzetten van datum naar Nederlandse notatie -->
+                        <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
+                        <p>Functie: {{ $kandidaat->Functie }}</p>
+                        <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
+                    </a>
+                </div>
+            @endforeach
         </div>
-    @endif
+        @if($kandidaten instanceof \Illuminate\Pagination\AbstractPaginator)
+            <div class="mt-3">
+                {{ $kandidaten->links() }}
+            </div>
+        @endif
+    </div>
+    <footer>
+        @include('Footer')
+    </footer>
+    <script>
+                   document.getElementById('PinKnop').addEventListener('click', function() {
+                       var id = document.getElementById('kandidaatId').value;
+                       fetch('/kandidaat/' + id + '/pin', {
+                           method: 'POST',
+                           headers: {
+                               'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                               'Content-Type': 'application/json'
+                            }
+                       }).then(response => {
+                           if (response.ok) { window.location.href = '/overzicht';}
+                           else { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
+                           }
+                       }).catch(error => { console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
+                       });
+                   });
+                  </script>
     @vite('resources/js/overzicht.js')
 </body>
-<footer>
-    @include('footer')
-</footer>
 </html>
