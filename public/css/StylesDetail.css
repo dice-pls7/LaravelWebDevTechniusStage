@@ -29,9 +29,9 @@ body {
     cursor: pointer;
 }
 .WijzigKnop {
-    display: flex; 
-    justify-content: flex-end; 
-    margin-top: 20px; 
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
     margin-right: 20px;
     text-align: center;
 }
@@ -50,7 +50,7 @@ body {
     text-decoration: none;
     margin-right: 10px; /* Voeg wat ruimte toe tussen de knoppen */
     display: flex;
-    
+
 }
 #WijzigButton:hover {
     background-color: white;
@@ -125,7 +125,7 @@ body {
 .PinKnop {
     position: absolute;
     right: 20px;
-    
+
     background-color: #003b4c;
     color: white;
     border-radius: 30px;
@@ -141,7 +141,7 @@ body {
     width: 200px;
     height: 55px;
     bottom : 175px;
-    
+
 }
 .PinKnop:hover {
     background-color: white;
@@ -156,8 +156,8 @@ body {
 #WijzigButton,
 #copyButton,
 #MailButton {
-    
-    
+
+
     width: 200px; /* Geef alle knoppen dezelfde breedte */
     height: 55px;
     margin-right: 10px; /* Voeg wat ruimte tussen de knoppen toe */
@@ -196,15 +196,15 @@ body {
     cursor: pointer;
 }
 .referentie p {
-    border: 2px solid #ccc; 
+    border: 2px solid #ccc;
     padding: 10px;
-    border-radius: 8px; 
-    margin-bottom: 10px; 
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 .referentie form {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 .referentie h2 {
     display: flex;
@@ -213,8 +213,8 @@ body {
 }
 .referentie input[type="text"],
 .referentie textarea {
-    width: 300px; 
-    margin-bottom: 15px; 
+    width: 300px;
+    margin-bottom: 15px;
     padding: 10px;
 }
 
@@ -236,7 +236,7 @@ body {
     color: #003b4c;
     cursor: pointer;
     float: right;
-    padding-left: 20px;  
+    padding-left: 20px;
 }
 .fas.fa-share {
     color: #003b4c;
