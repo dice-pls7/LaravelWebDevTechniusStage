@@ -1,1 +1,0 @@
-document.getElementById("FilterButton").onclick=function(){var e=document.getElementById("Filters");e.style.display=e.style.display==="block"?"none":"block"};document.getElementById("FilterButton2").onclick=function(){var e=document.getElementById("Filters");e.style.display="none"};
