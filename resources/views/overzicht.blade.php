@@ -49,13 +49,15 @@
                         $class = 'Elektromonteur';
                     }
                 @endphp
-                <div class="candidate {{ $class }}">
-                <input type="hidden" id="kandidaatId" value="{{ $kandidaat->Id }}">
-                    @if(Route::has('login'))
-                        @auth
-                            @if($kandidaat->pinned == 1)
-                                <button title="Kandidaat is gepind" type="button" id="PinKnop" onclick=""><i class="fas fa-thumbtack"></i></button>
-                            @endif
+            <div class="candidate {{ $class }}">
+                <input type="hidden" class="kandidaatId" value="{{ $kandidaat->Id }}">
+                @if(Route::has('login'))
+                    @auth
+                    @if($kandidaat->pinned)
+                        <button title="Losmaken" type="button" class="PinKnop" data-id="{{ $kandidaat->Id }}">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                    @endif
                         @endauth
                     @endif
                     <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">
