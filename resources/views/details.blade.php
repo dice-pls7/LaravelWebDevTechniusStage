@@ -21,6 +21,7 @@
                 <div class="DeleteKnop">
                 @if(Route::has('login'))
                     @auth
+
                     <button title="Delete kandidaat" type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
                     <button title="Pin kandidaat" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
                     @endauth
