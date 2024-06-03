@@ -27,7 +27,7 @@
                 @endif
                     <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
                 </div>
-            <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ $kandidaat->Achternaam }}</h2>
+            <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
             <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
             <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
             <p><span>Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
@@ -99,6 +99,13 @@
                 if (!empty($kandidaat->FlavourText)) {
                     $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
                 }
+                //add reviews to email body
+                $body .= "\nReferenties:\n";
+                foreach ($reviews as $review) {
+                    $body .= "Bedrijfsnaam: $review->Bedrijfsnaam\n";
+                    $body .= "Review: $review->Review\n";
+                }
+
                 // Encode the email body for URL
                 $body_encoded = rawurlencode($body);
                 ?>

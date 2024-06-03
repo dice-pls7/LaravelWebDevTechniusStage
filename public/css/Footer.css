@@ -17,7 +17,6 @@
     height: 500px;
     text-align: center;
 }
-
 .main-footer-right-bg {
     background-image: url('Image/loodgieter-klussen-huis.jpg');
     background-repeat: no-repeat; 
@@ -25,7 +24,6 @@
     width: 100%;
     height: 500px;
 }
-
 .main-footer-content {
     width: 100%;
     display: grid;

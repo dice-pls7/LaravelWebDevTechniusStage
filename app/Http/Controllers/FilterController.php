@@ -19,7 +19,7 @@ class FilterController extends Controller
         $functie = $request->input('functie');
         $beschikbaar = $request->input('beschikbaar');
 
-        // Converteer beschikbaar naar een integer als deze waarde '0' of '1' is
+
         if ($beschikbaar === '0' || $beschikbaar === '1') {
             $beschikbaar = (int) $beschikbaar;
         } else {
