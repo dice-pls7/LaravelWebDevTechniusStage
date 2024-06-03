@@ -1,3 +1,6 @@
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 /.phpunit.cache
 /node_modules
 /public/build
@@ -17,3 +20,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+vendor/
+/vendor/
