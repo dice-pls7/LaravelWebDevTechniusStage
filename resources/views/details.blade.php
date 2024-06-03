@@ -110,8 +110,60 @@
                         <button id="MailButton">Stuur Email</button>
                     </a>
                 </div>
-                @endauth
+
+                @else
+                <?php
+                // Define variables for email content
+                $to = "Hello@technius.nl";
+                $subject = "interesse in: ". $kandidaat->Voornaam;
+                // voeg in de code deze tekst aan de body mail toe "Vul alstublieft hier uw telefoonnummer in, dan kan Technius contact met u opnemen.
+                
+
+                
+                $body = "Beste Team Technius, \n\n Ik heb interesse in de volgende kandidaat: \n\n";
+                $body .= "Naam: $kandidaat->Voornaam";
+                if (!empty($kandidaat->Tussenvoegsel)) {
+                    $body .= " $kandidaat->Tussenvoegsel";
+                }
+
+                //hoe pas ik hier de styling aan van de tekst in de body mail? dit doe je zo: $body .= "<span style='color: red;'>$kandidaat->Achternaam</span>\n";
+                $body .= "$kandidaat->Achternaam\n";
+                $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
+                $body .= "Functie: $kandidaat->Functie\n";
+                $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
+                $body .= "Locatie: $kandidaat->Locatie\n";
+                $body .= "Taal: $kandidaat->Taal\n";
+
+                if (!empty($kandidaat->Werkervaring)) {
+                    $body .= "Werkervaring: $kandidaat->Werkervaring\n";
+                }
+                if (!empty($kandidaat->OudeOpdrachtgevers)) {
+                    $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";
+                }
+                if (!empty($kandidaat->Diplomas)) {
+                    $body .= "Diploma's: $kandidaat->Diplomas\n";
+                }
+                if (!empty($kandidaat->Certificaten)) {
+                    $body .= "Certificaten: $kandidaat->Certificaten\n";
+                }
+                if (!empty($kandidaat->FlavourText)) {
+                    $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
+                }
+                $body .= "\n Met vriendelijke groet, \n\n Uw naam: \n Uw telefoonnummer: \n Uw emailadres: \n\n";
+                // Encode the email body for URL
+                $body_encoded = rawurlencode($body);
+                ?>
+                <div class="WijzigKnop">
+                    <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
+                        <button id="MailButton">Interesse? Mail ons!</button>
+                    </a>
+                </div>
+                
             @endif
+@endauth
+ 
+
+            
         </div>
     </div>
     <script>
