@@ -29,7 +29,7 @@ class Kandidaat {
         $this->Achternaam = $achternaam;
         $this->Geboortedatum = $geboortedatum;
         // Valideer de functie tegen de Functie-enum
-        if ($functie !== Functie::Loodgieter && $functie !== Functie::Elektromonteur) {
+        if ($functie !== Functie::Loodgieter || $functie !== Functie::Elektromonteur || $functie !== Functie::Overig) {
             
         }
         $this->Functie = $functie;

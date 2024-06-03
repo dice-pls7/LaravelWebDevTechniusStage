@@ -20,15 +20,20 @@
                 <label for="functie">Functie</label>
                 <select name="functie" id="functie">
                     <option value="">Kies een optie</option>
-                    <option value="Loodgieter">Loodgieter</option>
                     <option value="Elektromonteur">Elektromonteur</option>
+                    <option value="Loodgieter">Loodgieter</option>
+                    <option value="Overig">Overig</option>
                 </select>
+                @if(Route::has('login'))
+                    @auth
                 <label for="beschikbaar">Beschikbaar</label>
                 <select name="beschikbaar" id="beschikbaar">
                     <option value="">Kies een optie</option>
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
                 </select>
+                @endauth
+                @endif
                 <button type="reset">Reset filter opties</button>
                 <button type="submit">Filteren</button>
             </form>
@@ -57,10 +62,12 @@
                     @endauth
                 @endif
                 <a href="{{ url('details/' . $kandidaat->Id) }}" class="details">
-                    <h2>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
+                    <div class="NaamFunctie">
+                    <h3>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h3>
+                    <h3>{{ $kandidaat->Functie }}</h3>
+                    </div>
                     <!-- Omzetten van datum naar Nederlandse notatie -->
                     <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
-                    <p>Functie: {{ $kandidaat->Functie }}</p>
                     <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
                 </a>
             </div>

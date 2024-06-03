@@ -11,7 +11,7 @@ class KandidaatRepository
             return DB::table('kandidaat')->orderByDesc('pinned')->paginate(12);
         }
         else{
-            return DB::table('kandidaat')->where('beschikbaar', 1)->paginate(12);
+            return DB::table('kandidaat')->orderByDesc('pinned')->where('beschikbaar', 1)->paginate(12);
         }
     }
     public function getKandidaat($id)

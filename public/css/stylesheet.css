@@ -68,7 +68,7 @@ body a{
 .candidate.Loodgieter:hover p{
     color: white;
 }
-.candidate.Loodgieter:hover h2{
+.candidate.Loodgieter:hover h3{
     color: white;
 }
 .candidate.Elektromonteur {
@@ -99,6 +99,12 @@ body a{
     text-decoration: none;
     font-size: 14px;
 }
+.NaamFunctie{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
 #FilterButton {
     background-color: #ffc400;
     color: black;
@@ -112,6 +118,21 @@ body a{
     font-weight: 700;
 }
 #FilterButton:hover {
+    background-color: white;
+    color: black;
+}
+#FilterButton2 {
+    background-color: #003b4c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 18px;
+    border: 3px solid #003b4c;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+}
+#FilterButton2:hover {
     background-color: white;
     color: black;
 }
@@ -141,9 +162,21 @@ body a{
     position: absolute;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 18px;
     padding: 12px 16px;
     z-index: 2;
     margin-top: 25px;
+}
+.filters select {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.filters select:focus {
+    outline: none;
+    border-color: #003b4c;
 }
 .filters label, .filters select {
     display: flex;

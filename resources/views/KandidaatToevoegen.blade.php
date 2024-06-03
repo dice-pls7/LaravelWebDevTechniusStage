@@ -39,6 +39,7 @@
                     <option value="">Kies een functie</option>
                     <option value="Loodgieter">Loodgieter</option>
                     <option value="Elektromonteur">Elektromonteur</option>
+                    <option value="Overig">Overig</option>
                 </select>
             </div>
             <div class="form-group">
