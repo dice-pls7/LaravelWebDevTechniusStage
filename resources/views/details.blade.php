@@ -78,7 +78,7 @@
                 if (!empty($kandidaat->Tussenvoegsel)) {
                     $body .= " $kandidaat->Tussenvoegsel";
                 }
-                $body .= " $kandidaat->Achternaam\n";
+                $body .=  " " . substr($kandidaat->Achternaam, 0, 1). "\n";
                 $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
                 $body .= "Functie: $kandidaat->Functie\n";
                 $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
@@ -135,7 +135,7 @@
                 }
 
                 //hoe pas ik hier de styling aan van de tekst in de body mail? dit doe je zo: $body .= "<span style='color: red;'>$kandidaat->Achternaam</span>\n";
-                $body .= "$kandidaat->Achternaam\n";
+                $body .= " " .substr($kandidaat->Achternaam, 0, 1). "\n";
                 $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
                 $body .= "Functie: $kandidaat->Functie\n";
                 $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
