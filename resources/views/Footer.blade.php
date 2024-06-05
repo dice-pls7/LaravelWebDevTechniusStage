@@ -15,7 +15,7 @@
                     </li>
                     <li class="contact-item mobile-only">
                         <i class="fas fa-mobile-alt"></i>
-                        <a class="contact-list-text big">038-4202224</a>
+                        <a href="tel:038-4202224" class="contact-list-text big">038-4202224</a>
                     </li>
                     <li class="contact-item">
                         <a href="mailto:hello@technius.nl">

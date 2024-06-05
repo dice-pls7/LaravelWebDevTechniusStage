@@ -48,6 +48,8 @@
                     $class = 'Loodgieter';
                 } elseif ($kandidaat->Functie == 'Elektromonteur') {
                     $class = 'Elektromonteur';
+                }elseif ($kandidaat->Functie == 'Overig') {
+                    $class = 'Overig';
                 }
             @endphp
             <div class="candidate {{ $class }}">
