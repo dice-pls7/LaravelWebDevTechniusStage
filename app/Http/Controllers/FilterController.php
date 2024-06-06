@@ -35,4 +35,5 @@ class FilterController extends Controller
 
     return view('overzicht', ['kandidaten' => $kandidaten]);
     }
+
 }
