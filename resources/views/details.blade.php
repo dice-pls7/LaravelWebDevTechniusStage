@@ -34,7 +34,7 @@
         <p><span class="label">Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
         <p><span class="label">Locatie: </span>{{ $kandidaat->Locatie }}</p>
         <p><span class="label">Taal: </span>{{ $kandidaat->Taal }}</p>
-        <p><span class="label">Werkervaring: </span>{{ $kandidaat->Werkervaring }}</p>
+        <p><span class="label">Werkervaring: </span>{{ $kandidaat->Werkervaring }} jaar</p>
         <p><span class="label">Oude Opdrachtgevers: </span>{{ $kandidaat->OudeOpdrachtgevers }}</p>
         <p><span class="label">Diploma's: </span>{{ $kandidaat->Diplomas }}</p>
         <p><span class="label">Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
