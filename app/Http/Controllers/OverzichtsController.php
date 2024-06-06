@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kandidaat;
 use App\Models\Reviews;
 use App\Repositories\KandidaatRepository;
+use App\Helpers\EmailHelper; // Add this line
+
 class OverzichtsController extends Controller
 {
     private $kandidaatRepository;
@@ -24,7 +26,10 @@ class OverzichtsController extends Controller
     {
         $kandidaat = $this->kandidaatRepository->getKandidaat($id);
         $reviews = $this->kandidaatRepository->getReviews($id);
-        return view('details', ['kandidaat' => $kandidaat, 'reviews' => $reviews]);
+
+        $emailBodyAuth = EmailHelper::generateEmailBody($kandidaat, $reviews);
+        $emailBodyInterest = EmailHelper::generateInterestEmailBody($kandidaat);
+        return view('details', ['kandidaat' => $kandidaat, 'reviews' => $reviews, 'emailBodyAuth' => $emailBodyAuth, 'emailBodyInterest' => $emailBodyInterest]);
     }
 
     public function delete($id)

@@ -18,30 +18,29 @@
     </div>
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
     <div id="capture" class="Gegevens">
-                <div class="DeleteKnop">
-                @if(Route::has('login'))
-                    @auth
+        <div class="DeleteKnop">
+            @if(Route::has('login'))
+                @auth
 
-                    <button title="Delete kandidaat" type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
-                    <button title="Pin kandidaat" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
-                    @endauth
-                @endif
-                    <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
-                </div>
-            <h2>{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h2>
-            <p><span>Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
-            <p><span>Functie: </span>{{ $kandidaat->Functie }}</p>
-            <p><span>Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
-            <p><span>Locatie: </span>{{ $kandidaat->Locatie }}</p>
-            <p><span>Taal: </span>{{ $kandidaat->Taal }}</p>
-            <p><span>Werkervaring: </span>{{ $kandidaat->Werkervaring }}</p>
-            <p><span>Oude Opdrachtgevers: </span>{{ $kandidaat->OudeOpdrachtgevers }}</p>
-            <p><span>Diploma's: </span>{{ $kandidaat->Diplomas }}</p>
-            <p><span>Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
-            <p><span>Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
+                <button title="Delete kandidaat" type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
+                <button title="Pin kandidaat" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
+                @endauth
+            @endif
+                <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
+        </div>
+        <h2><span class=label">{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</span></h2>
+        <p><span class="label">Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
+        <p><span class="label">Functie: </span>{{ $kandidaat->Functie }}</p>
+        <p><span class="label">Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
+        <p><span class="label">Locatie: </span>{{ $kandidaat->Locatie }}</p>
+        <p><span class="label">Taal: </span>{{ $kandidaat->Taal }}</p>
+        <p><span class="label">Werkervaring: </span>{{ $kandidaat->Werkervaring }}</p>
+        <p><span class="label">Oude Opdrachtgevers: </span>{{ $kandidaat->OudeOpdrachtgevers }}</p>
+        <p><span class="label">Diploma's: </span>{{ $kandidaat->Diplomas }}</p>
+        <p><span class="label">Certificaten: </span>{{ $kandidaat->Certificaten }}</p>
+        <p><span class="label">Beschrijving kandidaat: </span>{{ $kandidaat->FlavourText }}</p>
 
-
-            <div class="referentie">
+        <div class="referentie">
             <h2>Referenties</h2>
             @if(Route::has('login'))
             @auth
@@ -57,8 +56,8 @@
             @endauth
             @endif
             @foreach ($reviews as $review)
-                <p>Bedrijfsnaam: {{$review->Bedrijfsnaam}}<br>
-                Review: {{$review->Review}}
+                <p><span class="label">Bedrijfsnaam: </span>{{$review->Bedrijfsnaam}}<br>
+                <span class="label"> Review: </span> {{$review->Review}}
                 @if(Route::has('login'))
                     @auth
                         <i title="Delete referentie"class="fas fa-trash-alt deleteReferentie" data-review-id="{{ $review->Id }}"></i>
@@ -66,119 +65,33 @@
                 @endif
                 </p>
             @endforeach
+        </div>
+
+        @if(Route::has('login'))
+        @auth
+            <div class="WijzigKnop">
+                <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
+                <!-- Button to trigger email -->
+                <a href="mailto:?subject=aanrading: {{ $kandidaat->Voornaam }}&body={{ $emailBodyAuth }}" target="_blank">
+                    <button id="MailButton">Stuur Email</button>
+                </a>
             </div>
 
-            @if(Route::has('login'))
-            @auth
-            <?php
-                // Define variables for email content
-                $to = "";
-                $subject = "aanrading: ". $kandidaat->Voornaam;
-                $body = "Naam: $kandidaat->Voornaam";
-                if (!empty($kandidaat->Tussenvoegsel)) {
-                    $body .= " $kandidaat->Tussenvoegsel";
-                }
-                $body .=  " " . substr($kandidaat->Achternaam, 0, 1). "\n";
-                $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
-                $body .= "Functie: $kandidaat->Functie\n";
-                $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
-                $body .= "Locatie: $kandidaat->Locatie\n";
-                $body .= "Taal: $kandidaat->Taal\n";
-
-                if (!empty($kandidaat->Werkervaring)) {
-                    $body .= "Werkervaring: $kandidaat->Werkervaring\n";
-                }
-                if (!empty($kandidaat->OudeOpdrachtgevers)) {
-                    $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";
-                }
-                if (!empty($kandidaat->Diplomas)) {
-                    $body .= "Diploma's: $kandidaat->Diplomas\n";
-                }
-                if (!empty($kandidaat->Certificaten)) {
-                    $body .= "Certificaten: $kandidaat->Certificaten\n";
-                }
-                if (!empty($kandidaat->FlavourText)) {
-                    $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
-                }
-                //add reviews to email body
-                $body .= "\nReferenties:\n";
-                foreach ($reviews as $review) {
-                    $body .= "Bedrijfsnaam: $review->Bedrijfsnaam\n";
-                    $body .= "Review: $review->Review\n";
-                }
-
-                // Encode the email body for URL
-                $body_encoded = rawurlencode($body);
-                ?>
-
-                <div class="WijzigKnop">
-                    <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
-                    <!-- Button to trigger email -->
-                    <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
-                        <button id="MailButton">Stuur Email</button>
-                    </a>
-                </div>
-
-                @else
-                <?php
-                // Define variables for email content
-                $to = "Hello@technius.nl";
-                $subject = "interesse in: ". $kandidaat->Voornaam;
-                // voeg in de code deze tekst aan de body mail toe "Vul alstublieft hier uw telefoonnummer in, dan kan Technius contact met u opnemen.
-                
-
-                
-                $body = "Beste Team Technius, \n\n Ik heb interesse in de volgende kandidaat: \n\n";
-                $body .= "Naam: $kandidaat->Voornaam";
-                if (!empty($kandidaat->Tussenvoegsel)) {
-                    $body .= " $kandidaat->Tussenvoegsel";
-                }
-
-                //hoe pas ik hier de styling aan van de tekst in de body mail? dit doe je zo: $body .= "<span style='color: red;'>$kandidaat->Achternaam</span>\n";
-                $body .= " " .substr($kandidaat->Achternaam, 0, 1). "\n";
-                $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
-                $body .= "Functie: $kandidaat->Functie\n";
-                $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
-                $body .= "Locatie: $kandidaat->Locatie\n";
-                $body .= "Taal: $kandidaat->Taal\n";
-
-                if (!empty($kandidaat->Werkervaring)) {
-                    $body .= "Werkervaring: $kandidaat->Werkervaring\n";
-                }
-                if (!empty($kandidaat->OudeOpdrachtgevers)) {
-                    $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";
-                }
-                if (!empty($kandidaat->Diplomas)) {
-                    $body .= "Diploma's: $kandidaat->Diplomas\n";
-                }
-                if (!empty($kandidaat->Certificaten)) {
-                    $body .= "Certificaten: $kandidaat->Certificaten\n";
-                }
-                if (!empty($kandidaat->FlavourText)) {
-                    $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
-                }
-                $body .= "\n Met vriendelijke groet, \n\n Uw naam: \n Uw telefoonnummer: \n Uw emailadres: \n\n";
-                // Encode the email body for URL
-                $body_encoded = rawurlencode($body);
-                ?>
-                <div class="WijzigKnop">
-                    <a href="mailto:<?php echo $to; ?>?subject=<?php echo $subject; ?>&body=<?php echo $body_encoded; ?>" target="_blank">
-                        <button id="MailButton">Interesse? Mail ons!</button>
-                    </a>
-                </div>
-                
-            @endif
-@endauth
- 
-
-            
-        </div>
+        @else
+            <div class="WijzigKnop">
+                <a href="mailto:Hello@technius.nl?subject=interesse in: {{ $kandidaat->Voornaam }}&body={{ $emailBodyInterest }}" target="_blank">
+                    <button id="MailButton">Interesse? Mail ons!</button>
+                </a>
+            </div>
+        @endif
+        @endauth
     </div>
-    <script>
-        // Define the csrfToken variable and pass it to the external JS file
-        var csrfToken = '{{ csrf_token() }}';
-    </script>
-    @vite('resources/js/details.js')
+</div>
+<script>
+    // Define the csrfToken variable and pass it to the external JS file
+    var csrfToken = '{{ csrf_token() }}';
+</script>
+@vite('resources/js/details.js')
 </body>
 <footer>
     @include('footer')

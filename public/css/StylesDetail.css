@@ -1,6 +1,14 @@
 body {
     font-family: Arial, sans-serif;
 }
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+p{
+    font-weight: 500;
+    font-size: 16px;
+}
 .Terugknop {
     width : 200px;
     height: 55px;
