@@ -60,7 +60,7 @@
             </div>
             <div class="form-group">
                 <label for="Werkervaring">Werkervaring *</label>
-                <input type="number" id="Werkervaring" name="Werkervaring" min = "0" max = "99" required>
+                <input type="text" id="Werkervaring" name="Werkervaring" pattern="\d+" minlength="1" maxlength="2" required>
             </div>
             <div class="form-group">
                 <label for="OudeOpdrachtgevers">Oude Opdrachtgevers</label>
