@@ -19,15 +19,15 @@
         <div class="form-grid">
             <div class="form-group">
                 <label for="Voornaam">Voornaam *</label>
-                <input type="text" id="Voornaam" name="Voornaam" value="<?php print($kandidaat->Voornaam)?>" required>
+                <input type="text" id="Voornaam" name="Voornaam" maxlength = "15" value="<?php print($kandidaat->Voornaam)?>" required>
             </div>
             <div class="form-group">
                 <label for="Tussenvoegsel">Tussenvoegsel</label>
-                <input type="text" id="Tussenvoegsel" name="Tussenvoegsel" value="<?php print($kandidaat->Tussenvoegsel)?>">
+                <input type="text" id="Tussenvoegsel" name="Tussenvoegsel" maxlength = "15" value="<?php print($kandidaat->Tussenvoegsel)?>">
             </div>
             <div class="form-group">
                 <label for="Achternaam">Achternaam *</label>
-                <input type="text" id="Achternaam" name="Achternaam" value="<?php print($kandidaat->Achternaam)?>" required>
+                <input type="text" id="Achternaam" name="Achternaam" maxlength = "15" value="<?php print($kandidaat->Achternaam)?>" required>
             </div>
             <div class="form-group">
                 <label for="Geboortedatum">Geboortedatum *</label>
@@ -53,11 +53,11 @@
             </div>
             <div class="form-group">
                 <label for="Locatie">Locatie *</label>
-                <input type="text" id="Locatie" name="Locatie" value="<?php print($kandidaat->Locatie)?>" required>
+                <input type="text" id="Locatie" name="Locatie" maxlength = "15" value="<?php print($kandidaat->Locatie)?>" required>
             </div>
             <div class="form-group">
                 <label for="Taal">Taal *</label>
-                <input type="text" id="Taal" name="Taal" value="<?php print($kandidaat->Taal)?>" required>
+                <input type="text" id="Taal" name="Taal" maxlength = "15" value="<?php print($kandidaat->Taal)?>" required>
             </div>
             <div class="form-group">
                 <label for="Werkervaring">Werkervaring *</label>
@@ -65,20 +65,20 @@
             </div>
             <div class="form-group">
                 <label for="OudeOpdrachtgevers">Oude Opdrachtgevers</label>
-                <input type="text" id="OudeOpdrachtgevers" name="OudeOpdrachtgevers" value="<?php print($kandidaat->OudeOpdrachtgevers)?>">
+                <input type="text" id="OudeOpdrachtgevers" name="OudeOpdrachtgevers" maxlength = "100" value="<?php print($kandidaat->OudeOpdrachtgevers)?>">
             </div>
             <div class="form-group">
                 <label for="Diplomas">Diploma's</label>
-                <input type="text" id="Diplomas" name="Diplomas" value="<?php print($kandidaat->Diplomas)?>">
+                <input type="text" id="Diplomas" name="Diplomas" maxlength = "100" value="<?php print($kandidaat->Diplomas)?>">
             </div>
             <div class="form-group">
                 <label for="Certificaten">Certificaten</label>
-                <input type="text" id="Certificaten" name="Certificaten" value="<?php print($kandidaat->Certificaten)?>">
+                <input type="text" id="Certificaten" name="Certificaten" maxlength = "100" value="<?php print($kandidaat->Certificaten)?>">
             </div>
         </div>
         
         <label for="FlavourText">Beschrijving kandidaat</label>
-        <textarea id="FlavourText" name="FlavourText"><?php print($kandidaat->FlavourText)?></textarea>
+        <textarea id="FlavourText" name="FlavourText" maxlength = "700"><?php print($kandidaat->FlavourText)?></textarea>
 
         <div class="Buttons">
             <a href="{{ url('/overzicht') }}">Annuleren</a>

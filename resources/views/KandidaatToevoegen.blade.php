@@ -15,15 +15,15 @@
         <div class="form-grid">
             <div class="form-group">
                 <label for="Voornaam">Voornaam *</label>
-                <input type="text" id="Voornaam" name="Voornaam" required>
+                <input type="text" id="Voornaam" name="Voornaam" maxlength = "15" required>
             </div>
             <div class="form-group">
                 <label for="Tussenvoegsel">Tussenvoegsel</label>
-                <input type="text" id="Tussenvoegsel" name="Tussenvoegsel">
+                <input type="text" id="Tussenvoegsel" name="Tussenvoegsel" maxlength = "15">
             </div>
             <div class="form-group">
                 <label for="Achternaam">Achternaam *</label>
-                <input type="text" id="Achternaam" name="Achternaam" required>
+                <input type="text" id="Achternaam" name="Achternaam" maxlength = "15" required>
             </div>
             <div class="form-group">
                 <label for="Geboortedatum">Geboortedatum *</label>
@@ -52,31 +52,31 @@
             </div>
             <div class="form-group">
                 <label for="Locatie">Locatie *</label>
-                <input type="text" id="Locatie" name="Locatie" required>
+                <input type="text" id="Locatie" name="Locatie" maxlength = "15" required>
             </div>
             <div class="form-group">
                 <label for="Taal">Taal *</label>
-                <input type="text" id="Taal" name="Taal" required>
+                <input type="text" id="Taal" name="Taal" maxlength = "15" required>
             </div>
             <div class="form-group">
                 <label for="Werkervaring">Werkervaring *</label>
-                <input type="text" id="Werkervaring" name="Werkervaring" required>
+                <input type="number" id="Werkervaring" name="Werkervaring" min = "0" max = "99" required>
             </div>
             <div class="form-group">
                 <label for="OudeOpdrachtgevers">Oude Opdrachtgevers</label>
-                <input type="text" id="OudeOpdrachtgevers" name="OudeOpdrachtgevers">
+                <input type="text" id="OudeOpdrachtgevers" name="OudeOpdrachtgevers" maxlength = "100">
             </div>
             <div class="form-group">
                 <label for="Diplomas">Diploma's</label>
-                <input type="text" id="Diplomas" name="Diplomas">
+                <input type="text" id="Diplomas" name="Diplomas" maxlength = "100">
             </div>
             <div class="form-group">
                 <label for="Certificaten">Certificaten</label>
-                <input type="text" id="Certificaten" name="Certificaten">
+                <input type="text" id="Certificaten" name="Certificaten" maxlength = "100">
             </div>
         </div>
         <label for="FlavourText">Beschrijving kandidaat</label>
-        <textarea id="FlavourText" name="FlavourText"></textarea>
+        <textarea id="FlavourText" name="FlavourText" maxlength = "700"></textarea>
 
         <div class="Buttons">
             <a href="{{ url('overzicht') }}">Terug naar overzicht</a>
