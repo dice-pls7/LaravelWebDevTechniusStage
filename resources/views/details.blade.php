@@ -48,8 +48,8 @@
                 @csrf
                 <input type="hidden" name="KandidaatId" value="{{ $kandidaat->Id }}">
 
-                <input type="text" name="bedrijfsnaam" id="Bedrijfsnaam" placeholder="Bedrijfsnaam">
-                <textarea type="text" name="review" id="Review" placeholder="Review" maxlength="100"></textarea>
+                <input type="text" name="bedrijfsnaam" id="Bedrijfsnaam" required placeholder="Bedrijfsnaam">
+                <textarea type="text" name="review" id="Review" required placeholder="Review" maxlength="100"></textarea>
 
                 <button type="submit">Voeg referentie toe</button>
             </form>

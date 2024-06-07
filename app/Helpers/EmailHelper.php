@@ -10,7 +10,7 @@ class EmailHelper
         if (!empty($kandidaat->Tussenvoegsel)) {
             $body .= " $kandidaat->Tussenvoegsel";
         }
-        $body .= " " . substr($kandidaat->Achternaam, 0, 1) . "\n";
+        $body .= " " . $kandidaat->Achternaam . "\n";
         $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
         $body .= "Functie: $kandidaat->Functie\n";
         $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
@@ -49,7 +49,7 @@ class EmailHelper
         if (!empty($kandidaat->Tussenvoegsel)) {
             $body .= " $kandidaat->Tussenvoegsel";
         }
-        $body .= " " . substr($kandidaat->Achternaam, 0, 1) . "\n";
+        $body .=  " " . $kandidaat->Achternaam . "\n";
         $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
         $body .= "Functie: $kandidaat->Functie\n";
         $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";

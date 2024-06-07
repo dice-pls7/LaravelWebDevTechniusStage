@@ -94,7 +94,6 @@ class KandidaatRepository
         if ($functie) {
             $query->where('Functie', $functie);
         }
-
         if ($beschikbaar !== null) {
             $query->where('Beschikbaar', $beschikbaar);
         }
