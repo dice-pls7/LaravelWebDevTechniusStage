@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label for="Werkervaring">Werkervaring *</label>
-                <input type="text" id="Werkervaring" name="Werkervaring" value="<?php print($kandidaat->Werkervaring)?>" required>
+                <input type="text" id="Werkervaring" name="Werkervaring" pattern="\d+" minlength="1" maxlength="2" value="<?php print($kandidaat->Werkervaring)?>" required>
             </div>
             <div class="form-group">
                 <label for="OudeOpdrachtgevers">Oude Opdrachtgevers</label>
