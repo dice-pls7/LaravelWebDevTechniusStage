@@ -90,15 +90,18 @@ class KandidaatRepository
     public function filterKandidaten($functie, $beschikbaar)
     {
         $query = DB::table('kandidaat')->orderByDesc('pinned');
-
+        if (auth()->check()){
         if ($functie) {
             $query->where('Functie', $functie);
         }
-
         if ($beschikbaar !== null) {
             $query->where('Beschikbaar', $beschikbaar);
         }
-        
+    }else{
+        if ($functie) {
+            $query->where('Functie', $functie)->where('Beschikbaar', 1);
+        }
+    }     
         return $query->paginate(12);
     }
 }

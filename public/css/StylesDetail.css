@@ -1,6 +1,14 @@
 body {
     font-family: Arial, sans-serif;
 }
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+p{
+    font-weight: 500;
+    font-size: 16px;
+}
 .Terugknop {
     width : 200px;
     height: 55px;
@@ -156,8 +164,6 @@ body {
 #WijzigButton,
 #copyButton,
 #MailButton {
-
-
     width: 200px; /* Geef alle knoppen dezelfde breedte */
     height: 55px;
     margin-right: 10px; /* Voeg wat ruimte tussen de knoppen toe */
@@ -243,4 +249,37 @@ body {
     cursor: pointer;
     float: right;
     padding-left: 10px;
+}
+@media only screen and (max-width: 768px) {
+    .Gegevenstabel {
+        width: 90%; /* Verklein de breedte van de gegevenstabel */
+    }
+
+    .Gegevens {
+        padding: 10px; /* Verminder de padding rondom de gegevens */
+    }
+
+    .referentie {
+        width: 90%; /* Verklein de breedte van de referentie sectie */
+    }
+
+    .referentie form,
+    .referentie p {
+        width: 100%; /* Maak de formulieren en paragrafen volledig breed op mobiel */
+    }
+
+    .referentie button {
+        width: 100%; /* Maak de knoppen volledig breed op mobiel */
+        margin-bottom: 10px; /* Voeg wat ruimte toe tussen de knoppen */
+    }
+
+    .referentie h2 {
+        margin-bottom: 5px; /* Verminder de marge onder de kopjes */
+    }
+
+    .DeleteKnop {
+        position: static; /* Verwijder de absolute positionering van de deleteknop */
+        text-align: right; /* Zet de tekst van de deleteknop naar rechts */
+        margin-bottom: 10px; /* Voeg wat ruimte toe onder de deleteknop */
+    }
 }

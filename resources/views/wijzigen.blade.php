@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('/css/Toevoegen.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/Header.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/Footer.css') }}">
-    <title>Wijzigen Kandidaat</title>
+    <title>Kandidaat Wijzigen</title>
     @include('Header')
 </head>
 <body>
@@ -38,6 +38,7 @@
                 <select id="Functie" name="Functie" required>
                     <option value="Loodgieter" <?php if($kandidaat->Functie == "Loodgieter") print("selected")?>>Loodgieter</option>
                     <option value="Elektromonteur" <?php if($kandidaat->Functie == "Elektromonteur") print("selected")?>>Elektromonteur</option>
+                    <option value="Overig" <?php if($kandidaat->Functie == "Overig") print("selected")?>>Overig</option>
                 </select>
             </div>
             <div class="form-group">

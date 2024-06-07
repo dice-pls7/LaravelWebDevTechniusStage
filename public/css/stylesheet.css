@@ -77,6 +77,18 @@ body a{
 .candidate.Elektromonteur:hover {
     background-color: #ffc400;
 }
+.candidate.Overig {
+    border-color: #003b4c;
+}
+.candidate.Overig:hover {
+    background-color: #003b4c;
+}
+.candidate.Overig:hover p{
+    color: white;
+}
+.candidate.Overig:hover h3{
+    color: white;
+}
 .candidate h2 {
     margin-top: 0;
 }

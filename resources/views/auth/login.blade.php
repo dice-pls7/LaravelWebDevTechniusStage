@@ -4,7 +4,7 @@
 
     <form method="POST" action="{{ route('login') }}">
         <div>
-            <h1 class="text-2xl font-bold">Heb je een account? Log dan hieronder in:</h1>
+            <h1 class="text-1xl font-bold">Heb je een account? Log dan hieronder in:</h1>
         </div>
         @csrf
 
@@ -36,21 +36,16 @@
         </div>
 
         <div>
-            <h1 class="text-2xl font-bold">Heb je geen account? Druk dan op de 'ga verder'</h1>
+            <h1 class="text-1xl font-bold">Heb je geen account? klik dan op de 'Ga verder'</h1>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
+        <div class="flex items-center justify-center mt-4">
             <x-primary-button class="ms-3">
                 {{__('Log in')}}
             </x-primary-button>
 
-            <a href="{{ route('overzicht') }}">Ga verder</a>
+            <a href="{{ url()->previous() }}" style="margin-left: 15px;">Ga verder</a>
+            
 
         </div>
     </form>
