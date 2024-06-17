@@ -18,8 +18,6 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
-
-
 test('Gebruiker wijzigen', async ({ page }) => {
   await page.goto('http://127.0.0.1:8000/');
   await page.getByLabel('Email').click();

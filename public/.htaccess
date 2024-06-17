@@ -18,4 +18,28 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Block access to .env file
+    <Files .env>
+        Require all denied
+    </Files>
+
+     # Block access to .htaccess file
+     <Files .htaccess>
+     Require all denied
+    </Files>
+
+     # Security headers
+     <IfModule mod_headers.c>
+     Header set X-Content-Type-Options nosniff
+     Header set X-Frame-Options SAMEORIGIN
+     Header set X-XSS-Protection "1; mode=block"
+     Header always set Referrer-Policy "no-referrer-when-downgrade"
+     Header always set Content-Security-Policy "default-src 'self';"
+    </IfModule>
+
+     # Custom error pages
+     ErrorDocument 404 /404.html
+     ErrorDocument 500 /500.html
+     
 </IfModule>
