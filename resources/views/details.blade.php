@@ -72,7 +72,7 @@
                 <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
                 <!-- Button to trigger email -->
                 <a href="mailto:?subject=aanrading: {{ $kandidaat->Voornaam }}&body={{ $emailBodyAuth }}" target="_blank">
-                    <button id="MailButton">Stuur Email</button>
+                    <button id="MailButton">Maak Email</button>
                 </a>
             </div>
 
