@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Technius - KandidatenApplicatie</title>
     @include('Header')
+    <meta name=”robots” content=”noindex”>
 </head>
 <body>
     <div class="Filter">
@@ -39,6 +40,19 @@
             </form>
         </div>
     </div>
+    
+    @if(session('success'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+        <div id="errorAlert" class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+
 
     <div class="candidates">
         @foreach ($kandidaten as $kandidaat)
@@ -68,6 +82,7 @@
                     <h3>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h3>
                     <h3>{{ $kandidaat->Functie }}</h3>
                     </div>
+                    <p>Functie titel: {{ $kandidaat->FunctieTitel }}</p>
                     <!-- Omzetten van datum naar Nederlandse notatie -->
                     <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
                     <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
@@ -86,7 +101,6 @@
     <script>
                 // Define the csrfToken variable and pass it to the external JS file
                 var csrfToken = '{{ csrf_token() }}';
-
     </script>
     @vite('resources/js/overzicht.js')
 </body>

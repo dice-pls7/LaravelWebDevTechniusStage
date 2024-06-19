@@ -24,6 +24,7 @@ class KandidaatToevoegenController extends Controller
             $request->input("Achternaam"),
             $request->input("Geboortedatum"),
             $request->input("Functie"),
+            $request->input("FunctieTitel"),
             $request->input("Beschikbaarheid"),
             $request->input("Beschikbaar"),
             $request->input("Locatie"),
