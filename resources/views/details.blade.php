@@ -25,16 +25,16 @@
                 <button title="Delete kandidaat" type="button" id="deleteButton">
                     <i class="fas fa-trash-can"></i>
                 </button>
-                <button 
-                    title="{{ $kandidaat->pinned ? 'Unpin kandidaat' : 'Pin kandidaat' }}" 
-                    type="button" 
-                    id="PinKnop" 
+                <button
+                    title="{{ $kandidaat->pinned ? 'Unpin kandidaat' : 'Pin kandidaat' }}"
+                    type="button"
+                    id="PinKnop"
                     onclick="">
                     <i class="fas fa-thumbtack"></i>
                 </button>
             @endauth
         @endif
-                <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
+        <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
         </div>
         <h2><span class=label">{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</span></h2>
         <!-- Omzetten van datum naar Nederlandse notatie -->
