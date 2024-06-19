@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Technius - KandidatenApplicatie</title>
     @include('Header')
+    <meta name=”robots” content=”noindex”>
+    <meta name="google-site-verification" content="ICooGiP25wM9YyrUt5S55LkQUgA-_AcBCkFmzGZlMuY" />
 </head>
 <body>
     <div class="Filter">
@@ -68,6 +70,7 @@
                     <h3>{{ $kandidaat->Voornaam }} {{ substr($kandidaat->Achternaam, 0, 1) }}</h3>
                     <h3>{{ $kandidaat->Functie }}</h3>
                     </div>
+                    <p>Functie titel: {{ $kandidaat->FunctieTitel }}</p>
                     <!-- Omzetten van datum naar Nederlandse notatie -->
                     <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
                     <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>

@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     @include('Header')
+    <meta name=”robots” content=”noindex”>
 </head>
 <body>
     <div class="OverzichtsKnop">
@@ -79,12 +80,10 @@
         @auth
             <div class="WijzigKnop">
                 <a id="WijzigButton" href="{{ url('kandidaat/' . $kandidaat->Id . '/wijzigen') }}">Wijzigen Kandidaat</a>
-                <!-- Button to trigger email -->
                 <a href="mailto:?subject=aanrading: {{ $kandidaat->Voornaam }}&body={{ $emailBodyAuth }}" target="_blank">
-                    <button id="MailButton">Stuur Email</button>
+                    <button id="MailButton">Maak Email</button>
                 </a>
             </div>
-
         @else
             <div class="WijzigKnop">
                 <a href="mailto:Hello@technius.nl?subject=interesse in: {{ $kandidaat->Voornaam }}&body={{ $emailBodyInterest }}" target="_blank">

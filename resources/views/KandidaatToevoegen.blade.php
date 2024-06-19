@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('/css/Toevoegen.css') }}">
     <title>Kandidaat Toevoegen</title>
     @include('Header')
+    <meta name=”robots” content=”noindex”>
 </head>
 <body>
 
@@ -49,6 +50,10 @@
                     <option value="1">Ja</option>
                     <option value="0">Nee</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="FunctieTitel">Functie titel *</label>
+                <input type="text" id="FunctieTitel" name="FunctieTitel" maxlength = "25" required>
             </div>
             <div class="form-group">
                 <label for="Locatie">Locatie *</label>

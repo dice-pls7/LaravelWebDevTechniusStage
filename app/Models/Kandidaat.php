@@ -9,6 +9,7 @@ class Kandidaat {
     public $Achternaam;
     public $Geboortedatum;
     public $Functie;
+    public $FunctieTitel;
     public $Beschikbaarheid;
     public $Beschikbaar;
     public $Locatie;
@@ -21,7 +22,7 @@ class Kandidaat {
 
     public $pinned;
 
-    public function __construct($id, $voornaam, $tussenvoegsel, $achternaam, $geboortedatum, $functie, $beschikbaarheid, $beschikbaar, $locatie, $taal, $werkervaring, $oudeOpdrachtgevers,
+    public function __construct($id, $voornaam, $tussenvoegsel, $achternaam, $geboortedatum, $functie, $functietitel, $beschikbaarheid, $beschikbaar, $locatie, $taal, $werkervaring, $oudeOpdrachtgevers,
                 $diplomas, $certificaten, $flavourText, $pinned) {
         $this->Id = $id;
         $this->Voornaam = $voornaam;
@@ -33,6 +34,7 @@ class Kandidaat {
             
         }
         $this->Functie = $functie;
+        $this->FunctieTitel = $functietitel;
         $this->Beschikbaarheid = $beschikbaarheid;
         $this->Beschikbaar = $beschikbaar;
         $this->Locatie = $locatie;

@@ -24,6 +24,7 @@ class KandidaatWijzigenController extends Controller
             $request->input("Achternaam"),
             $request->input("Geboortedatum"),
             $request->input("Functie"),
+            $request->input("FunctieTitel"),
             $request->input("Beschikbaarheid"),
             $request->input("Beschikbaar"),
             $request->input("Locatie"),
@@ -33,7 +34,7 @@ class KandidaatWijzigenController extends Controller
             $request->input("Diplomas"),
             $request->input("Certificaten"),
             $request->input("FlavourText"),
-            0, // Pinned is standaard 0
+            $request->input("Pinned"),
         );
         $this->kandidaatRepository->wijzigKandidaat($kandidaat);
         

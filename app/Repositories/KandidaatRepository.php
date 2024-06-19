@@ -56,7 +56,6 @@ class KandidaatRepository
             'Diplomas' => $kandidaat->Diplomas,
             'Certificaten' => $kandidaat->Certificaten,
             'FlavourText' => $kandidaat->FlavourText,
-            'pinned' => $kandidaat->pinned,
         ]);
     }
     public function insertKandidaat($kandidaat)
@@ -67,6 +66,7 @@ class KandidaatRepository
         'Achternaam' => $kandidaat->Achternaam,
         'Geboortedatum' => $kandidaat->Geboortedatum,
         'Functie' => $kandidaat->Functie,
+        'FunctieTitel' => $kandidaat->FunctieTitel,
         'Beschikbaarheid' => $kandidaat->Beschikbaarheid,
         'Beschikbaar' => $kandidaat->Beschikbaar,
         'Locatie' => $kandidaat->Locatie,

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('/css/Footer.css') }}">
     <title>Kandidaat Wijzigen</title>
     @include('Header')
+    <meta name=”robots” content=”noindex”>
 </head>
 <body>
 <div class="Toevoegen">
@@ -51,6 +52,10 @@
                     <option value="1" <?php if($kandidaat->Beschikbaar == 1) print("selected")?>>Ja</option>
                     <option value="0" <?php if($kandidaat->Beschikbaar == 0) print("selected")?>>Nee</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="FunctieTitel">Functie titel *</label>
+                <input type="text" id="FunctieTitel" name="FunctieTitel" maxlength = "25" value="<?php print($kandidaat->FunctieTitel)?>" required>
             </div>
             <div class="form-group">
                 <label for="Locatie">Locatie *</label>

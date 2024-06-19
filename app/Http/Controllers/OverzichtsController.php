@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kandidaat;
 use App\Models\Reviews;
 use App\Repositories\KandidaatRepository;
-use App\Helpers\EmailHelper; // Add this line
+use App\Helpers\EmailHelper;
 
 class OverzichtsController extends Controller
 {
@@ -21,7 +21,6 @@ class OverzichtsController extends Controller
         $kandidaten = $this->kandidaatRepository->getAllOrderedByPinned();
         return view('overzicht', ['kandidaten' => $kandidaten]);
     }
-
     public function details($id)
     {
         $kandidaat = $this->kandidaatRepository->getKandidaat($id);
