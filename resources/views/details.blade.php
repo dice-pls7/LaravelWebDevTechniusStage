@@ -19,18 +19,27 @@
 <div class="Gegevenstabel {{$kandidaat->Functie}}"> <!-- Hier wordt de functie van de kandidaat meegegeven als class voor de kleur-->
     <div id="capture" class="Gegevens">
         <div class="DeleteKnop">
-            @if(Route::has('login'))
-                @auth
-                <button title="Delete kandidaat" type="button" id="deleteButton"><i class="fas fa-trash-can"></i></button>
-                <button title="Pin kandidaat" type="button" id="PinKnop" onclick="" ><i class="fas fa-thumbtack"></i></button>
-                @endauth
-            @endif
+        @if(Route::has('login'))
+            @auth
+                <button title="Delete kandidaat" type="button" id="deleteButton">
+                    <i class="fas fa-trash-can"></i>
+                </button>
+                <button 
+                    title="{{ $kandidaat->pinned ? 'Unpin kandidaat' : 'Pin kandidaat' }}" 
+                    type="button" 
+                    id="PinKnop" 
+                    onclick="">
+                    <i class="fas fa-thumbtack"></i>
+                </button>
+            @endauth
+        @endif
                 <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
         </div>
         <h2><span class=label">{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</span></h2>
-        <p><span class="label">Geboortedatum: </span>{{ $kandidaat->Geboortedatum }}</p>
+        <!-- Omzetten van datum naar Nederlandse notatie -->
+        <p><span class="label">Geboortedatum: </span>{{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
         <p><span class="label">Functie: </span>{{ $kandidaat->Functie }}</p>
-        <p><span class="label">Beschikbaar vanaf: </span>{{ $kandidaat->Beschikbaarheid }}</p>
+        <p><span class="label">Beschikbaar vanaf: </span>{{ date('d-m-Y' , strtotime($kandidaat->Beschikbaarheid)) }}</p>
         <p><span class="label">Locatie: </span>{{ $kandidaat->Locatie }}</p>
         <p><span class="label">Taal: </span>{{ $kandidaat->Taal }}</p>
         <p><span class="label">Werkervaring: </span>{{ $kandidaat->Werkervaring }} jaar</p>

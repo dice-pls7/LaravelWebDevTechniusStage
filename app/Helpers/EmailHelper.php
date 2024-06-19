@@ -18,7 +18,7 @@ class EmailHelper
         $body .= "Taal: $kandidaat->Taal\n";
 
         if (!empty($kandidaat->Werkervaring)) {
-            $body .= "Werkervaring: $kandidaat->Werkervaring\n";
+            $body .= "Werkervaring: $kandidaat->Werkervaring jaar\n";
         }
         if (!empty($kandidaat->OudeOpdrachtgevers)) {
             $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";

@@ -1,5 +1,4 @@
-// resources/js/details.js
-
+// resources/js/details.js\
 document.getElementById('deelKandidaatKnop').onclick = function() {
     navigator.clipboard.writeText(window.location.href) // Kopieer URL naar klembord
     .then(() => {
@@ -29,7 +28,7 @@ document.getElementById('deleteButton').addEventListener('click', function() {
                 console.error('Er is een fout opgetreden bij het verwijderen van de kandidaat');
             }
         }).catch(error => {
-            console.error('Er is een fout opgetreden bij het verwijderen van de kandidaat:', error);
+            console.error('Er is een fout opgetreden bij het verwijderen van de kandidaat:');
         });
     }
 });
@@ -54,7 +53,7 @@ document.querySelectorAll('.deleteReferentie').forEach(button => {
                     console.error('Er is een fout opgetreden bij het verwijderen van de referentie');
                 }
             }).catch(error => {
-                console.error('Er is een fout opgetreden bij het verwijderen van de referentie:', error);
+                console.error('Er is een fout opgetreden bij het verwijderen van de referentie:');
             });
         }
     });
@@ -77,6 +76,6 @@ document.getElementById('PinKnop').addEventListener('click', function() {
             console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
         }
     }).catch(error => {
-        console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:', error);
+        console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:');
     });
 });

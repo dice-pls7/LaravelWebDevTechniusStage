@@ -59,7 +59,7 @@
                 <input type="text" id="Taal" name="Taal" maxlength = "15" required>
             </div>
             <div class="form-group">
-                <label for="Werkervaring">Werkervaring *</label>
+                <label for="Werkervaring">Werkervaring in jaren *</label>
                 <input type="text" id="Werkervaring" name="Werkervaring" pattern="\d+" minlength="1" maxlength="2" required>
             </div>
             <div class="form-group">
