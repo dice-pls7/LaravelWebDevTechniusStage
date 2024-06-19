@@ -7,7 +7,6 @@
             <h1 class="text-1xl font-bold">Heb je een account? Log dan hieronder in:</h1>
         </div>
         @csrf
-
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
