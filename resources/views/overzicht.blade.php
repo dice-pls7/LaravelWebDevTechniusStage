@@ -8,7 +8,6 @@
     <title>Technius - KandidatenApplicatie</title>
     @include('Header')
     <meta name=”robots” content=”noindex”>
-    <meta name="google-site-verification" content="ICooGiP25wM9YyrUt5S55LkQUgA-_AcBCkFmzGZlMuY" />
 </head>
 <body>
     <div class="Filter">
@@ -41,6 +40,19 @@
             </form>
         </div>
     </div>
+    
+    @if(session('success'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+        <div id="errorAlert" class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+
 
     <div class="candidates">
         @foreach ($kandidaten as $kandidaat)
@@ -89,7 +101,6 @@
     <script>
                 // Define the csrfToken variable and pass it to the external JS file
                 var csrfToken = '{{ csrf_token() }}';
-
     </script>
     @vite('resources/js/overzicht.js')
 </body>

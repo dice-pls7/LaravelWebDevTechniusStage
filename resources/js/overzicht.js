@@ -27,3 +27,18 @@ document.querySelectorAll('.PinKnop').forEach(button => {
         });
     });
 });
+// Sluit de success alert na 5 seconden
+setTimeout(function() {
+    var successAlert = document.getElementById('successAlert');
+    if (successAlert) {
+        successAlert.remove();
+    }
+}, 5000); // 5000 milliseconden = 5 seconden
+
+// Sluit de error alert na 5 seconden
+setTimeout(function() {
+    var errorAlert = document.getElementById('errorAlert');
+    if (errorAlert) {
+        errorAlert.remove();
+    }
+}, 5000); // 5000 milliseconden = 5 seconden
