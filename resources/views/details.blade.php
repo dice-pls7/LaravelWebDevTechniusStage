@@ -34,6 +34,7 @@
                 </button>
             @endauth
         @endif
+
         <button title="Deel kandidaat" type="button" id="deelKandidaatKnop"><i class="fas fa-share"></i></button>
         </div>
         <h2><span class=label">{{ $kandidaat->Voornaam }} {{ $kandidaat->Tussenvoegsel }} {{ substr($kandidaat->Achternaam, 0, 1) }}</span></h2>
