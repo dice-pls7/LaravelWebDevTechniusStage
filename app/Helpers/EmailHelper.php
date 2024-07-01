@@ -11,9 +11,9 @@ class EmailHelper
             $body .= " $kandidaat->Tussenvoegsel";
         }
         $body .= " " . $kandidaat->Achternaam . "\n";
-        $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
+        $body .= "Geboortedatum: " . date('d-m-Y', strtotime($kandidaat->Geboortedatum)) . "\n";
         $body .= "Functie: $kandidaat->Functie\n";
-        $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
+        $body .= "Beschikbaar vanaf: " . date('d-m-Y', strtotime($kandidaat->Beschikbaarheid)) . "\n";
         $body .= "Locatie: $kandidaat->Locatie\n";
         $body .= "Taal: $kandidaat->Taal\n";
 
@@ -50,27 +50,9 @@ class EmailHelper
             $body .= " $kandidaat->Tussenvoegsel";
         }
         $body .=  " " . $kandidaat->Achternaam . "\n";
-        $body .= "Geboortedatum: $kandidaat->Geboortedatum\n";
+        $body .= "Geboortedatum: " . date('d-m-Y', strtotime($kandidaat->Geboortedatum)) . "\n";
         $body .= "Functie: $kandidaat->Functie\n";
-        $body .= "Beschikbaar vanaf: $kandidaat->Beschikbaarheid\n";
-        $body .= "Locatie: $kandidaat->Locatie\n";
-        $body .= "Taal: $kandidaat->Taal\n";
-
-        if (!empty($kandidaat->Werkervaring)) {
-            $body .= "Werkervaring: $kandidaat->Werkervaring\n";
-        }
-        if (!empty($kandidaat->OudeOpdrachtgevers)) {
-            $body .= "Oude Opdrachtgevers: $kandidaat->OudeOpdrachtgevers\n";
-        }
-        if (!empty($kandidaat->Diplomas)) {
-            $body .= "Diploma's: $kandidaat->Diplomas\n";
-        }
-        if (!empty($kandidaat->Certificaten)) {
-            $body .= "Certificaten: $kandidaat->Certificaten\n";
-        }
-        if (!empty($kandidaat->FlavourText)) {
-            $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
-        }
+        
         $body .= "\n Met vriendelijke groet, \n\n Uw naam: \n Uw telefoonnummer: \n Uw emailadres: \n\n";
 
         return rawurlencode($body);

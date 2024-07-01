@@ -18,7 +18,8 @@ p{
     border: 3px #ffc400 solid;
     text-align: center;
     margin: auto;
-    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
