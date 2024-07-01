@@ -46,7 +46,7 @@ nav a:hover {
     width: 200px;
     background-image: url('Image/logo.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: left;
 }
 .logo a:hover {

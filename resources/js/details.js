@@ -5,7 +5,7 @@ document.getElementById('deelKandidaatKnop').onclick = function() {
         alert('Kandidaat gekopieerd naar klembord: ' + window.location.href); // Succesbericht
     })
     .catch(err => {
-        console.error('Kopiëren is mislukt, probeer later opnieuw'); // Foutbericht
+        alert('Kopiëren mislukt: ', err); // Foutbericht
     });
 };
 
@@ -13,7 +13,7 @@ document.getElementById('deleteButton').addEventListener('click', function() {
     var confirmation = confirm('Weet u zeker dat u deze kandidaat wilt verwijderen?');
     if (confirmation) {
         var id = window.location.href.split('/').pop();
-        fetch('/kandidaat/' + id + '/delete', { // hoe werkt dit precies?
+        fetch('/kandidaat/' + id + '/delete', { 
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken,
@@ -21,14 +21,14 @@ document.getElementById('deleteButton').addEventListener('click', function() {
             }
         }).then(response => {
             if (response.ok) {
-                //navigate to the overview page
+                //navigeer naar de overzicht pagina
                 window.location.href = '/overzicht';
             } else {
                 // Er is iets misgegaan
-                console.error('Er is een fout opgetreden bij het verwijderen van de kandidaat');
+                alert('Er is een fout opgetreden bij het verwijderen van de kandidaat');
             }
         }).catch(error => {
-            console.error('Er is een fout opgetreden bij het verwijderen van de kandidaat:');
+            alert('Er is een fout opgetreden bij het verwijderen van de kandidaat:');
         });
     }
 });
@@ -50,10 +50,10 @@ document.querySelectorAll('.deleteReferentie').forEach(button => {
                     window.location.reload();
                 } else {
                     // Er is iets misgegaan
-                    console.error('Er is een fout opgetreden bij het verwijderen van de referentie');
+                    alert('Er is een fout opgetreden bij het verwijderen van de referentie');
                 }
             }).catch(error => {
-                console.error('Er is een fout opgetreden bij het verwijderen van de referentie:');
+                alert('Er is een fout opgetreden bij het verwijderen van de referentie:');
             });
         }
     });
@@ -73,9 +73,9 @@ document.getElementById('PinKnop').addEventListener('click', function() {
            window.location.href = '/overzicht';
         } else {
             // Er is iets misgegaan
-            console.error('Er is een fout opgetreden bij het pinnen van de kandidaat');
+           alert('Er is een fout opgetreden bij het pinnen van de kandidaat');
         }
     }).catch(error => {
-        console.error('Er is een fout opgetreden bij het pinnen van de kandidaat:');
+        alert('Er is een fout opgetreden bij het pinnen van de kandidaat');
     });
 });
