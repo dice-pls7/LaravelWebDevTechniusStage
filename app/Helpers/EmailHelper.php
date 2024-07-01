@@ -32,8 +32,9 @@ class EmailHelper
         if (!empty($kandidaat->FlavourText)) {
             $body .= "Beschrijving kandidaat: $kandidaat->FlavourText\n";
         }
-
-        $body .= "\nReferenties:\n";
+        if (!empty($reviews[0])) {
+            $body .= "\nReferenties:\n";
+        }
         foreach ($reviews as $review) {
             $body .= "Bedrijfsnaam: $review->Bedrijfsnaam\n";
             $body .= "Review: $review->Review\n";
