@@ -8,10 +8,11 @@
         <div class="main-footer-left-bg">
             <div class="contact-info">
                 <h2>Neem contact op</h2>
+                <h3>Technius Zwolle B.V.</h3>
                 <ul class="contact-list">
                     <li class="contact-item desktop-only">
                         <i class="fas fa-mobile-alt"></i>
-                        <span class="contact-list-text big">038-4202224</span>
+                        <span class="contact-list-text big">&nbsp;038-4202224</span>
                     </li>
                     <li class="contact-item mobile-only">
                         <i class="fas fa-mobile-alt"></i>
@@ -26,7 +27,7 @@
                     <li class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                         <a href="https://www.google.com/maps/search/?api=1&query=Technius+Zwolle+BV%2C+Achthoevenweg+18%2C+7951+SK+Staphorst" target="_blank" class="contact-list-text big">
-                            Achthoevenweg 18 <br/> 7951 SK Staphorst
+                        &nbsp;Achthoevenweg 18 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7951 SK Staphorst
                         </a>
                     </li>
                 </ul>
