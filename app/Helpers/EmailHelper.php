@@ -42,7 +42,7 @@ class EmailHelper
 
         return rawurlencode($body);
     }
-
+    
     public static function generateInterestEmailBody($kandidaat)
     {
         $body = "Beste Team Technius, \n\n Ik heb interesse in de volgende kandidaat: \n\n";
@@ -50,7 +50,7 @@ class EmailHelper
         if (!empty($kandidaat->Tussenvoegsel)) {
             $body .= " $kandidaat->Tussenvoegsel";
         }
-        $body .=  " " . $kandidaat->Achternaam . "\n";
+        $body .=  " " . substr($kandidaat->Achternaam, 0, 1). "\n";
         $body .= "Geboortedatum: " . date('d-m-Y', strtotime($kandidaat->Geboortedatum)) . "\n";
         $body .= "Functie: $kandidaat->Functie\n";
         
