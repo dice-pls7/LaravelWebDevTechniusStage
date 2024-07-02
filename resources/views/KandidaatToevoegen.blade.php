@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label for="Taal">Taal *</label>
-                <input type="text" id="Taal" name="Taal" maxlength = "15" required>
+                <input type="text" id="Taal" name="Taal" maxlength = "100" required>
             </div>
             <div class="form-group">
                 <label for="Werkervaring">Werkervaring in jaren *</label>
