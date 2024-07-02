@@ -83,6 +83,7 @@
                     <h3>{{ $kandidaat->Functie }}</h3>
                     </div>
                     <p>Functie titel: {{ $kandidaat->FunctieTitel }}</p>
+                    <p>Locatie: {{ $kandidaat->Locatie }}</p>
                     <!-- Omzetten van datum naar Nederlandse notatie -->
                     <p>Geboortedatum: {{ date('d-m-Y', strtotime($kandidaat->Geboortedatum)) }}</p>
                     <p>Werkervaring: {{ $kandidaat->Werkervaring }} jaar</p>
